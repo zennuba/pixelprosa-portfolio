@@ -1,0 +1,148 @@
+[
+  {
+    "place": "Syddansk Universitet",
+    "title": "Projektkoordinator",
+    "date": {
+      "start": "2021-12",
+      "end": "2023-04"
+    },
+    "location": "Odense Kommune",
+    "responsibility": [
+      "Planlægning, koordinering og afvikling af kurser og konferencer i samarbejde med facilitatorer og planlægningsgrupper",
+      "Facilitering af webinar"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Danmarks Lærerforening",
+    "title": "Ansvarlig for kursussystem og digital udvikling",
+    "date": {
+      "start": "2010-03",
+      "end": "2019-09"
+    },
+    "location": "København, Hovedstaden, Danmark",
+    "responsibility": [
+      "Samarbejde med IT-afdelingen og systemleverandøren om videreudvikling af organisationens kursussystem",
+      "Identificering, beskrivelse og prioritering af fejl, forbedringsmuligheder og udviklingsønsker",
+      "Vurdering og kvalificering af løsningsforslag i samarbejde med IT-afdelingen og systemleverandøren",
+      "Test (UAT) af fejlrettelser og nye funktioner før implementering",
+      "Implementering af nye funktioner",
+      "Udarbejdelse af brugervejledninger og oplæring af brugere",
+      "Systemsupport til organisationens brugere"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Danmarks Lærerforening",
+    "title": "Kursus- og konferencekoordinator",
+    "date": {
+      "start": "2010-03",
+      "end": "2019-09"
+    },
+    "location": "København, Hovedstaden, Danmark",
+    "responsibility": [
+      "Planlægning og afvikling af arrangementer, herunder regionale møder, kurser, konferencer og stormøder for politikere, tillidsvalgte og medlemmer",
+      "Koordinering og samarbejde med kursus- og konferencecentre",
+      "Udarbejdelse af præsentationer, deltager- og informationsmateriale"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Cambridge Institute Copenhagen",
+    "title": "Kursuskoordinator",
+    "date": {
+      "start": "2009-09",
+      "end": "2010-09"
+    },
+    "location": "Copenhagen Municipality",
+    "responsibility": [
+      "Rådgivning af kursister",
+      "Vedligeholdelse af hjemmesiden",
+      "Implementering af nyt kursusadministrationsprogram"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "CABINN Copenhagen",
+    "title": "Bookingmanager (vikariat)",
+    "date": {
+      "start": "2008-09",
+      "end": "2008-09"
+    },
+    "location": "Copenhagen Municipality",
+    "responsibility": [
+      "Gruppebookinger og kundeservice",
+      "Vedligeholdelse af internetportaler",
+      "Online marketing"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Sony",
+    "title": "Receptionist (vikariat)",
+    "date": {
+      "start": "2006-09",
+      "end": "2007-09"
+    },
+    "location": "Ballerup, Region Hovedstaden, Danmark",
+    "responsibility": [
+      "Telefon og mødebooking",
+      "Indkøb og leverandørkontakt",
+      "Rejsebooking"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Matas A/S",
+    "title": "Materialist",
+    "date": {
+      "start": "2002-09",
+      "end": "2006-04"
+    },
+    "location": "København, Region Hovedstaden, Danmark",
+    "responsibility": [
+      "Kundevejledning og salg",
+      "Varebestilling og leverandørkontakt",
+      "Ansvar for udvalgte brands"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Dansk Internet Selskab",
+    "title": "Receptionist",
+    "date": {
+      "start": "2000-09",
+      "end": "2002-09"
+    },
+    "location": "København C, Region Hovedstaden, Danmark",
+    "responsibility": [
+      "Telefon og mødebooking",
+      "Indkøb og leverandørkontakt",
+      "Korrekturlæsning"
+    ],
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Matas A/S",
+    "title": "Materialist og salgsassistent",
+    "date": {
+      "start": "1998-09",
+      "end": "2000-09"
+    },
+    "location": "København, Region Hovedstaden, Danmark",
+    "responsibility": [
+      "Kundevejledning og salg",
+      "Varebestilling"
+    ],
+    "metadata": null,
+    "cta": null
+  }
+]

@@ -1,0 +1,145 @@
+@use "variables" as *;
+
+.case {
+  display: grid;
+  gap: var(--space-lg);
+  max-width: 75rem; // hele containerens bredde
+  margin-inline: auto;
+  
+}
+
+.case__hero {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+  }
+}
+
+.case__hook {
+  font-size: 1.25rem;
+  color: var(--color-on-bg-muted);
+}
+
+// Faktaboks: 1 kolonne mobil → 3 på desktop
+.case__facts {
+  display: grid;
+  gap: var(--space-md);
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  dt {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-on-bg-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+.case__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+  padding: 0;
+  list-style: none;
+}
+
+// Hver sektion adskilt af en tynd linje
+.case__section {
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-border);
+
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: var(--space-sm);
+  }
+
+  ul {
+    display: grid;
+    gap: var(--space-xs);
+    padding-left: 1.2rem;
+  }
+}
+
+// Billeder i casen (hero + proces)
+.case__image {
+  display: block;
+  max-width: 100%;
+  border-radius: 12px;
+  margin-block: 1.5rem;
+}
+
+// Tool-ikoner
+.case__icon img {
+  display: block;
+  width: 32px;
+  height: 32px;
+}
+
+// Tekst må ikke blive for bred – ca. 65 tegn pr. linje
+.case__hero p,
+.case__section > p,
+.case__section > ul,
+.case__step-text p {
+  max-width: 65ch;
+}
+
+// ===== Proces: bento-grid (Apple-inspireret) =====
+.case__process {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: var(--space-sm);
+
+  // desktop: 6 kolonner at "bygge" med
+  @media (min-width: $bp-md) {
+    grid-template-columns: repeat(6, 1fr);
+  }
+}
+
+// hvert trin er et kort
+.case__step {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: #fff;
+  border-radius: 28px;
+  padding: var(--space-md);
+
+  @media (min-width: $bp-md) {
+    grid-column: span 3;                   // standard: halv bredde
+    &:nth-child(1) { grid-column: span 4; } // Forstå: bred
+    &:nth-child(2) { grid-column: span 2; } // Undersøge: smal
+    &:nth-child(5) { grid-column: span 4; } // Udvikle: bred
+    &:nth-child(6) { grid-column: span 2; } // Teste: smal
+    &:nth-child(7) { grid-column: span 6; } // Forbedre: hele rækken
+  }
+}
+
+// billedet øverst i kortet
+.case__step-media {
+  order: -1;
+}
+
+// billeder i kortene: ens højde, beskåret pænt
+.case__step-media .case__image {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+  object-position: top;
+  margin-block: 0 var(--space-xs);
+}

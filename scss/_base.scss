@@ -1,0 +1,47 @@
+// regler for rå HTML-elementer (body, h1, a, img), altså uden klasser.
+//Det er fundamentet, som alle sider arver.
+
+// ===== Reset =====
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+// ===== Body =====
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-on-bg);
+  background: var(--color-bg);
+}
+
+// ===== Overskrifter =====
+h1,
+h2,
+h3 {
+  font-weight: 600;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+// ===== Links =====
+a {
+  color: inherit;
+  text-decoration-color: var(--color-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+// ===== Tilgængelighed: tydeligt fokus ved Tab =====
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}

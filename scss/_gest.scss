@@ -1,0 +1,82 @@
+// GLS-farver som variabler – så skal du kun ændre ét sted
+$gls-blue: #061ab1;
+$gls-yellow: #ffd100;
+$gls-light-blue: #c5e9f4;
+$gls-soft-blue: #c5e9f4;
+$gls-soft-pink: #facbd7;
+$gls-soft-green: #bde5ae;
+
+.gest {
+  background-color: $gls-blue;
+  color: #fff;
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  max-width: 50rem;      // ← ny: må højst blive 50rem bred
+  margin-inline: auto;   // ← ny: centrerer boksen vandret
+
+  &__kicker {
+    color: $gls-yellow;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  &__list {
+    list-style: none; // fjerner prikkerne
+    padding: 0;
+  }
+
+  &__item {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    column-gap: 1.5rem; // ← skru op eller ned her
+    row-gap: 0.5rem; // ← ny: luft mellem teksten og stregen
+    align-items: center; // ← ny: centrerer tal og streg lodret
+    margin-block: 1.5rem;
+    &--blue  { --color: #{$gls-soft-blue}; }
+    &--pink  { --color: #{$gls-soft-pink}; }
+    &--green { --color: #{$gls-soft-green}; }
+    
+
+  }
+
+  &__value {
+    grid-row: span 2;
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--color);   
+    white-space: nowrap; // ← ny: tallet må aldrig ombrydes
+    justify-self: end;   // ← ny: skubber tallet til højre i sin kolonne
+  }
+  &__bar {
+    display: block; // span er inline, så den har ingen bredde
+    height: 1.25rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 255, 255, 0.15); // det svage "spor"
+
+    &::before {
+      // den gule fyld-streg
+      content: "";
+      display: block;
+      height: 100%;
+      width: calc(var(--value) * 1%); // 51.6 × 1% = 51.6%
+      border-radius: inherit;
+      background-color: var(--color);
+    }
+    &__bar {
+      display: block; // span er inline, så den har ingen bredde
+      height: 1.25rem;
+      border-radius: 1rem;
+      background-color: rgba(255, 255, 255, 0.15); // det svage "spor"
+    }
+    &::before {
+      // den gule fyld-streg
+      content: "";
+      display: block;
+      height: 100%;
+      width: calc(var(--value) * 1%); // 51.6 × 1% = 51.6%
+      border-radius: inherit;
+      background-color: var(--color);
+    }
+  }
+}

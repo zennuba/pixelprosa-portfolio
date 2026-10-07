@@ -1,0 +1,189 @@
+   [
+    { "id": "p_01_001",
+    "year": 2025,
+    "semester": 1,
+    "project": 1,
+    "edu": "UCL",
+    "category": [
+      "redesign",
+      "UX",
+      "e-commerce"
+    ],
+    "title": "Redesign og UX-optimering af webshop",
+    "description": "UX-optimering og redesign af eksisterende webshop med fokus på brugeroplevelsen.",
+    "team": "3 personer",
+    "duration": "14 dage",
+    "targetGroup": "Mænd 40-60 år",
+    "elements": [
+      "UX-evaluering",
+      "Brugertest",
+      "Redesign af webshop"
+    ],
+    "solution": "For at imødekomme de identificerede problemer baseres redesignet på to hovedsøjler: Skarpere konceptafklaring og opbygning af e-handelstroværdighed.",
+    "case": "redesign-ux-optimering-webshop",
+    "link": ""
+  },
+  {
+    "id": "p_01_002",
+    "year": 2025,
+    "semester": 1,
+    "project": 2,
+    "edu": "UCL",
+    "category": [
+      "interaktivt koncept",
+      "UX",
+      "gamification"
+    ],
+    "title": "Økolariet – Skovspire",
+    "description": "Interaktivt koncept, der gør komplekse miljøtemaer nærværende, håndgribelige og mindeværdige for børn.",
+    "team": "4 personer",
+    "duration": "28 dage",
+    "targetGroup": "Børn og unge museumsbesøgende",
+    "elements": [
+      "Gamification",
+      "UX og test",
+      "Klientbaseret redesign",
+      "Brugerinddragelse og evaluering",
+      "Konceptillustration"
+    ],
+    "solution": "Digitaliseret læringsspil, hvor børn planter træer, tilføjer blade og besvarer spørgsmål om biodiversitet. Konceptet bruger gamification til at gøre klimakomplekse emner konkrete og engagerende.",
+    "case": "okolariet-skovspire",
+    "link": ""
+  },
+  {
+    "id": "p_01_003",
+    "year": 2025,
+    "semester": 1,
+    "project": 3,
+    "edu": "UCL",
+    "category": [
+      "interaktivt koncept",
+      "UX",
+      "app"
+    ],
+    "title": "Playdate App Concept",
+    "description": "App-koncept, der giver børn mulighed for selv at tage initiativ til og planlægge legeaftaler under begrænset forældreguidning.",
+    "team": "4 personer",
+    "duration": "7 dage",
+    "targetGroup": "Børn og deres forældre",
+    "elements": [
+      "Think Aloud-test",
+      "Low-fidelity prototype",
+      "User-centred design",
+      "Store ikoner",
+      "Visual cues",
+      "Avatars"
+    ],
+    "solution": "En intuitiv app, hvor børn kan oprette og administrere legeaftaler. Forældre kan godkende forespørgsler og efter behov hjælpe med hosting eller transport.",
+    "case": "playdate-app-concept",
+    "link": ""
+  },
+  {
+    "id": "p_01_004",
+    "year": 2025,
+    "semester": 1,
+    "project": 4,
+    "edu": "UCL",
+    "category": [
+      "app-koncept",
+      "UX",
+      "user research"
+    ],
+    "title": "Design Challenge App",
+    "description": "Mobilapp-koncept udviklet på baggrund af user research med fokus på hurtig adgang til nødvendige varer, når tiden er knap.",
+    "team": "Solo",
+    "duration": "3 dage",
+    "targetGroup": "Forbrugere med behov for hurtig levering",
+    "elements": [
+      "User research",
+      "Design Challenge",
+      "Mobile app",
+      "High-fidelity prototype",
+      "UX"
+    ],
+    "solution": "FLUKS, en mobilapp til hurtig levering af nødvendige dagligvarer. Løsningen fokuserer på enkelhed, hastighed og relevans i brugeroplevelsen.",
+    "case": "design-challenge-app",
+    "link": ""
+  },
+  {
+    "id": "p_01_006",
+    "year": 2025,
+    "semester": 1,
+    "project": 6,
+    "edu": "UCL",
+    "category": [
+      "branding",
+      "visuel identitet",
+      "logodesign"
+    ],
+    "title": "Design Challenge – Football & Hockey Club",
+    "description": "Visuel identitet for en fiktiv sportsklub, der kombinerer football og hockey.",
+    "team": "Solo",
+    "duration": "1 dag",
+    "targetGroup": "Fiktiv football- og hockeyklub",
+    "elements": [
+      "Branding",
+      "Logo design",
+      "Typography",
+      "Tone of voice",
+      "Visual identity"
+    ],
+    "solution": "Udvikling af et logokoncept med fokus på typografi og tone of voice, der fungerer på tværs af begge sportsgrene og digitale platforme.",
+    "case": "football-hockey-club",
+    "link": ""
+  },
+  {
+    "id": "p_02_001",
+    "year": 2026,
+    "semester": 2,
+    "project": 1,
+    "edu": "IBA",
+    "category": [
+      "branding",
+      "webdesign",
+      "SEO"
+    ],
+    "title": "Female Touch",
+    "description": "Fiktivt marketing- og webbureau med fokus på små og mellemstore virksomheder inden for håndværk.",
+    "team": "4 personer",
+    "duration": "54 dage",
+    "targetGroup": "Små og mellemstore virksomheder",
+    "elements": [
+      "Branding",
+      "Webdesign",
+      "Web development",
+      "SEO",
+      "Drift og support"
+    ],
+    "solution": "En samlet digital bureauidentitet med fokus på direkte kommunikation, kvalitet og digitale løsninger til mindre virksomheder.",
+    "case": "female-touch",
+    "link": ""
+  },
+  {
+    "id": "p_02_003",
+    "year": 2026,
+    "semester": 2,
+    "project": 3,
+    "edu": "IBA",
+    "category": [
+      "real life case",
+      "B2B-marketing",
+      "e-mailmarketing"
+    ],
+    "title": "LadyBalance",
+    "description": "B2B-kampagne for LadyBalance med fokus på apoteker og træning af apotekspersonale.",
+    "team": "4 personer",
+    "duration": "39 dage",
+    "targetGroup": "Apotekere og apotekspersonale",
+    "elements": [
+      "Landingpage",
+      "Email campaign",
+      "Email automation flow",
+      "Segmentation",
+      "Training"
+    ],
+    "solution": "B2B-kampagne med landingpage og email automation, der guider eksisterende kunder mod træning af apotekspersonale.",
+    "case": "ladybalance",
+    "link": ""
+  }
+]

@@ -1,0 +1,8 @@
+
+// Mono-label: små STORE bogstaver i kode-font ("Pixel"-looket)
+@mixin mono-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}

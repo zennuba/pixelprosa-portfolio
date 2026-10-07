@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Figma",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Visual Studio Code",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Git",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "GitHub",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Photoshop",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Illustrator",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "WordPress",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "FileZilla",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/filezilla/filezilla-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Notion",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Trello",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  }
+]

@@ -1,0 +1,58 @@
+// ===== Breakpoints =====
+$bp-md: 768px;
+$bp-lg: 1100px;
+
+// ===== Light mode =====
+:root {
+  --color-bg: #fafaf8;
+  --color-on-bg: #0e0e0d;
+  --color-on-bg-muted: #4a4a46;
+  --color-on-bg-accent: #0b7c79; // accent som TEKST på bg
+
+  --color-surface: #edede8;
+  --color-on-surface: #0e0e0d;
+
+  --color-accent: #12b5b0; // knapper, linjer
+  --color-on-accent: #0e0e0d;
+
+  // ===== Light mode =====
+  --color-tone-1: #0b7c79; // turkis
+  --color-tone-2: #c8412f; // koral
+  --color-tone-3: #d4145f; // pink
+
+  --color-border: rgba(14, 14, 13, 0.12);
+
+  --font-body: "Schibsted Grotesk", sans-serif;
+  --font-accent: "Instrument Serif", serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 6rem;
+
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+// ===== Dark mode =====
+[data-theme="dark"] {
+  --color-bg: #0e0e0d;
+  --color-on-bg: #f5f3ef;
+  --color-on-bg-muted: #a8a8a0;
+  --color-on-bg-accent: #3fd9d3;
+
+  --color-surface: #1a1a18;
+  --color-on-surface: #f5f3ef;
+
+  --color-border: rgba(245, 243, 239, 0.12);
+
+  // color-tone bruges kun i word rotator i footer
+
+  // ===== Dark mode =====
+  --color-tone-1: #3fd9d3; // turkis
+  --color-tone-2: #ff8a7e; // koral
+  --color-tone-3: #ff6fa8; // pink
+}

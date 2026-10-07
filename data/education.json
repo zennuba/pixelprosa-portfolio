@@ -1,0 +1,80 @@
+[
+  {
+    "place": "IBA Erhvervsakademi Kolding",
+    "title": "Multimediedesigner",
+    "type": "Online",
+    "date": {
+      "start": "2026-01",
+      "end": "2027-05"
+    },
+    "location": null,
+    "description": "Fokus på UX, informationsarkitektur og frontend (HTML, SCSS, JavaScript). Søger praktik fra januar 2027.",
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "UCL Erhvervsakademi og Professionshøjskole",
+    "title": "Multimediedesigner",
+    "type": null,
+    "date": {
+      "start": "2025-02",
+      "end": "2026-01"
+    },
+    "location": null,
+    "description": "De første semestre af uddannelsen, inden jeg skiftede til IBA.",
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Nordvestsjællands Erhvervs- og Gymnasieuddannelser",
+    "title": "EUX, EUC",
+    "type": "Online",
+    "date": {
+      "start": "2024-01",
+      "end": "2025-01"
+    },
+    "location": null,
+    "description": "EUX afsluttet online.",
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "TietgenSkolen",
+    "title": "EUX, Eventkoordinator",
+    "type": null,
+    "date": {
+      "start": "2023-08",
+      "end": "2024-01"
+    },
+    "location": null,
+    "description": "Start på EUX med fokus på eventkoordinering.",
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Vesterbro HF Copenhagen",
+    "title": "HF enkeltfag",
+    "type": null,
+    "date": {
+      "start": "2002",
+      "end": "2004"
+    },
+    "location": "Copenhagen",
+    "description": "Enkeltfag ved siden af arbejde.",
+    "metadata": null,
+    "cta": null
+  },
+  {
+    "place": "Matas A/S",
+    "title": "Materialist elev",
+    "type": null,
+    "date": {
+      "start": "1996",
+      "end": "1998"
+    },
+    "location": "København, Region Hovedstaden, Danmark",
+    "description": "Uddannet materialist.",
+    "metadata": null,
+    "cta": null
+  }
+]

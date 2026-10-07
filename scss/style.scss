@@ -1,0 +1,12 @@
+//style.scss er den eneste SCSS fil der bliver til CSS.
+//Samler alle partials (filerne med _).
+//Tænk på den som en indholdsfortegnelse.
+//Rækkefølge: generelt → specifikt (senere regler vinder)
+
+@use "variables";
+@use "base";
+@use "layout";
+@use "components";
+@use "timeline";
+@use "case";
+@use "gest";

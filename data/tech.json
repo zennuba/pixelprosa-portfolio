@@ -1,0 +1,32 @@
+[
+  {
+    "name": "HTML",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this technology"
+  },
+  {
+    "name": "CSS",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this technology"
+  },
+  {
+    "name": "SCSS",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sass/sass-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this technology"
+  },
+  {
+    "name": "JavaScript",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this technology"
+  },
+  {
+    "name": "JSON",
+    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg",
+    "metadata": null,
+    "cta": "See all projects with this technology"
+  }
+]

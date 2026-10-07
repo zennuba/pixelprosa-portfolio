@@ -1,0 +1,16 @@
+[
+
+  {
+"type": "Generative AI",
+"model": "Finn",
+"use": "AI playbook, prompts, use cases, and AI workflows",
+"purpose": "To support employees in using AI safely, responsibly, and effectively",
+"input": "Prompts, company context, and work tasks",
+"output": "AI-generated content, suggestions, and solutions",
+"quality": "Critical evaluation and quality assurance of AI-generated output",
+"limitations": "Data security, quality, transparency, and responsible use",
+"metadata": null,
+"nestedObject": null,
+"cta": "All tools"
+}
+]

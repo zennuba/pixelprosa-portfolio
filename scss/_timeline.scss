@@ -1,0 +1,107 @@
+// ===== TIMELINE =====
+.timeline {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-left: 1px solid var(--color-border);
+
+    &__item {
+        --dot-color: var(--color-tone-1); // standard: turkis
+        position: relative;
+        display: grid;
+        grid-template-columns: 7rem 1fr;
+        gap: var(--space-sm);
+        padding: var(--space-sm) 0 var(--space-sm) var(--space-md);
+           
+        // prikken
+        &::before {
+            content: "";
+            position: absolute;
+            left: -6px;
+            top: 1.4rem;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: var(--color-bg);
+            border: 2px solid var(--dot-color);
+            }
+
+        // kategorier
+        &--education {
+            --dot-color: var(--color-tone-1);
+            } 
+
+        // turkis
+        &--experience {
+            --dot-color: var(--color-tone-2); // koral
+            } 
+        
+        &__tag {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--dot-color);
+            }
+
+        // årstal
+        &__date {
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--color-on-bg-muted);
+            padding-top: 0.15rem; 
+            }
+    }
+
+ 
+    &__summary {
+        cursor: pointer;
+        list-style: none; // fjerner ▶ i Firefox/Chrome
+        
+            &::-webkit-details-marker {
+            display: none; // fjerner ▶ i Safari
+            }
+
+    &__title {
+        margin: 0;
+        font-size: 1.125rem;
+
+            // + / − efter titlen
+        &::after {
+            content: " +";
+            font-family: var(--font-mono);
+            font-weight: 400;
+            color: var(--color-on-bg-muted);
+            }
+
+        &__details[open] &__title::after {
+            content: " −";
+            }
+
+        &__place {
+            margin: 0;
+            color: var(--color-on-bg-muted);
+            }
+
+        &__toggle {
+            margin: var(--space-sm) 0 0 var(--space-md);
+            padding: var(--space-xs) var(--space-sm);
+            font-family: var(--font-mono);
+            font-size: 0.875rem;
+            color: var(--color-on-bg);
+            background: none;
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            }
+
+        &:hover {
+            border-color: var(--color-accent);
+            }
+        }   
+
+        .timeline-section {
+        padding-bottom: var(--space-xl);
+        }
+    }
+}

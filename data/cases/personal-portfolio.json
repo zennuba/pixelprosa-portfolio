@@ -1,0 +1,71 @@
+{
+  "id": "personal-portfolio",
+
+  "kicker": "CASE · PERSONAL PORTFOLIO",
+
+  "title": "Hvordan sælger man sig selv på 10 sekunder?",
+
+  "hook": "Et portfolio er ikke et galleri – det er et produkt. Og produktet er migselv. PixelProsa er mit personlige portfolio, bygget fra bunden i HTML, SCSS og vanilla JavaScript. Jeg behandlede mig selv som ´varen´ og praktikvirksomheder som brugerne og designede ud fra, hvad de skal kunne se på få sekunder: hvem jeg er, hvad jeg kan, og hvordan jeg arbejder.",
+
+  "intro": "Projektet: Et individuelt 3. semesterprojekt med fokus på at planlægge, designe, udvikle og implementere et professionelt digitalt portfolio, som forberedelse til praktikperioden.",
+
+  "responsibility": "Planlægning, design, udvikling og implementering af det digitale portfolio.",
+
+  "purpose": "At demonstrere kompetencer som multimediedesigner, vise arbejdsprocesser og skabe et professionelt udtryk målrettet fremtidige praktikværter eller arbejdsgivere.",
+
+  "opportunities": [
+    "Markedstendens (IT-Branchen 2026): Udnytte at teknologi rykker ind i hjertet af alle brancher, ved som designer at have grundlæggende kodeforståelse, så jeg kan bygge bro mellem design og udvikling (Kilde: https://itb.dk).",
+    "Specialist-efterspørgsel (Finansforbundet 2026): Imødekomme virksomhedernes behov for profiler, der forstår digitale produkter, ved at vise, at jeg både kan researche en målgruppe og føre det ud i et funktionelt layout (Kilde: https://finansforbundet.dk).",
+    "Brugervenlig procesformidling (Nielsen Norman Group 2026): Imødekomme de rekrutteringsansvarliges tidsnød ved at bruge OOUX til at skabe et overskueligt portfolio, der overholder '10-sekunders reglen' (Kilde: https://nngroup.com)."
+  ],
+
+  "finalSolution": "Et responsivt og overskueligt digitalt portfolio, bygget fra bunden for at vise mine projekter, designprocesser og min faglige udvikling.",
+
+  "learning": [
+    "Planlægge og strukturere et digitalt projekt fra de første low-fi skitser til et færdigt produkt.",
+    "Anvende Object-Oriented UX (OOUX) til at skabe en logisk og gennemskuelig informationsarkitektur.",
+    "Arbejde med grundlæggende frontend-udvikling i HTML, SCSS og JavaScript for at forstå designets tekniske rammer.",
+    "Optimere brugeroplevelsen (UX) med særligt fokus på mobile-first design og skannbare casestudier."
+  ],
+
+  "reflection": "Projektet har vist mig, at det virker at behandle sit portfolio som et rigtigt produkt og sig selv som 'varen'. Ved at kombinere OOUX med ren vanilla JavaScript har jeg bygget et site, der er lynhurtigt og nemt at overskue for en travl rekrutteringsansvarlig. Min største udfordring og læring har været at begrænse mig. Som MMD'er vil man vildt gerne vise alt, hvad man kan inden for både UX, kode og AI på én gang, men jeg fandt ud af, at det giver meget mere bund at vælge en klar retning. Jeg har fokuseret benhårdt på ren kode, performance og tilgængelighed. Næste skridt i processen bliver at arbejde videre med det visuelle udtryk og få integreret nogle personlige elementer, så sitet ikke kun viser ren kode, men også mere af min personlighed og visuelle stil.",
+
+  "testIteration": "Kildekoden er testet via Lighthouse for at sikre optimal performance og indlæsningstid. Derudover er der foretaget manuelle tilgængelighedstests (WCAG) med tastaturnavigation for at verificere applikationens overordnede accessibility.",
+
+  "prototype": "Fra indledende low-fi papirskitser og konceptuelle wireframes i Figma, til en færdig, funktionel high-fidelity prototype kodet i HTML, SCSS og vanilla JavaScript.",
+
+  "design": "Et minimalistisk, mobile-first interface designet ud fra OOUX-principper, hvor layoutet er struktureret omkring skanbare moduler for at reducere den kognitive belastning.",
+
+  "date": {
+    "start": "2026-08-31",
+    "end": "2026-10-09"
+  },
+  "status": null,
+  "type": "Individuelt projekt",
+  "skill": [
+    "User Experience",
+    "UI Design",
+    "Frontend Development",
+    "Object-Oriented Programming",
+    "Generativ AI ",
+    "Responsive Design",
+    "Accessibility"
+  ],
+  "tool": ["HTML", "SCSS", "JavaScript", "JSON", "Figma", "Claude"],
+  "processMethod": [
+    "IDEO Design Thinking for Educators",
+    "Object-Oriented UX",
+    "BEM",
+    "ES6 modules"
+  ],
+  "role": "UX-designer og frontend-udvikler",
+  "achievementResult": "Målet er at opnå mindst 5 kvalificerede virksomhedskontakter og indlede mindst 2 konkrete praktikdialoger inden udgangen af november 2026 via direkte outreach med porteføljen.",
+
+  "testimonial": null,
+
+  "targetAudience": "Praktikansvarlige og digitale teams, der søger en praktikant med stærkt fokus på UX-proces og designforståelse.",
+
+  "viewAllProjects": "En samlet, visuel oversigt, der gør det nemt for den rekrutteringsansvarlige hurtigt at få et overblik over alle mine projekter på ét sted.",
+  "filterProjects": "En simpel funktion, der lader brugeren klikke på emner som 'UX' eller 'UI' for kun at se de cases, der er mest relevante for deres virksomhed.",
+  "sortProjects": "En navigation, der hjælper den besøgende med hurtigt at sortere i projekterne, så de vigtigste eller nyeste cases altid ligger øverst."
+}

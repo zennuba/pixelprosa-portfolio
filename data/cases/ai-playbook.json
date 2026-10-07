@@ -1,0 +1,59 @@
+{
+    "id": "ai-playbook-for-gls-denmark",
+    "kicker": "CASE · AI MANAGER",
+    "title": "AI Playbook for GLS Denmark",
+    "hook": "Hvordan kan en AI Playbook gøre det lettere for medarbejdere i GLS Denmark at anvende AI sikkert, ansvarligt og effektivt?",
+    "intro": "Et gruppeprojekt på 3. semester med fokus på generativ AI, datasikkerhed, ansvarlig anvendelse og AI i en virksomhedskontekst. Opgaven var at udvikle en handlingsorienteret AI Playbook til medarbejdere i GLS Denmark.",
+    "responsibility": null,
+    "purpose": "At understøtte medarbejdernes brug af Finn og eksterne AI-værktøjer gennem klare retningslinjer, praktiske eksempler, prompts og use cases samt bedre forståelse af datasikkerhed og kvalitetssikring.",
+    "opportunities": [
+      "Skabe klarhed over hvornår Finn er relevant at bruge.",
+      "Forklare forskellen mellem lukkede og åbne AI-løsninger.",
+      "Give medarbejderne konkrete retningslinjer for datasikkerhed og ansvarlig AI.",
+      "Give praktiske eksempler, prompts og use cases.",
+      "Understøtte kvalitetssikring af AI-genereret indhold.",
+      "Skabe tryghed, motivation og værdioplevelse omkring AI."
+    ],
+    "finalSolution": "AI Playbook for GLS Denmark",
+    "learning": [
+      "Omsætte viden om generativ AI til en konkret løsning i en virksomhedskontekst.",
+      "Analysere AI's potentialer og begrænsninger.",
+      "Arbejde kritisk med AI-genereret output.",
+      "Forholde sig til datasikkerhed og ansvarlig anvendelse af AI.",
+      "Arbejde med kvalitetssikring og gennemsigtighed.",
+      "Forstå virksomhedens behov og omsætte dem til AI-baserede anbefalinger, use cases og workflows.",
+      "Dokumentere og formidle en AI-proces og løsning fagligt."
+    ],
+    "reflection": null,
+    "testIteration": null,
+    "prototype": "AI Playbook",
+    "design": "AI Playbooken skal være handlingsorienteret, let at forstå og anvendelig i en travl hverdag samt være i overensstemmelse med GLS' visuelle identitet.",
+    "date": {
+      "start": "2026-08-11",
+      "end": "2026-08-28"
+    },
+    "status": null,
+    "type": "Group project",
+    "skill": [
+      "Generative AI",
+      "Context Engineering",
+      "AI Strategy",
+      "Data Security",
+      "Responsible AI",
+      "Quality Assurance",
+      "AI Workflows"
+    ],
+    "tool": ["Generative AI", "AI Playbook"],
+    "processMethod": [
+      "Context Engineering",
+      "AI Workflow Analysis",
+      "Use Cases"
+    ],
+    "role": null,
+    "achievementResult": null,
+    "testimonial": null,
+    "targetAudience": "Medarbejdere i GLS Denmark",
+    "viewAllProjects": null,
+    "filterProjects": null,
+    "sortProjects": null
+  }

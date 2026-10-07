@@ -1,0 +1,123 @@
+@use "variables" as *;
+//betyder "hent SCSS-variablerne ($bp-md) direkte ind".
+//Uden as * skulle man selv skrive variables.$bp-md hver gang.
+//så vi kan bruge $bp-md og $bp-lg
+
+// ===== Header =====
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+
+  nav {
+    display: flex;
+    gap: var(--space-sm);
+  }
+}
+
+// ===== Sidens bredde =====
+.home-page {
+  max-width: 1200px;
+  margin-inline: auto; // centrerer siden
+  padding-inline: var(--space-sm);
+}
+
+// ===== Genbrugelig beholder til alle sider =====
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding: var(--space-lg) var(--space-sm);
+}
+
+// ===== Hero: mobil = stablet, desktop = side om side =====
+.home-hero {
+  display: grid;
+  gap: var(--space-md);
+  padding-block: var(--space-lg);
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: 2fr 1fr; // tekst 2/3, billede 1/3
+    align-items: center;
+  }
+}
+
+.home-hero__figure img {
+  aspect-ratio: 4 / 5;
+  object-fit: cover; // beskærer pænt i stedet for at strække
+  border-radius: var(--radius-lg);
+}
+
+// ===== Footer: normal på mobil → lodret langs siderne på desktop =====
+.site-footer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md) var(--space-sm);
+  border-top: 1px solid var(--color-border);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+
+  @media (min-width: $bp-lg) {
+    padding: 0;
+    border-top: none;
+  }
+}
+
+.site-footer__cta,
+.site-footer__copy {
+  @media (min-width: $bp-lg) {
+    position: fixed;             // låst til skærmen
+    bottom: var(--space-md);
+    writing-mode: vertical-rl;   // teksten står lodret
+    transform: rotate(180deg);   // læses nedefra og op
+  }
+}
+
+.site-footer__cta {
+  a {
+    color: var(--color-on-bg-accent);
+    font-weight: 500;
+  }
+
+  @media (min-width: $bp-lg) {
+    left: var(--space-sm);
+  }
+  .word-rotator {
+  color: var(--color-on-bg-accent);
+  font-weight: 600;
+}
+}
+
+.site-footer__copy {
+  color: var(--color-on-bg-muted);
+
+  @media (min-width: $bp-lg) {
+    right: var(--space-sm);
+    transform: none;   // ingen rotation: læses oppefra og ned
+  }
+}
+
+// Plads til teksterne i siderne, så de ikke rammer indholdet
+body {
+  @media (min-width: $bp-lg) {
+    padding-inline: 3rem;
+  }
+}
+
+.word-rotator {
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 1.25rem;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--color-on-bg-accent);
+
+  &[data-tone="1"] { color: var(--color-tone-1); }
+  &[data-tone="2"] { color: var(--color-tone-2); }
+  &[data-tone="3"] { color: var(--color-tone-3); }
+}
+
