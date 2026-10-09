@@ -1,41 +1,60 @@
 {
   "id": "personal-portfolio",
-
   "kicker": "CASE · PERSONAL PORTFOLIO",
-
-  "title": "Hvordan sælger man sig selv på 10 sekunder?",
-
-  "hook": "Et portfolio er ikke et galleri – det er et produkt. Og produktet er migselv. PixelProsa er mit personlige portfolio, bygget fra bunden i HTML, SCSS og vanilla JavaScript. Jeg behandlede mig selv som ´varen´ og praktikvirksomheder som brugerne og designede ud fra, hvad de skal kunne se på få sekunder: hvem jeg er, hvad jeg kan, og hvordan jeg arbejder.",
-
-  "intro": "Projektet: Et individuelt 3. semesterprojekt med fokus på at planlægge, designe, udvikle og implementere et professionelt digitalt portfolio, som forberedelse til praktikperioden.",
-
-  "responsibility": "Planlægning, design, udvikling og implementering af det digitale portfolio.",
-
-  "purpose": "At demonstrere kompetencer som multimediedesigner, vise arbejdsprocesser og skabe et professionelt udtryk målrettet fremtidige praktikværter eller arbejdsgivere.",
-
-  "opportunities": [
-    "Markedstendens (IT-Branchen 2026): Udnytte at teknologi rykker ind i hjertet af alle brancher, ved som designer at have grundlæggende kodeforståelse, så jeg kan bygge bro mellem design og udvikling (Kilde: https://itb.dk).",
-    "Specialist-efterspørgsel (Finansforbundet 2026): Imødekomme virksomhedernes behov for profiler, der forstår digitale produkter, ved at vise, at jeg både kan researche en målgruppe og føre det ud i et funktionelt layout (Kilde: https://finansforbundet.dk).",
-    "Brugervenlig procesformidling (Nielsen Norman Group 2026): Imødekomme de rekrutteringsansvarliges tidsnød ved at bruge OOUX til at skabe et overskueligt portfolio, der overholder '10-sekunders reglen' (Kilde: https://nngroup.com)."
+  "title": "Hvordan fanger man en praktikvirksomheds interesse på 10 sekunder?",
+  "hook": "Et portfolio skal mere end at vise flotte projekter. Det skal overbevise. Med PixelProsa har jeg udviklet mit eget digitale portfolio fra bunden i HTML, SCSS og vanilla JavaScript. Målet er at gøre det tydeligt, hvem jeg er, hvad jeg kan, og hvordan jeg arbejder, på få sekunder.",
+  "heroImage": "portfolioS3P2Iba",
+  "intro": "Et individuelt 3. semesterprojekt, hvor jeg har designet og udviklet et digitalt portfolio målrettet min kommende praktikperiode.",
+  "responsibility": "Research, UX og UI-design, informationsarkitektur, frontend-udvikling og test.",
+  "purpose": "At skabe et professionelt portfolio, der synliggør mine kompetencer, arbejdsprocesser og faglige udvikling.",
+  "opportunities": [],
+  "process": [
+    {
+      "step": "Discovery",
+      "images": [],
+      "question": "Hvem skal portfolioet overbevise?",
+      "text": "Målgruppen er praktikansvarlige, designere og udviklere. Gennem desk research, brancheanalyser og praktikopslag undersøgte jeg, hvilke kompetencer virksomheder efterspørger, og hvad portfolioet skal kommunikere. Det dannede grundlag for min faglige positionering med fokus på UX, design, webudvikling og AI."
+    },
+    {
+      "step": "Interpretation",
+      "images": [],
+      "question": "Hvad skal portfolioet bestå af?",
+      "text": "Med udgangspunkt i researchen brugte jeg Object-Oriented UX (OOUX) til at identificere de centrale objekter, blandt andet Case, Project, Skill, Tool, Experience og Education. Objekternes indhold og relationer dannede grundlag for portfolioets informationsarkitektur."
+    },
+    {
+      "step": "Ideation",
+      "images": [],
+      "question": "Hvordan skal indholdet præsenteres?",
+      "text": "I Figma udviklede jeg wireframes og et visuelt design med fokus på skanbarhed, tydeligt informationshierarki og en personlig visuel identitet. Proceslinjen blev samtidig et gennemgående designelement på sitet for at vise min måde at arbejde på."
+    },
+    {
+      "step": "Experimentation",
+      "images": [],
+      "question": "Hvordan bliver idéen til et fungerende website?",
+      "text": "Portfolioet er udviklet i HTML, SCSS og vanilla JavaScript. Indholdet håndteres gennem JSON, mens genbrugelige komponenter og ES6-moduler bygger siderne op. SCSS er organiseret i partials med BEM, og en fælles case-skabelon gør det muligt at tilføje nye cases uden at bygge siderne fra bunden."
+    },
+    {
+      "step": "Evolution",
+      "images": [],
+      "question": "Hvad skulle prioriteres, og hvad kunne fjernes?",
+      "text": "Jeg brugte Lighthouse til at undersøge performance og gennemførte manuelle tests af tastaturnavigation og tilgængelighed. Derudover testede jeg det responsive layout på mobil og undersøgte visningen i både light og dark mode. Test og iteration førte blandt andet til, at casene blev ændret fra en formularlignende struktur med mange punkter til mere sammenhængende artikler med kapitler. Værktøjslisten blev også reduceret til de vigtigste elementer. Processen understregede betydningen af at prioritere indhold og vælge fra."
+    }
   ],
-
-  "finalSolution": "Et responsivt og overskueligt digitalt portfolio, bygget fra bunden for at vise mine projekter, designprocesser og min faglige udvikling.",
-
+  "finalSolution": "Et responsivt, mobile-first portfolio, der præsenterer projekter, kompetencer og arbejdsprocesser i en tydelig og skanbar struktur. Løsningen er udviklet fra wireframes i Figma til et fungerende website i HTML, SCSS og vanilla JavaScript.",
   "learning": [
-    "Planlægge og strukturere et digitalt projekt fra de første low-fi skitser til et færdigt produkt.",
-    "Anvende Object-Oriented UX (OOUX) til at skabe en logisk og gennemskuelig informationsarkitektur.",
-    "Arbejde med grundlæggende frontend-udvikling i HTML, SCSS og JavaScript for at forstå designets tekniske rammer.",
-    "Optimere brugeroplevelsen (UX) med særligt fokus på mobile-first design og skannbare casestudier."
+    "At strukturere et digitalt projekt fra research til færdig løsning.",
+    "At anvende OOUX til at skabe en logisk informationsarkitektur.",
+    "At omsætte design til funktionel frontend med HTML, SCSS og JavaScript.",
+    "At prioritere mobile-first, tilgængelighed og brugervenlighed."
   ],
-
-  "reflection": "Projektet har vist mig, at det virker at behandle sit portfolio som et rigtigt produkt og sig selv som 'varen'. Ved at kombinere OOUX med ren vanilla JavaScript har jeg bygget et site, der er lynhurtigt og nemt at overskue for en travl rekrutteringsansvarlig. Min største udfordring og læring har været at begrænse mig. Som MMD'er vil man vildt gerne vise alt, hvad man kan inden for både UX, kode og AI på én gang, men jeg fandt ud af, at det giver meget mere bund at vælge en klar retning. Jeg har fokuseret benhårdt på ren kode, performance og tilgængelighed. Næste skridt i processen bliver at arbejde videre med det visuelle udtryk og få integreret nogle personlige elementer, så sitet ikke kun viser ren kode, men også mere af min personlighed og visuelle stil.",
-
-  "testIteration": "Kildekoden er testet via Lighthouse for at sikre optimal performance og indlæsningstid. Derudover er der foretaget manuelle tilgængelighedstests (WCAG) med tastaturnavigation for at verificere applikationens overordnede accessibility.",
-
-  "prototype": "Fra indledende low-fi papirskitser og konceptuelle wireframes i Figma, til en færdig, funktionel high-fidelity prototype kodet i HTML, SCSS og vanilla JavaScript.",
-
-  "design": "Et minimalistisk, mobile-first interface designet ud fra OOUX-principper, hvor layoutet er struktureret omkring skanbare moduler for at reducere den kognitive belastning.",
-
+  "reflection": "Min største udfordring var at vælge fra. Som multimediedesigner arbejder jeg med mange discipliner og vil gerne vise, hvad jeg kan, men portfolioet mister sin retning, hvis alt får lige meget plads. Med OOUX har jeg skabt en mere sammenhængende struktur, hvor projekterne viser både resultaterne og tankerne bag.\n\nSet i bakspejlet ville jeg have afsat mere tid til test gennem hele processen. Flere iterationer og feedback fra potentielle brugere kunne have kvalificeret mine beslutninger tidligere og gjort det muligt at opdage problemer, før de blev en del af løsningen.\n\nNæste skridt er at videreudvikle det visuelle udtryk, så PixelProsa i højere grad afspejler min personlighed og designstil.",
+  "prototype": "Fra wireframes i Figma til et fungerende website udviklet i HTML, SCSS og vanilla JavaScript.",
+  "design": "Et mobile-first interface med fokus på visuel klarhed, skanbarhed og en logisk informationsarkitektur.",
+  "links": {
+    "prototype": "https://pixelprosa.dk/",
+    "github": null,
+    "figma": null
+  },
   "date": {
     "start": "2026-08-31",
     "end": "2026-10-09"
@@ -47,7 +66,7 @@
     "UI Design",
     "Frontend Development",
     "Object-Oriented Programming",
-    "Generativ AI ",
+    "Generative AI",
     "Responsive Design",
     "Accessibility"
   ],
@@ -59,13 +78,7 @@
     "ES6 modules"
   ],
   "role": "UX-designer og frontend-udvikler",
-  "achievementResult": "Målet er at opnå mindst 5 kvalificerede virksomhedskontakter og indlede mindst 2 konkrete praktikdialoger inden udgangen af november 2026 via direkte outreach med porteføljen.",
-
+  "achievementResult": "Målet er at skabe mindst 5 kvalificerede virksomhedskontakter og indlede mindst 2 konkrete praktikdialoger inden udgangen af november 2026.",
   "testimonial": null,
-
-  "targetAudience": "Praktikansvarlige og digitale teams, der søger en praktikant med stærkt fokus på UX-proces og designforståelse.",
-
-  "viewAllProjects": "En samlet, visuel oversigt, der gør det nemt for den rekrutteringsansvarlige hurtigt at få et overblik over alle mine projekter på ét sted.",
-  "filterProjects": "En simpel funktion, der lader brugeren klikke på emner som 'UX' eller 'UI' for kun at se de cases, der er mest relevante for deres virksomhed.",
-  "sortProjects": "En navigation, der hjælper den besøgende med hurtigt at sortere i projekterne, så de vigtigste eller nyeste cases altid ligger øverst."
+  "targetAudience": "Praktikansvarlige og digitale teams med interesse for UX, design og frontend-udvikling."
 }

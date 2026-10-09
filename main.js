@@ -1,6 +1,12 @@
-//------------ CasePage sektion---------------------
+import { ToolOverview } from "./js/toolOverview.js";
 
-//CasePage viser case study HVIS projektet har en
+//------------ CasePage sektion---------------------
+// Casen er bygget som en ARTIKEL, ikke en formular:
+//  1. Hero: spørgsmål + indledning + stort billede
+//  2. Sidekolonne med fakta (rolle, periode, tools …)
+//  3. Historien i kapitler: Udfordringen → Processen → Løsningen → Test → Målet → Det lærte jeg
+//  4. Refleksionen som citat til sidst
+// JSON-felterne er de samme som før – det er kun MÅDEN, de vises på, der er ændret.
 
 class CasePage {
   constructor(caseData, images, icons) {
@@ -9,17 +15,25 @@ class CasePage {
     this.icons = icons;
   }
 
-  //  (#): laver en sektion, men KUN hvis der er indhold
-  #section(title, content) {
-    if (!content || content.length === 0) return "";
+  // ET KAPITEL i historien.
+  // ...parts = "rest parameter": alle de felter, man giver med, samles i ét array.
+  // Tekst bliver til <p>, arrays bliver til en liste. Tomme felter springes over,
+  // og er ALLE tomme, vises kapitlet slet ikke.
+  #chapter(title, ...parts) {
+    const body = parts
+      .filter((part) => part && part.length > 0)
+      .map((part) =>
+        Array.isArray(part)
+          ? `<ul class="case__list">${part.map((item) => `<li>${item}</li>`).join("")}</ul>`
+          : `<p>${part}</p>`,
+      )
+      .join("");
 
-    const body = Array.isArray(content)
-      ? `<ul>${content.map((item) => `<li>${item}</li>`).join("")}</ul>`
-      : `<p>${content}</p>`;
+    if (!body) return "";
 
     return `
-      <section class="case__section">
-        <h2>${title}</h2>
+      <section class="case__chapter">
+        <h2 class="case__chapter-title">${title}</h2>
         ${body}
       </section>`;
   }
@@ -27,32 +41,28 @@ class CasePage {
   // ét faktum (label + værdi), springes over hvis tomt
   #fact(label, value) {
     if (!value) return "";
-    return `<div><dt>${label}</dt><dd>${value}</dd></div>`;
+    return `<div class="case__fact"><dt>${label}</dt><dd>${value}</dd></div>`;
   }
 
-  // PRIVAT: en liste vist som tags
-  #tags(label, list) {
-    if (!list || list.length === 0) return "";
-    const tags = list
-      .map((item) => `<li class="project-card__category">${item}</li>`)
-      .join("");
-    return `<div><dt>${label}</dt><dd><ul class="case__tags">${tags}</ul></dd></div>`;
+  // Periode: "2026-04-07" → "apr. 2026". toLocaleDateString formaterer datoen på dansk.
+  #period(date) {
+    if (!date || !date.start) return "";
+    const format = (iso) =>
+      new Date(iso).toLocaleDateString("da-DK", { month: "short", year: "numeric" });
+    return date.end ? `${format(date.start)} – ${format(date.end)}` : format(date.start);
   }
 
-  //  en liste vist som ikoner (fra tool.json + tech.json)
-  // findes der intet ikon, vises navnet som tekst i stedet
-  #iconTags(label, list) {
-    if (!list || list.length === 0) return "";
+  // Links til prototype, GitHub og Figma (kun dem, der findes i JSON'en)
+  #links(links) {
+    if (!links) return "";
+    const names = { prototype: "Se prototypen", github: "Koden på GitHub", figma: "Designet i Figma" };
 
-    const items = list
-      .map((name) => {
-        const icon = this.icons.find((item) => item.name === name);
-        if (!icon) return `<li class="project-card__category">${name}</li>`;
-        return `<li class="case__icon"><img src="${icon.logo}" alt="${name}" title="${name}"></li>`;
-      })
+    const items = Object.entries(links) // { github: "url" } → [["github", "url"]]
+      .filter(([, url]) => url)
+      .map(([key, url]) => `<li><a href="${url}" target="_blank" rel="noopener">${names[key] || key}</a></li>`)
       .join("");
 
-    return `<div><dt>${label}</dt><dd><ul class="case__tags">${items}</ul></dd></div>`;
+    return items ? `<ul class="case__links">${items}</ul>` : "";
   }
 
   // finder et billede i image.json via id og laver et <img>
@@ -63,67 +73,103 @@ class CasePage {
     return `<img class="case__image" src="${img.src}" alt="${img.alt}">`;
   }
 
-  // viser proces-trinene (Forstå, Undersøge …) med tekst og billeder
+  // Tegningen i heroen: lille "spot-illustration" ved siden af teksten – teksten er hovedsagen
+  #heroImage(id) {
+    const image = this.#image(id);
+    return image ? `<figure class="case__hero-image">${image}</figure>` : "";
+  }
+
+  // Processen: trinene ER en rækkefølge, derfor en nummereret liste (<ol>)
   #process(steps) {
     if (!steps || steps.length === 0) return "";
 
-    // ét <li> for hvert trin
     const items = steps
       .map((step) => {
-        const images = (step.images || [])
-          .map((id) => this.#image(id))
-          .join("");
+        const images = (step.images || []).map((id) => this.#image(id)).join("");
+
+        // Uden billeder får teksten hele bredden (modifier --text-only)
+        const modifier = images ? "" : " case__step--text-only";
 
         return `
-          <li class="case__step">
+          <li class="case__step${modifier}">
             <div class="case__step-text">
-              <p class="home-eyebrow">${step.ideoPhase || ""}</p>
-              <h3>${step.step}</h3>
+              <h3 class="case__step-title">${step.step}</h3>
+              ${step.question ? `<p class="case__step-question"><strong>${step.question}</strong></p>` : ""}
               <p>${step.text || ""}</p>
             </div>
-            <div class="case__step-media">${images}</div>
+            ${images ? `<div class="case__step-media">${images}</div>` : ""}
           </li>`;
       })
       .join("");
 
     return `
-      <section class="case__section">
-        <h2>Proces</h2>
+      <section class="case__chapter case__chapter--wide">
+        <h2 class="case__chapter-title">Processen</h2>
         <ol class="case__process">${items}</ol>
       </section>`;
   }
 
+  // Refleksionen som citat – det sidste, læseren tager med sig
+  #quote(text) {
+    if (!text) return "";
+    return `
+      <figure class="case__quote">
+        <blockquote><p>${text}</p></blockquote>
+        <figcaption>Min refleksion</figcaption>
+      </figure>`;
+  }
+
   render(container) {
     const c = this.caseData;
+
+    // Fanebladets titel følger samme mønster som de andre sider: "Side · PixelProsa Portfolio"
+    document.title = `${c.title} · PixelProsa Portfolio`;
+
+    // ToolOverview laver chips med ikon + navn – samme udseende som på Erfaring
+    const overview = new ToolOverview("Tools og skills", c.tool, c.skill, this.icons);
+
     const article = document.createElement("article");
     article.className = "case";
 
     article.innerHTML = `
       <header class="case__hero">
-        <p class="home-eyebrow">${c.kicker}</p>
-        <h1>${c.title}</h1>
-        <p class="case__hook">${c.hook}</p>
-        <p>${c.intro}</p>
-        ${this.#image(c.heroImage)}
+        <div class="case__hero-text">
+          <div class="page-title">
+            <p class="page-title__kicker">${c.kicker}</p>
+            <h1 class="page-title__heading">${c.title}</h1>
+          </div>
+          <p class="case__standfirst">${c.hook}</p>
+          ${c.intro ? `<p class="case__intro">${c.intro}</p>` : ""}
+        </div>
+        ${this.#heroImage(c.heroImage)}
       </header>
 
-      <dl class="case__facts">
-        ${this.#fact("Rolle", c.role)}
-        ${this.#fact("Type", c.type)}
-        ${this.#fact("Målgruppe", c.targetAudience)}
-        ${this.#tags("Skills", c.skill)}
-        ${this.#iconTags("Tools", c.tool)}
-        ${this.#tags("Metoder", c.processMethod)}
-      </dl>
+      <div class="case__body">
+        <aside class="case__facts" aria-label="Fakta om casen">
+          <dl>
+            ${this.#fact("Rolle", c.role)}
+            ${this.#fact("Ansvar", c.responsibility)}
+            ${this.#fact("Type", c.type)}
+            ${this.#fact("Periode", this.#period(c.date))}
+            ${this.#fact("Målgruppe", c.targetAudience)}
+            ${this.#fact("Tools", overview.toolList())}
+            ${this.#fact("Skills", overview.chipList(c.skill))}
+            ${this.#fact("Metoder", overview.chipList(c.processMethod))}
+            ${this.#fact("Se projektet", this.#links(c.links))}
+          </dl>
+        </aside>
 
-      ${this.#section("Formål", c.purpose)}
-      ${this.#section("Ansvar", c.responsibility)}
-      ${this.#section("Muligheder", c.opportunities)}
-      ${this.#process(c.process)}
-      ${this.#section("Design", c.design)}
-      ${this.#section("Prototype", c.prototype)}
-      ${this.#section("Læring", c.learning)}
-      ${this.#section("Refleksion", c.reflection)}
+        <div class="case__story">
+          ${this.#chapter("Udfordringen", c.purpose, c.opportunities)}
+          ${this.#process(c.process)}
+          ${this.#chapter("Løsningen", c.finalSolution, c.design, c.prototype)}
+          ${this.#chapter("Test og iteration", c.testIteration)}
+          ${this.#chapter("Målet", c.achievementResult)}
+          ${this.#chapter("Det lærte jeg", c.learning)}
+        </div>
+      </div>
+
+      ${this.#quote(c.reflection)}
     `;
 
     container.append(article);

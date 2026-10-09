@@ -1,145 +1,300 @@
 @use "variables" as *;
 
+// ===== CASE SOM ARTIKEL =====
+// Opbygning (se CasePage i main.js):
+//   hero → stort billede → [fakta | historien] → citat
+// Mobil: alt stablet. Desktop: fakta i en smal kolonne til venstre, historien til højre.
+
 .case {
   display: grid;
   gap: var(--space-lg);
-  max-width: 75rem; // hele containerens bredde
-  margin-inline: auto;
-  
 }
 
+// ===== Hero =====
+// Tekst til venstre, lille tegning til højre (desktop). Mobil: tekst først, tegning under.
 .case__hero {
+  display: grid;
+  gap: var(--space-md);
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: minmax(0, 1fr) 18rem;
+    align-items: center; // tegningen står midt ud for teksten
+  }
+}
+
+.case__hero-text {
   display: flex;
   flex-direction: column;
   gap: var(--space-sm);
-
-  h1 {
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-  }
 }
 
-.case__hook {
-  font-size: 1.25rem;
+// Sidetitlen har sin egen afstand nedad (margin-bottom).
+// Her i heroen styrer "gap" afstanden i stedet – ellers får vi dobbelt luft.
+.case__hero-text > .page-title {
+  margin-bottom: 0;
+}
+
+// Indledningen ("standfirst" i avissprog): større end brødtekst, så den trækker læseren ind
+.case__standfirst {
+  max-width: 34em;
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  line-height: 1.45;
+  color: var(--color-on-bg);
+}
+
+.case__intro {
+  max-width: 65ch;
   color: var(--color-on-bg-muted);
-}
-
-// Faktaboks: 1 kolonne mobil → 3 på desktop
-.case__facts {
-  display: grid;
-  gap: var(--space-md);
-  padding: var(--space-md);
-  border-radius: var(--radius-lg);
-  background: var(--color-surface);
-
-  @media (min-width: $bp-md) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  dt {
-    font-family: var(--font-mono);
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--color-on-bg-muted);
-  }
-
-  dd {
-    margin: 0;
-    font-weight: 500;
-  }
-}
-
-.case__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  margin-top: var(--space-xs);
-  padding: 0;
-  list-style: none;
-}
-
-// Hver sektion adskilt af en tynd linje
-.case__section {
-  padding-top: var(--space-md);
-  border-top: 1px solid var(--color-border);
-
-  h2 {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    margin-bottom: var(--space-sm);
-  }
-
-  ul {
-    display: grid;
-    gap: var(--space-xs);
-    padding-left: 1.2rem;
-  }
 }
 
 // Billeder i casen (hero + proces)
 .case__image {
   display: block;
-  max-width: 100%;
-  border-radius: 12px;
-  margin-block: 1.5rem;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-lg);
 }
 
-// Tool-ikoner
-.case__icon img {
-  display: block;
-  width: 32px;
-  height: 32px;
+// Tegningen i heroen: står på dine løse prikker – samme greb som på Om mig og 404.
+// aspect-ratio: 1 giver en kvadratisk "scene", og tegningen centreres i den.
+.case__hero-image {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 14rem; // mobil
+  aspect-ratio: 1;
+  margin: 0;
+  padding: var(--space-md);
+  background: url("../img/illustrationer/prikker.svg") no-repeat center / contain;
+
+  @media (min-width: $bp-lg) {
+    max-width: none; // fylder sin kolonne på 18rem
+  }
+
+  .case__image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; // hele tegningen ses, uanset om den er høj eller bred
+    border-radius: 0;
+  }
 }
 
-// Tekst må ikke blive for bred – ca. 65 tegn pr. linje
-.case__hero p,
-.case__section > p,
-.case__section > ul,
-.case__step-text p {
-  max-width: 65ch;
+// ===== Fakta + historie =====
+.case__body {
+  display: grid;
+  gap: var(--space-lg);
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: minmax(0, 17rem) minmax(0, 1fr); // smal faktakolonne | historien
+    align-items: start; // faktakolonnen bliver ikke strakt til samme højde som historien
+  }
 }
 
-// ===== Proces: bento-grid (Apple-inspireret) =====
-.case__process {
-  list-style: none;
+// ===== Faktakolonnen =====
+.case__facts {
+  padding: var(--space-md);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+
+  dl {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr); // kolonnen må aldrig blive bredere end boksen
+    gap: var(--space-md);
+    margin: 0;
+  }
+
+  dt {
+    margin-bottom: 0.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--color-on-bg-muted);
+  }
+
+  dd {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  // chips lidt mindre her i den smalle kolonne.
+  // white-space: normal = lange navne (fx "IDEO Design Thinking for Educators") må gå over to linjer,
+  // så de ikke skubber indholdet ud over boksens højre kant.
+  .tool-overview__item {
+    font-size: 0.8rem;
+    white-space: normal;
+  }
+}
+
+.case__links {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0;
   padding: 0;
+  list-style: none;
+
+  a {
+    font-weight: 500;
+    color: var(--color-on-bg-accent);
+  }
+}
+
+// ===== Historien =====
+.case__story {
+  display: grid;
+  gap: var(--space-xl); // god luft mellem kapitlerne
+}
+
+.case__chapter {
   display: grid;
   gap: var(--space-sm);
 
-  // desktop: 6 kolonner at "bygge" med
-  @media (min-width: $bp-md) {
-    grid-template-columns: repeat(6, 1fr);
+  // brødtekst: max ca. 65 tegn pr. linje og lidt ekstra linjeafstand – bedre at læse
+  > p,
+  > ul {
+    max-width: 65ch;
+    font-size: 1.0625rem;
+    line-height: 1.7;
   }
 }
 
-// hvert trin er et kort
+.case__chapter-title {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+// Lister i historien: blå prik i stedet for standard-punktum (ekko af proceslinjen)
+.case__list {
+  display: grid;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding-left: 1.25rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.7em;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+  }
+}
+
+// ===== Processen =====
+// Trinene står under hinanden: tekst til venstre, billede til højre.
+.case__process {
+  position: relative;
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0 0 0 var(--space-md);
+  border-left: 2px solid var(--color-border);
+  list-style: none;
+  counter-reset: trin; // tæller til trin-numrene
+}
+
 .case__step {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  display: grid;
   gap: var(--space-sm);
-  background: #fff;
-  border-radius: 28px;
-  padding: var(--space-md);
+  padding: 0 0 var(--space-lg);
+  counter-increment: trin;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0.35rem;
+    left: calc(0rem - var(--space-md) - 0.5625rem);
+    width: 0.75rem;
+    height: 0.75rem;
+    border: 2px solid var(--color-accent);
+    border-radius: 50%;
+    background: var(--color-bg);
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+  }
 
   @media (min-width: $bp-md) {
-    grid-column: span 3;                   // standard: halv bredde
-    &:nth-child(1) { grid-column: span 4; } // Forstå: bred
-    &:nth-child(2) { grid-column: span 2; } // Undersøge: smal
-    &:nth-child(5) { grid-column: span 4; } // Udvikle: bred
-    &:nth-child(6) { grid-column: span 2; } // Teste: smal
-    &:nth-child(7) { grid-column: span 6; } // Forbedre: hele rækken
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    gap: var(--space-md);
+    align-items: start;
   }
 }
 
-// billedet øverst i kortet
-.case__step-media {
-  order: -1;
+// Trin uden billeder: teksten fylder hele bredden i stedet for en tom halvdel
+.case__step--text-only {
+  @media (min-width: $bp-md) {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
-// billeder i kortene: ens højde, beskåret pænt
-.case__step-media .case__image {
-  width: 100%;
-  max-height: 320px;
-  object-fit: cover;
-  object-position: top;
-  margin-block: 0 var(--space-xs);
+.case__step-text p {
+  max-width: 60ch;
+  line-height: 1.7;
+}
+
+.case__step-question {
+  margin-bottom: var(--space-xs);
+}
+
+// Trinnets navn med nummer foran – rækkefølgen er vigtig, derfor nummer
+.case__step-title {
+  margin-bottom: var(--space-xs);
+  font-size: 1.25rem;
+
+  &::before {
+    content: counter(trin, decimal-leading-zero) " ";
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: var(--color-on-bg-accent);
+  }
+}
+
+.case__step-media {
+  display: grid;
+  gap: var(--space-xs);
+
+  .case__image {
+    max-height: 320px;
+    object-fit: cover;
+    object-position: top;
+  }
+}
+
+// ===== Refleksionen som citat =====
+.case__quote {
+  margin: 0;
+  padding-block: var(--space-lg);
+  border-top: 1px solid var(--color-border);
+
+  blockquote {
+    margin: 0;
+  }
+
+  p {
+    max-width: 30em;
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: clamp(1.5rem, 3.2vw, 2.25rem);
+    line-height: 1.3;
+    color: var(--color-on-bg);
+  }
+
+  figcaption {
+    margin-top: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-on-bg-accent);
+  }
 }
