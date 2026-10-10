@@ -17,14 +17,17 @@ class WordRotator {
     if (!this.#element || reduceMotion) return;
 
     setInterval(() => this.#next(), this.#delay);
+    this.#setWord();
   }
 
-  // Privat: skift til næste ord
   #next() {
     this.#index = (this.#index + 1) % this.#words.length;
+    this.#setWord();
+  }
+
+  #setWord() {
     this.#element.textContent = this.#words[this.#index];
-    this.#element.dataset.tone = (this.#index % 3) + 1;   // 1, 2, 3, 1, 2, 3...
-    
+    this.#element.dataset.tone = String((this.#index % 3) + 1);
   }
 }
 

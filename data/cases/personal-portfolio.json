@@ -3,7 +3,7 @@
   "kicker": "CASE · PERSONAL PORTFOLIO",
   "title": "Hvordan fanger man en praktikvirksomheds interesse på 10 sekunder?",
   "hook": "Et portfolio skal mere end at vise flotte projekter. Det skal overbevise. Med PixelProsa har jeg udviklet mit eget digitale portfolio fra bunden i HTML, SCSS og vanilla JavaScript. Målet er at gøre det tydeligt, hvem jeg er, hvad jeg kan, og hvordan jeg arbejder, på få sekunder.",
-  "heroImage": "portfolioS3P2Iba",
+  "heroImage": "portfolio-case-img-00.png",
   "intro": "Et individuelt 3. semesterprojekt, hvor jeg har designet og udviklet et digitalt portfolio målrettet min kommende praktikperiode.",
   "responsibility": "Research, UX og UI-design, informationsarkitektur, frontend-udvikling og test.",
   "purpose": "At skabe et professionelt portfolio, der synliggør mine kompetencer, arbejdsprocesser og faglige udvikling.",
@@ -11,7 +11,7 @@
   "process": [
     {
       "step": "Discovery",
-      "images": [],
+      "images": ["img/portfolio-img/PersonaRecruiterRikke.png"],
       "question": "Hvem skal portfolioet overbevise?",
       "text": "Målgruppen er praktikansvarlige, designere og udviklere. Gennem desk research, brancheanalyser og praktikopslag undersøgte jeg, hvilke kompetencer virksomheder efterspørger, og hvad portfolioet skal kommunikere. Det dannede grundlag for min faglige positionering med fokus på UX, design, webudvikling og AI."
     },
@@ -47,7 +47,7 @@
     "At omsætte design til funktionel frontend med HTML, SCSS og JavaScript.",
     "At prioritere mobile-first, tilgængelighed og brugervenlighed."
   ],
-  "reflection": "Min største udfordring var at vælge fra. Som multimediedesigner arbejder jeg med mange discipliner og vil gerne vise, hvad jeg kan, men portfolioet mister sin retning, hvis alt får lige meget plads. Med OOUX har jeg skabt en mere sammenhængende struktur, hvor projekterne viser både resultaterne og tankerne bag.\n\nSet i bakspejlet ville jeg have afsat mere tid til test gennem hele processen. Flere iterationer og feedback fra potentielle brugere kunne have kvalificeret mine beslutninger tidligere og gjort det muligt at opdage problemer, før de blev en del af løsningen.\n\nNæste skridt er at videreudvikle det visuelle udtryk, så PixelProsa i højere grad afspejler min personlighed og designstil.",
+  "reflection": "Min største udfordring var at vælge fra. Som multimediedesigner arbejder jeg med mange discipliner og vil gerne vise, hvad jeg kan, men portfolioet mister sin retning, hvis alt får lige meget plads. Med OOUX har jeg skabt en mere sammenhængende struktur, hvor projekterne viser både resultaterne og tankerne bag.Set i bakspejlet ville jeg have afsat mere tid til test gennem hele processen. Flere iterationer og feedback fra potentielle brugere kunne have kvalificeret mine beslutninger tidligere og gjort det muligt at opdage problemer, før de blev en del af løsningen.Næste skridt er at videreudvikle det visuelle udtryk, så PixelProsa i højere grad afspejler min personlighed og designstil.",
   "prototype": "Fra wireframes i Figma til et fungerende website udviklet i HTML, SCSS og vanilla JavaScript.",
   "design": "Et mobile-first interface med fokus på visuel klarhed, skanbarhed og en logisk informationsarkitektur.",
   "links": {

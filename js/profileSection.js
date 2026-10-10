@@ -1,22 +1,20 @@
 //------------ ProfileSection---------------------
 class ProfileSection {
-    constructor(name, introduction) {
-        this.name = name;
-        this.introduction = introduction;
-    }
+  constructor(name, introduction) {
+    this.name = name;
+    this.introduction = introduction;
+  }
 
-    render() {
-        const section = document.createElement("section");
+  render() {
+    const section = document.createElement("section");
 
-        section.innerHTML = `
+    section.innerHTML = `
         <h1>${this.name}</h1>
-        <p>${this.introduction}</p>
+        <p class="home-hero__introduction">${this.introduction}</p>
         `;
 
-        return section;
-    }
+    return section;
+  }
 }
 
-
-
-  export { ProfileSection };
+export { ProfileSection };

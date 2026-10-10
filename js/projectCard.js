@@ -27,53 +27,37 @@ class ProjectCard {
     const article = document.createElement("article");
     article.className = "project-card";
 
-    let caseLink = "";
-
-    if (this.caseId) {
-      caseLink = `<a href="case.html?id=${this.caseId}">Se case study<span class="visually-hidden">: ${this.title}</span></a>`;
+    // Billedet ligger altid i en "ramme" med fast størrelse,
+    // så alle kort starter ens – også hvis et projekt mangler billede.
+    let media = "";
+    if (this.image) {
+      media = `<img class="project-card__image" src="${this.image}" alt="${this.imageAlt || ""}">`;
     }
 
+    let projectLink = "";
+    if (this.link) {
+      projectLink = `<a href="${this.link}" target="_blank" rel="noopener noreferrer">Se 1. semester portfolio</a>`;
+    }
+
+    const caseLink = this.caseId
+      ? `<a class="project-card__link" href="case.html?id=${this.caseId}" aria-label="Se case: ${this.title}">→</a>`
+      : "";
+
+    // Kortets fem dele deler rækker via subgrid, så indholdet flugter på tværs.
     article.innerHTML = `
+      <div class="project-card__media">${media}</div>
+
       <div class="project-card__categories">
         ${this.category
-          .map(
-            (category) => `
-              <span class="project-card__category">
-                ${category}
-              </span>
-            `,
-          )
+          .slice(0, 3)
+          .map((category) => `<span class="project-card__category">${category}</span>`)
           .join("")}
       </div>
 
-      <h3>${this.title}</h3>
-      <p>${this.description}</p>
-
-      <dl class="project-card__meta">
-        <div><dt>Team</dt><dd>${this.team}</dd></div>
-        <div><dt>Varighed</dt><dd>${this.duration}</dd></div>
-        <div><dt>Målgruppe</dt><dd>${this.targetGroup}</dd></div>
-      </dl>
-
-      ${caseLink}
+      <h3 class="project-card__title">${this.title}</h3>
+      <p class="project-card__text">${this.description}</p>
+      <div class="project-card__actions">${caseLink}${projectLink}</div>
     `;
-
-    if (this.image) {
-      const image = document.createElement("img");
-      image.className = "project-card__image";
-      image.src = this.image;
-      image.alt = this.imageAlt || "";
-      article.prepend(image);
-    }
-
-    if (this.link) {
-      const projectLink = document.createElement("a");
-      projectLink.href = this.link;
-      projectLink.textContent = "Se 1. semester portfolio";
-      projectLink.target = "_blank";
-      projectLink.rel = "noopener noreferrer";
-      article.append(projectLink);
-    }
 
     return article;
   }

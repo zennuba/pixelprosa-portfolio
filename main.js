@@ -79,6 +79,31 @@ class CasePage {
     return image ? `<figure class="case__hero-image">${image}</figure>` : "";
   }
 
+  // GEST-statistik i et proces-trin (genbruger .gest-komponenten fra _gest.scss)
+  // Tallet gemmes som tal i JSON'en og bruges to steder:
+  // som tekst ("51,6 %") og som bjælkens længde (--value: 51.6)
+  #stats(stats) {
+    if (!stats || !stats.items || stats.items.length === 0) return "";
+
+    const items = stats.items
+      .map((item) => {
+        const text = item.value.toLocaleString("da-DK", { minimumFractionDigits: 1 });
+        return `
+          <li class="gest__item gest__item--${item.color}">
+            <span class="gest__value">${text} %</span>
+            <span class="gest__label">${item.label}</span>
+            <span class="gest__bar" style="--value: ${item.value}"></span>
+          </li>`;
+      })
+      .join("");
+
+    return `
+      <section class="gest">
+        <h4 class="gest__title">${stats.title}</h4>
+        <ul class="gest__list">${items}</ul>
+      </section>`;
+  }
+
   // Processen: trinene ER en rækkefølge, derfor en nummereret liste (<ol>)
   #process(steps) {
     if (!steps || steps.length === 0) return "";
@@ -96,6 +121,7 @@ class CasePage {
               <h3 class="case__step-title">${step.step}</h3>
               ${step.question ? `<p class="case__step-question"><strong>${step.question}</strong></p>` : ""}
               <p>${step.text || ""}</p>
+              ${this.#stats(step.stats)}
             </div>
             ${images ? `<div class="case__step-media">${images}</div>` : ""}
           </li>`;

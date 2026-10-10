@@ -1,0 +1,71 @@
+@use "variables" as *;
+
+// ===== CV-SIDEN (eduexp.html) =====
+// Mobile first: alt stablet → 2 kolonner på tablet → 3 kolonner på desktop,
+// hvor "Arbejdsform" fylder den brede kolonne til højre.
+
+// (.cv-page__title er fjernet – siden bruger nu .page-title fra _components.scss)
+
+.cv-skills {
+  display: grid;
+  gap: var(--space-md) var(--space-lg);
+  padding-bottom: var(--space-xl);
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: 1fr 1fr 2fr;
+  }
+
+  &__group {
+    &--workflow {
+      @media (min-width: $bp-md) {
+        grid-column: 1 / -1; // under det hele på tablet
+      }
+
+      @media (min-width: $bp-lg) {
+        grid-column: 3;
+        grid-row: 1 / span 2; // højre kolonne, hele højden
+      }
+    }
+  }
+
+  &__title {
+    margin-bottom: var(--space-sm);
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: var(--color-on-bg-muted);
+  }
+}
+
+// Værktøjerne vises nu af .tool-overview (se _tool-overview.scss).
+// Her styres kun afstanden ned til Karrierevej – samme luft som under kompetencerne.
+.cv-page__overview {
+  padding-bottom: var(--space-xl);
+}
+
+// ===== Arbejdsform: fed label + forklaring =====
+.cv-workflow {
+  display: grid;
+  gap: var(--space-sm);
+  font-size: 0.9rem;
+
+  dt {
+    display: inline;
+    font-weight: 600;
+  }
+
+  dd {
+    display: inline;
+    margin: 0;
+    color: var(--color-on-bg-muted);
+  }
+}

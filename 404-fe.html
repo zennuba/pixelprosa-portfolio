@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 · Pixel Prosa</title>
+
+  <!-- Sitets skrifttyper fra Google Fonts
+       (kan slettes, hvis din style.css allerede henter dem) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono&family=Schibsted+Grotesk:wght@400;600&display=swap">
+
+  <!-- 1) Sitets egen CSS FØRST – her ligger variablerne -->
+  <link rel="stylesheet" href="css/style.css">
+  <!-- 2) Feens CSS bagefter – den bruger variablerne -->
+  <link rel="stylesheet" href="404-fe.css">
+</head>
+<body>
+
+  <main class="page">
+
+    <!-- Venstre side: teksten -->
+    <section class="text">
+      <p class="label">Fejl 404 · side ikke fundet</p>
+      <p class="big" aria-hidden="true">404</p>
+      <h1>Ups. Glitterfeen har danset afsted med siden.</h1>
+      <p class="lead">Hun er bedre til piruetter end til navigation. Hold musen over hende, eller tag en genvej hjem.</p>
+
+      <div class="actions">
+        <a class="btn" href="index.html">Flyv mig hjem</a>
+        <a class="btn btn--ghost" href="index.html#cases">Se mine cases</a>
+      </div>
+    </section>
+
+    <!-- Højre side: feen. Hun er et link, så hun også kan bruges med tastatur -->
+    <a class="fairy" href="index.html" aria-label="Glitterfeen – flyv hjem til forsiden">
+      <img src="/404-fe.png" alt="Glitterfe i rosa tutu med vinger">
+
+      <!-- Små glimmerstjerner, der dukker op ved hover -->
+      <span class="sparkle s1" aria-hidden="true">✦</span>
+      <span class="sparkle s2" aria-hidden="true">✦</span>
+      <span class="sparkle s3" aria-hidden="true">✦</span>
+      <span class="sparkle s4" aria-hidden="true">✦</span>
+      <span class="sparkle s5" aria-hidden="true">✦</span>
+
+      <span class="hint">Hold musen over mig</span>
+    </a>
+
+  </main>
+
+
+       <script src="js\toggleButton.js"></script>
+
+</body>
+</html>

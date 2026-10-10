@@ -3,7 +3,7 @@
   "kicker": "CASE · CYBER HERO",
   "title": "Kan du spotte svindel på 3 minutter?",
   "hook": "08:47. Din telefon vibrerer. 'StudieAdmin': Din eksamen er flyttet – book en ny tid inden kl. 10 via linket. Linket ser rigtigt ud. Klikker du?",
-  "heroImage": "heroSmsS2P2Iba",
+  "heroImage": "img/cyberhero/cyberhero-case-000.png",
   "intro": "Det øjeblik er Cyber Hero bygget op omkring. Et interaktivt træningsscenarie, hvor du selv vælger, hvad du gør med sms'en – og ser konsekvensen med det samme. Hvert valg fører ad en ny sti med feedback og en af flere slutninger. Individuelt semesterprojekt, fra research og persona til et mobile first-scenarie i HTML, SCSS, JavaScript og JSON.",
   "responsibility": "Research, persona, koncept, flow, wireframes, UI-design og frontend-udvikling som individuelt projekt.",
   "purpose": "De fleste ved godt, at man ikke skal klikke på mistænkelige links. Alligevel gør mange det, når det haster. Oplysning er altså ikke problemet – adfærd er. Mit greb blev derfor: lad brugeren begå fejlen. I et sikkert miljø kan man klikke, se, hvad der sker, og prøve igen – uden løftet pegefinger og uden at det koster noget.",

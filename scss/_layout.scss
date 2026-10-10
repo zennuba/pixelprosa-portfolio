@@ -3,17 +3,281 @@
 //Uden as * skulle man selv skrive variables.$bp-md hver gang.
 //så vi kan bruge $bp-md og $bp-lg
 
+// Når man klikker på et link til #featured, må overskriften ikke gemme sig bag den sticky header
+html {
+  scroll-padding-top: 5rem;
+}
+
 // ===== Header =====
 .site-header {
-  display: flex;
-  justify-content: space-between;
+  // Sticky: headeren følger med, når man scroller
+  position: sticky;
+  top: 0;
+  z-index: 100; // ligger over alt andet indhold
+  background: var(--color-bg); // uden baggrund ville indholdet skinne igennem
+
+  // 3 kolonner: logo | menu | knapper
+  // 1fr på begge sider = lige brede yderkolonner, så menuen står præcist i midten
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  gap: var(--space-md);
   padding: var(--space-sm);
   border-bottom: 1px solid var(--color-border);
 
   nav {
     display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  // Mobil: logo + knapper på første linje, menuen på linjen under
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr auto;
     gap: var(--space-sm);
+
+    nav {
+      grid-column: 1 / -1;
+      grid-row: 2;
+      justify-content: center;
+    }
+  }
+}
+
+.site-header__actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; // skubbes helt ud til højre
+  gap: var(--space-sm);
+}
+
+// Ikon-links (GitHub, LinkedIn, CV): kun på store skærme,
+// ellers bliver headeren for trang. På mobil findes de i kontakt-sektionen.
+.site-header__social {
+  display: none;
+
+  @media (min-width: $bp-lg) {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+  }
+}
+
+// ===== Ikon-link =====
+// PNG'erne er sorte. Med "mask" bruges billedet som en SKABELON (stencil):
+// kun formen bruges, og farven kommer fra background-color.
+// currentColor = linkets tekstfarve → ikonet skifter selv farve i dark mode.
+.icon-link {
+  display: grid;
+  place-items: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  color: var(--color-on-bg);
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: var(--color-on-bg-accent);
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+}
+
+.icon-link__icon {
+  width: 100%;
+  height: 100%;
+  background-color: currentColor;
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
+}
+
+// Variant med synlig tekst: bruges til CV-knappen,
+// fordi et ikon alene ikke fortæller HVAD man downloader.
+// Teksten er også linkets navn for skærmlæsere – derfor intet aria-label.
+.icon-link--text {
+  grid-auto-flow: column; // ikon og tekst ved siden af hinanden
+  gap: 0.4rem;
+  width: auto; // bredden følger teksten
+  padding-right: 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px; // pilleform
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+
+  .icon-link__icon {
+    width: 2rem; // fast størrelse, så ikonet ikke klemmes
+  }
+
+  &:hover {
+    border-color: var(--color-accent-light);
+  }
+}
+
+// Lille "PDF" efter teksten: fortæller filtypen
+.icon-link__meta {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--color-on-bg-muted);
+}
+
+// Stierne regnes fra css/style.css, derfor ../
+.icon-link__icon--github {
+  mask-image: url("../img/icons/github.png");
+}
+.icon-link__icon--linkedin {
+  mask-image: url("../img/icons/linkedin.png");
+}
+.icon-link__icon--download {
+  mask-image: url("../img/icons/download.png");
+}
+
+// ===== Logo: tegning + PixelProsa =====
+.site-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.site-brand__logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; // rund ramme om tegningen
+
+  // Prikmønster lavet med ren CSS:
+  // radial-gradient tegner ÉN prik (farvet midte → gennemsigtig kant),
+  // og background-size gentager den i et 5 × 5 px gitter.
+  background: radial-gradient(
+      circle,
+      var(--color-accent-light) 1.1px,
+      transparent 1.5px
+    )
+    0 0 / 5px 5px;
+}
+
+// ===== Ordmærke: PIXEL PROSA =====
+// Genbruges i header og footer. Teksten står som "PixelProsa" i HTML'en,
+// og CSS laver den om til versaler – så læser skærmlæsere navnet normalt.
+// "PIXEL" i pixel-font med luft = de kantede pixels
+// "PROSA" i bog-serif = den fortællende tekst
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.45em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  line-height: 1;
+}
+
+.wordmark__pixel {
+  font-family: var(--font-pixel);
+  font-weight: 700;
+  font-size: 0.82em; // pixel-fonten er optisk større – skaleres ned, så de to ord står lige højt
+  letter-spacing: 0.2em; // luft mellem pixel-bogstaverne
+  color: var(--color-on-bg);
+}
+
+.wordmark__prosa {
+  font-family: var(--font-prosa);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-on-bg-accent); // blå i light mode, lyseblå i dark mode
+}
+
+.site-header__practice {
+  flex: 1;
+  font-size: 0.875rem;
+  line-height: 1.35;
+
+  .word-rotator {
+    font-size: 1.5rem;
+  }
+}
+
+.site-header__availability {
+  display: block;
+  color: var(--color-on-bg-muted);
+  font-size: 0.75rem;
+}
+
+// ===== Tema-knap: rund ikon-knap =====
+// Light mode: viser en MÅNE (= "skift til mørk")
+// Dark mode:  viser en SOL  (= "skift til lys")
+// aria-pressed="true" sættes af toggleButton.js, når dark mode er slået til.
+.theme-toggle {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--color-on-bg);
+  cursor: pointer;
+  transition:
+    border-color 0.2s ease,
+    transform 0.3s ease;
+
+  &:hover {
+    border-color: var(--color-accent-light);
+    transform: rotate(15deg); // lille vip, så den føles levende
+  }
+
+  &:focus-visible {
+    outline: 3px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  svg {
+    display: block;
+    width: 1.125rem;
+    height: 1.125rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// Kun ét ikon vises ad gangen
+.theme-toggle__icon--sun {
+  display: none;
+}
+
+.theme-toggle[aria-pressed="true"] {
+  .theme-toggle__icon--moon {
+    display: none;
+  }
+  .theme-toggle__icon--sun {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}
+
+@media (max-width: $bp-md) {
+  .site-header__practice {
+    order: 1;
+    flex-basis: 100%;
   }
 }
 
@@ -35,12 +299,25 @@
 .home-hero {
   display: grid;
   gap: var(--space-md);
-  padding-block: var(--space-lg);
+  padding-block: var(--space-lg) var(--space-md);
 
-  @media (min-width: $bp-md) {
-    grid-template-columns: 2fr 1fr; // tekst 2/3, billede 1/3
-    align-items: center;
-  }
+  // Kun tekst nu: én kolonne. Var før "2fr 1fr" (tekst 2/3, billede 1/3)
+  // @media (min-width: $bp-md) {
+  //   grid-template-columns: 2fr 1fr;
+  //   align-items: center;
+  // }
+}
+
+.home-hero__figure {
+  background: url("../img/illustrationer/prikker.svg") no-repeat center /
+    contain;
+}
+
+// Inline-SVG'en (øjne der følger musen) skal fylde bredden ud
+.home-hero__illustration {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .home-hero__figure img {
@@ -70,10 +347,10 @@
 .site-footer__cta,
 .site-footer__copy {
   @media (min-width: $bp-lg) {
-    position: fixed;             // låst til skærmen
+    position: fixed; // låst til skærmen
     bottom: var(--space-md);
-    writing-mode: vertical-rl;   // teksten står lodret
-    transform: rotate(180deg);   // læses nedefra og op
+    writing-mode: vertical-rl; // teksten står lodret
+    transform: rotate(180deg); // læses nedefra og op
   }
 }
 
@@ -87,9 +364,9 @@
     left: var(--space-sm);
   }
   .word-rotator {
-  color: var(--color-on-bg-accent);
-  font-weight: 600;
-}
+    color: var(--color-on-bg-accent);
+    font-weight: 600;
+  }
 }
 
 .site-footer__copy {
@@ -97,7 +374,7 @@
 
   @media (min-width: $bp-lg) {
     right: var(--space-sm);
-    transform: none;   // ingen rotation: læses oppefra og ned
+    transform: none; // ingen rotation: læses oppefra og ned
   }
 }
 
@@ -116,8 +393,13 @@ body {
   letter-spacing: 0;
   color: var(--color-on-bg-accent);
 
-  &[data-tone="1"] { color: var(--color-tone-1); }
-  &[data-tone="2"] { color: var(--color-tone-2); }
-  &[data-tone="3"] { color: var(--color-tone-3); }
+  &[data-tone="1"] {
+    color: var(--color-tone-1);
+  }
+  &[data-tone="2"] {
+    color: var(--color-tone-2);
+  }
+  &[data-tone="3"] {
+    color: var(--color-tone-3);
+  }
 }
-

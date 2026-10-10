@@ -185,5 +185,33 @@
     "solution": "B2B-kampagne med landingpage og email automation, der guider eksisterende kunder mod træning af apotekspersonale.",
     "case": "ladybalance",
     "link": ""
+  },
+
+    {
+    "id": "p_01_005",
+    "year": 2025,
+    "semester": 1,
+    "project": 5,
+    "edu": "UCL",
+    "category": ["portfolio", "frontend", "UX"],
+    "title": "Mit første portfolio – håndkodet",
+    "description": "Professionelt portfolio udviklet fra bunden med fokus på frontend development, UX og responsivt design.",
+    "team": "Individuelt",
+    "duration": "21 dage",
+    "targetGroup": "Potentielle praktikvirksomheder",
+    "elements": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Responsive design",
+      "UX",
+      "Dark/light mode",
+      "Portfolio development"
+    ],
+    "solution": "Et responsivt, håndkodet portfolio med fokus på brugervenlig navigation, tilgængelighed og præsentation af projekter og kompetencer.",
+    "case": "professionelt-portfolio",
+    "image": "img/Styletile.png",
+    "imageAlt": "Visuelt designmateriale fra portfolio- og Design Thinking-projektet",
+    "link": "https://www.pixelprosa.dk/portfolio_ucl"
   }
 ]

@@ -1,0 +1,254 @@
+/* =========================================================
+   GLITTERFEEN 404 – kun CSS
+   Ingen JavaScript, ingen @keyframes.
+   Al bevægelse laves med :hover + transition.
+
+   Farver, skrifter, afstande og hjørner kommer fra sitets
+   egne variabler (Pixel Prosa). Derfor SKAL sitets CSS
+   linkes FØR denne fil i 404.html.
+   ========================================================= */
+
+
+/* ---------- Feens variabler peger på sitets variabler ---------- */
+/* Mørk tilstand kommer automatisk: når sitet sætter
+   data-theme="dark", skifter sitets variabler, og feen følger med. */
+:root {
+  --bg: var(--color-bg);                    /* baggrund */
+  --fg: var(--color-on-bg);                 /* tekst */
+  --muted: var(--color-on-bg-muted);        /* dæmpet tekst */
+  --accent: var(--color-accent);            /* knapper */
+  --accent-fg: var(--color-on-accent);      /* tekst på knapper */
+  --accent-text: var(--color-on-bg-accent); /* "404" og links på baggrunden */
+
+  /* Glimmerstjernerne bruger sitets tre "pang"-farver */
+  --sparkle-1: var(--color-tone-1);
+  --sparkle-2: var(--color-tone-2);
+  --sparkle-3: var(--color-tone-3);
+
+  /* Skygge under feen i sitets mørkeblå */
+  --shadow: rgba(6, 10, 61, 0.25);
+}
+
+
+/* ---------- Grundopsætning ---------- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+/* ---------- Layout: tekst til venstre, fe til højre ---------- */
+.page {
+  min-height: 100vh;
+  max-width: 70rem;
+  margin: 0 auto;
+  padding: var(--space-md) clamp(var(--space-sm), 5vw, var(--space-lg));
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+
+/* ---------- Teksten ---------- */
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* Lille mono-label, som sitets øvrige små overskrifter */
+.label {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* Det store "404" i sitets serif-skrift, i kursiv */
+.big {
+  margin: 0;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: clamp(6rem, 20vw, 13rem);
+  line-height: 0.85;
+  color: var(--accent-text);
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--font-accent);
+  font-weight: 400;
+  font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+.lead {
+  margin: 0;
+  max-width: 34ch;
+  color: var(--muted);
+}
+
+
+/* ---------- Knapper ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+
+.btn {
+  font-family: var(--font-body);
+  font-weight: 600;
+  padding: 0.75rem 1.4rem;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius-md);
+  background: var(--accent);
+  color: var(--accent-fg);
+  text-decoration: none;
+  transition: transform 0.2s, background-color 0.2s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Den sekundære knap: kun kant */
+.btn--ghost {
+  background: transparent;
+  border-color: var(--accent-text);
+  color: var(--fg);
+}
+
+.btn--ghost:hover {
+  background: var(--color-surface);
+}
+
+.btn:focus-visible {
+  outline: 3px dashed var(--accent-text);
+  outline-offset: 3px;
+}
+
+
+/* ---------- Feen ---------- */
+.fairy {
+  position: relative;      /* så stjernerne kan placeres i forhold til feen */
+  justify-self: center;
+  width: min(100%, 300px);
+  display: block;
+}
+
+.fairy img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 16px 18px var(--shadow));
+  /* transition gør ændringen blød i stedet for at hoppe */
+  transition: transform 0.9s ease-in-out;
+}
+
+/* Hover (mus) og focus (tastatur): hun letter, drejer rundt og hælder */
+.fairy:hover img,
+.fairy:focus-visible img {
+  transform: translateY(-24px) rotateY(360deg) rotate(-8deg);
+}
+
+.fairy:focus-visible {
+  outline: 3px dashed var(--accent-text);
+  outline-offset: 8px;
+  border-radius: var(--radius-lg);
+}
+
+
+/* ---------- Glimmerstjerner ---------- */
+.sparkle {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0;              /* usynlige til at starte med */
+  transform: scale(0);
+  transition: opacity 0.4s, transform 0.4s;
+  pointer-events: none;
+}
+
+/* Hver stjerne har sin egen plads, størrelse og "pang"-farve */
+.s1 { top: 10%;    left: 5%;   font-size: 1.8rem; color: var(--sparkle-1); }
+.s2 { top: 2%;     right: 15%;                    color: var(--sparkle-2); }
+.s3 { top: 45%;    right: 0;   font-size: 1.2rem; color: var(--sparkle-3); }
+.s4 { bottom: 15%; left: 0;    font-size: 1.4rem; color: var(--sparkle-2); }
+.s5 { bottom: 5%;  right: 20%; font-size: 2rem;   color: var(--sparkle-1); }
+
+/* Ved hover popper stjernerne frem */
+.fairy:hover .sparkle,
+.fairy:focus-visible .sparkle {
+  opacity: 1;
+  transform: scale(1) rotate(45deg);
+}
+
+/* transition-delay: stjernerne kommer én ad gangen */
+.s2 { transition-delay: 0.1s; }
+.s3 { transition-delay: 0.2s; }
+.s4 { transition-delay: 0.3s; }
+.s5 { transition-delay: 0.4s; }
+
+
+/* ---------- Hint-boble ---------- */
+.hint {
+  position: absolute;
+  top: -1rem;
+  left: 60%;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: var(--radius-md) var(--radius-md) var(--radius-md) 2px;
+  background: var(--fg);
+  color: var(--bg);
+  transition: opacity 0.3s;
+}
+
+/* Boblen forsvinder, når man har fundet ud af det */
+.fairy:hover .hint,
+.fairy:focus-visible .hint {
+  opacity: 0;
+}
+
+
+/* ---------- Mobil: alt under hinanden ---------- */
+/* 768px = sitets $bp-md. Skrevet som tal, fordi dette er ren CSS */
+@media (max-width: 768px) {
+  .page {
+    grid-template-columns: 1fr;
+    padding-block: var(--space-lg);
+  }
+
+  .fairy {
+    width: min(70%, 220px);
+  }
+
+  .hint {
+    left: 50%;
+  }
+}
+
+
+/* ---------- Brugere der har slået animationer fra ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .fairy img,
+  .sparkle,
+  .btn {
+    transition: none;
+  }
+}

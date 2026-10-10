@@ -1,107 +1,200 @@
+@use "variables" as *;
+
 // ===== TIMELINE =====
+// Mobile first: lodret tidslinje som standard.
+// .timeline--horizontal gør den vandret fra tablet og op (CV-siden).
+
 .timeline {
-    list-style: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  border-left: 1px solid var(--color-border);
+
+  &__item {
+    --dot-color: var(--color-tone-1); // standard: turkis
+    position: relative;
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: var(--space-sm);
+    padding: var(--space-sm) 0 var(--space-sm) var(--space-md);
+
+    // prikken
+    &::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 1.4rem;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--color-bg);
+      border: 2px solid var(--dot-color);
+    }
+
+    // kategorier
+    &--education {
+      --dot-color: var(--color-tone-1); // turkis
+    }
+
+    &--experience {
+      --dot-color: var(--color-tone-2); // koral
+    }
+  }
+
+  // "UDDANNELSE" / "ERFARING"
+  &__tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dot-color);
+  }
+
+  // årstal
+  &__date {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-on-bg-muted);
+    padding-top: 0.15rem;
+  }
+
+  &__summary {
+    cursor: pointer;
+    list-style: none; // fjerner ▶ i Firefox/Chrome
+
+    &::-webkit-details-marker {
+      display: none; // fjerner ▶ i Safari
+    }
+  }
+
+  &__title {
     margin: 0;
-    padding: 0;
-    border-left: 1px solid var(--color-border);
+    font-size: 1.125rem;
 
-    &__item {
-        --dot-color: var(--color-tone-1); // standard: turkis
-        position: relative;
-        display: grid;
-        grid-template-columns: 7rem 1fr;
-        gap: var(--space-sm);
-        padding: var(--space-sm) 0 var(--space-sm) var(--space-md);
-           
-        // prikken
+    // + / − efter titlen
+    &::after {
+      content: " +";
+      font-family: var(--font-mono);
+      font-weight: 400;
+      color: var(--color-on-bg-muted);
+    }
+  }
+
+  // & midt i selektoren → .timeline__details[open] .timeline__title::after
+  &__details[open] &__title::after {
+    content: " −";
+  }
+
+  &__place {
+    margin: 0;
+    color: var(--color-on-bg-muted);
+  }
+
+  &__text,
+  &__list {
+    font-size: 0.875rem;
+    color: var(--color-on-bg-muted);
+  }
+
+  &__list {
+    padding-left: 1.1rem;
+  }
+
+  &__toggle {
+    margin: var(--space-sm) 0 0 var(--space-md);
+    padding: var(--space-xs) var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--color-on-bg);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+
+    &:hover {
+      border-color: var(--color-accent);
+    }
+  }
+
+  // ===== Vandret udgave (CV-siden) =====
+  // Hvert punkt tegner sit eget stykke af linjen (background),
+  // så linjen fortsætter, når punkterne bryder over på en ny række.
+  &--horizontal {
+    @media (min-width: $bp-md) {
+      --line-top: 2.25rem; // hvor linjen og prikken sidder
+
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(13rem, 1fr));
+      row-gap: var(--space-md);
+      border-left: none;
+
+      // display: grid overskriver HTML-attributten hidden,
+      // så den skjulte "før 2010"-liste skal skjules igen her
+      &[hidden] {
+        display: none;
+      }
+
+      // knappen står lige efter listen – flugter med venstre kant
+      + .timeline__toggle {
+        margin-left: 0;
+      }
+
+      .timeline__item {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        padding: 0 var(--space-md) 0 0;
+        background: linear-gradient(var(--color-on-bg-muted), var(--color-on-bg-muted))
+          0 var(--line-top) / 100% 1px no-repeat;
+
         &::before {
-            content: "";
-            position: absolute;
-            left: -6px;
-            top: 1.4rem;
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-            background: var(--color-bg);
-            border: 2px solid var(--dot-color);
-            }
-
-        // kategorier
-        &--education {
-            --dot-color: var(--color-tone-1);
-            } 
-
-        // turkis
-        &--experience {
-            --dot-color: var(--color-tone-2); // koral
-            } 
-        
-        &__tag {
-            font-family: var(--font-mono);
-            font-size: 0.75rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--dot-color);
-            }
-
-        // årstal
-        &__date {
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: var(--color-on-bg-muted);
-            padding-top: 0.15rem; 
-            }
-    }
-
- 
-    &__summary {
-        cursor: pointer;
-        list-style: none; // fjerner ▶ i Firefox/Chrome
-        
-            &::-webkit-details-marker {
-            display: none; // fjerner ▶ i Safari
-            }
-
-    &__title {
-        margin: 0;
-        font-size: 1.125rem;
-
-            // + / − efter titlen
-        &::after {
-            content: " +";
-            font-family: var(--font-mono);
-            font-weight: 400;
-            color: var(--color-on-bg-muted);
-            }
-
-        &__details[open] &__title::after {
-            content: " −";
-            }
-
-        &__place {
-            margin: 0;
-            color: var(--color-on-bg-muted);
-            }
-
-        &__toggle {
-            margin: var(--space-sm) 0 0 var(--space-md);
-            padding: var(--space-xs) var(--space-sm);
-            font-family: var(--font-mono);
-            font-size: 0.875rem;
-            color: var(--color-on-bg);
-            background: none;
-            border: 1px solid var(--color-border);
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            }
-
-        &:hover {
-            border-color: var(--color-accent);
-            }
-        }   
-
-        .timeline-section {
-        padding-bottom: var(--space-xl);
+          left: 0;
+          top: calc(var(--line-top) - 5px);
+          background: var(--dot-color); // udfyldt prik som på referencen
         }
+      }
+
+      .timeline__date {
+        padding-top: 0;
+        line-height: 1.5rem;
+        margin-bottom: 1.5rem; // skubber teksten ned under linjen
+        font-weight: 500;
+        color: var(--color-on-bg);
+      }
+
+      // stedet i kategoriens farve, titlen nedtonet
+      .timeline__place {
+        order: -1;
+        font-weight: 600;
+        color: var(--dot-color);
+      }
+
+      .timeline__title {
+        font-size: 1rem;
+        font-weight: 400;
+        letter-spacing: 0;
+        color: var(--color-on-bg-muted);
+      }
+
+      // tag'et til sidst: sted → titel → UDDANNELSE/ERFARING
+      .timeline__tag {
+        order: 1;
+      }
+
+      .timeline__summary {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
     }
+  }
+}
+
+.timeline-section {
+  padding-bottom: var(--space-xl);
+
+  &__title {
+    margin-bottom: var(--space-md);
+    font-size: clamp(2rem, 4vw, 3rem);
+  }
 }

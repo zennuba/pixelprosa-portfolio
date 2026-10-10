@@ -1,61 +1,153 @@
 [
   {
     "name": "Figma",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg",
-    "metadata": null,
-    "cta": "See all projects with this tool"
-  },
-  {
-    "name": "Visual Studio Code",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg",
-    "metadata": null,
-    "cta": "See all projects with this tool"
-  },
-  {
-    "name": "Git",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg",
-    "metadata": null,
-    "cta": "See all projects with this tool"
-  },
-  {
-    "name": "GitHub",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg",
+    "category": "Design",
+    "highlight": true,
+    "logo": "img/icons/tools/figma.svg",
     "metadata": null,
     "cta": "See all projects with this tool"
   },
   {
     "name": "Photoshop",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/photoshop/photoshop-original.svg",
+    "category": "Design",
+    "highlight": true,
+    "logo": "img/icons/tools/photoshop.svg",
     "metadata": null,
     "cta": "See all projects with this tool"
   },
   {
     "name": "Illustrator",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/illustrator/illustrator-original.svg",
+    "category": "Design",
+    "highlight": true,
+    "logo": "img/icons/tools/illustrator.svg",
     "metadata": null,
     "cta": "See all projects with this tool"
   },
   {
-    "name": "WordPress",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/wordpress/wordpress-original.svg",
+    "name": "InDesign",
+    "category": "Design",
+    "highlight": true,
+    "logo": "img/icons/tools/indesign.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Premiere Pro",
+    "category": "Design",
+    "highlight": true,
+    "logo": "img/icons/tools/premierepro.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "After Effects",
+    "category": "Design",
+    "highlight": true,
+    "logo": "img/icons/tools/aftereffects.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Visual Studio Code",
+    "category": "Kode",
+    "highlight": true,
+    "logo": "img/icons/tools/vscode.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Git",
+    "category": "Kode",
+    "highlight": true,
+    "logo": "img/icons/tools/git.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "GitHub",
+    "category": "Kode",
+    "highlight": true,
+    "logo": "img/icons/tools/github.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Claude",
+    "category": "AI",
+    "highlight": true,
+    "logo": "img/icons/tools/claude.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "ChatGPT",
+    "category": "AI",
+    "highlight": true,
+    "logo": "img/icons/tools/openai-chatgpt.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "GitHub Copilot",
+    "category": "AI",
+    "highlight": true,
+    "logo": "img/icons/tools/github-copilot-light.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Adobe Firefly",
+    "category": "AI",
+    "highlight": true,
+    "logo": "img/icons/tools/firefly-adobe.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Google Stitch (AI-native designværktøj udviklet af Google Labs).",
+    "category": "AI",
+    "highlight": false,
+    "logo": null,
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "Google Flow",
+    "category": "AI",
+    "highlight": false,
+    "logo": null,
     "metadata": null,
     "cta": "See all projects with this tool"
   },
   {
     "name": "FileZilla",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/filezilla/filezilla-original.svg",
+    "category": "Værktøjer",
+    "highlight": false,
+    "logo": "img/icons/tools/filezilla.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "WordPress",
+    "category": "Værktøjer",
+    "highlight": false,
+    "logo": "img/icons/tools/wordpress.svg",
     "metadata": null,
     "cta": "See all projects with this tool"
   },
   {
     "name": "Notion",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/notion/notion-original.svg",
+    "category": "Planlægning",
+    "highlight": false,
+    "logo": "img/icons/tools/notion.svg",
     "metadata": null,
     "cta": "See all projects with this tool"
   },
   {
     "name": "Trello",
-    "logo": "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/trello/trello-original.svg",
+    "category": "Planlægning",
+    "highlight": false,
+    "logo": "img/icons/tools/trello.svg",
     "metadata": null,
     "cta": "See all projects with this tool"
   }

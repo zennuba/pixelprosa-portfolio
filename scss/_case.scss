@@ -22,6 +22,13 @@
   }
 }
 
+// Cyber Hero får en større billedkolonne uden at ændre de øvrige cases.
+.case__hero:has(.case__image[src*="cyberhero-sms"]) {
+  @media (min-width: $bp-lg) {
+    grid-template-columns: minmax(0, 1fr) 25rem;
+  }
+}
+
 .case__hero-text {
   display: flex;
   flex-direction: column;
@@ -76,6 +83,26 @@
     height: 100%;
     object-fit: contain; // hele tegningen ses, uanset om den er høj eller bred
     border-radius: 0;
+  }
+}
+
+.case__hero-image:has(.case__image[src*="cyberhero-sms"]) {
+  position: relative;
+  background: none;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../img/illustrationer/prikker.svg") no-repeat center /
+      contain;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  .case__image {
+    position: relative;
+    z-index: 1;
   }
 }
 

@@ -1,21 +1,21 @@
-import { Timeline } from "./timeline.js";
 import { ProjectCard } from "./js/projectCard.js";
 import { ProjectGallery } from "./js/projectGallery.js";
 import { ProfileSection } from "./js/profileSection.js";
 import { PortfolioPage } from "./main.js";
 import { loadCases } from "./js/caseLoader.js";
+import { ContactSection } from "./js/contactSection.js";
+// import { makeEyesFollow } from "./js/eyeFollow.js"; // bruges ikke i hero lige nu
 
 class HomePage {
-  constructor(profile, projects, education, experience, skills, image) {
+  constructor(profile, projects, image, contact) {
     this.profile = profile;
     this.projects = projects;
-    this.education = education;
-    this.experience = experience;
-    this.skills = skills;
     this.image = image;
+    this.contact = contact; // ContactSection (kan mangle)
   }
 
   render(container) {
+    const rotatingCta = container.querySelector(".home-hero__cta");
     const page = document.createElement("div");
     page.className = "home-page";
 
@@ -25,32 +25,33 @@ class HomePage {
     const introduction = this.profile.render();
     introduction.className = "home-hero__copy";
 
-    const eyebrow = document.createElement("p");
-    eyebrow.className = "home-eyebrow";
-    eyebrow.textContent = "UX/UI · Frontend · AI ";
-    introduction.prepend(eyebrow);
+    // const eyebrow = document.createElement("p");
+    // eyebrow.className = "home-eyebrow";
+    // eyebrow.textContent = "UX/UI · Frontend · AI ";
+    //introduction.prepend(eyebrow);
+
+    if (rotatingCta) introduction.prepend(rotatingCta);
 
     const actions = document.createElement("div");
     actions.className = "home-hero__actions";
     actions.innerHTML = `
       <a class="button-link" href="#featured">Se udvalgte case stories</a>
-      <a class="text-link" href="tel:+4526189650">Kontakt mig · 26 18 96 50</a>
+      <a class="text-link" href="#omLotte.html">Om mig</a>
     `;
     introduction.append(actions);
 
-    const figure = document.createElement("figure");
-    figure.className = "home-hero__figure";
-    const image = document.createElement("img");
-    image.src = this.image.src;
-    image.alt = this.image.alt;
-    const caption = document.createElement("figcaption");
-    caption.textContent = this.image.caption;
-    // Lille gimmick: en boble der kigger frem bag portrættet
-    const hello = document.createElement("span");
-    hello.className = "home-hero__hello";
-    hello.textContent = "Hej, jeg er Lotte";
-    figure.append(hello, image, caption);
-    hero.append(introduction, figure);
+    // Tegningen er fjernet fra hero – kun tekst nu. Slå til igen ved at fjerne // herunder.
+    // const figure = document.createElement("figure");
+    // figure.className = "home-hero__figure";
+    // const image = document.createElement("img");
+    // image.src = this.image.src;
+    // image.className = "home-hero__illustration";
+    // image.alt = this.image.alt;
+    // const caption = document.createElement("figcaption");
+    // caption.textContent = this.image.caption;
+    // figure.append(image, caption);
+    // hero.append(introduction, figure);
+    hero.append(introduction);
 
     const featured = document.createElement("section");
     featured.className = "home-section home-featured";
@@ -60,8 +61,8 @@ class HomePage {
     featuredHeading.className = "home-section__heading";
     featuredHeading.innerHTML = `
       <div>
-        <p class="home-eyebrow">Se udvalgte real life case stories</p>
-        <h2>Cases med mennesker i centrum</h2>
+        <p class="home-eyebrow">Projekt cases fra 3. semester</p>
+        <h2>Se udvalgte case stories</h2>
       </div>
     `;
 
@@ -77,43 +78,25 @@ class HomePage {
       <div class="home-about__intro">
         <p class="home-eyebrow">Kort om mig</p>
         <h2>Fra koordinering til digitale oplevelser</h2>
-        <p>Som projektkoordinator på Syddansk Universitet fik jeg mennesker, processer og systemer til at hænge sammen. I dag gør jeg det samme digitalt: Jeg finder ud af, hvad brugeren har brug for, strukturerer det og bygger løsningen.</p>
+        <p>Som projektkoordinator I Danmarks Lærerforening fik jeg processer og systemer til at hænge sammen. I dag gør jeg det samme digitalt: Jeg finder ud af, hvad brugeren har brug for, strukturerer det og bygger løsningen.</p>
         <p>Jeg bor i Odense og søger praktik fra januar 2027 – i Odense eller remote.</p>
-      </div>
-      <dl class="home-facts">
-        <div>
-          <dt>Uddannelse</dt>
-          <dd>${this.education.title}</dd>
-          <dd>${this.education.place}</dd>
+        <a class="text-link" href="omLotte.html">Læs mere om mig</a>
         </div>
-        <div>
-          <dt>Erfaring</dt>
-          <dd>${this.experience.title}</dd>
-          <dd>${this.experience.place}</dd>
-        </div>
-        <div>
-          <dt>Jeg arbejder med</dt>
-          <dd class="home-skills"></dd>
-        </div>
-      </dl>
     `;
 
-    const skillList = about.querySelector(".home-skills");
-    this.skills.slice(0, 6).forEach((skill) => {
-      const item = document.createElement("span");
-      item.className = "project-card__category";
-      item.textContent = skill.type;
-      skillList.append(item);
-    });
-
     page.append(hero, featured, about);
+    if (this.contact) page.append(this.contact.render());
     container.replaceChildren(page);
   }
 }
 
 async function init() {
   const projectResponse = await fetch("data/project.json");
-  const projectData = await projectResponse.json();
+  const allProjects = await projectResponse.json();
+
+  // Vis kun projekter med "published": true i project.json.
+  // Sæt "published": false på et projekt, der ikke er klar endnu.
+  const projectData = allProjects.filter((project) => project.published);
 
   const caseData = await loadCases();
 
@@ -149,55 +132,31 @@ async function init() {
   });
 
   const profile = new ProfileSection(
-    "Multimediedesigner",
-    "Digital designer med fokus på UX/UI, Frontend, human oriented AI.",
+    "Jeg forbinder design, kode og mennesker",
+    "Multimediedesigner med blik for UX, frontend og menneskecentreret AI. Jeg undersøger problemer, skaber digitale løsninger og bygger dem fra idé til virkelighed.",
   );
 
   const homeContainer = document.getElementById("home");
   if (homeContainer) {
-    const responses = await Promise.all([
-      fetch("data/education.json"),
-      fetch("data/experience.json"),
-      fetch("data/skill.json"),
-      fetch("data/image.json"),
-    ]);
-    const [educationData, experienceData, skillData, imageData] =
-      await Promise.all(responses.map((response) => response.json()));
+    const imageResponse = await fetch("data/image.json");
+    const imageData = await imageResponse.json();
 
-// erstatter: const educationTimeline = new Timeline("Uddannelse", educationData, "education") 
-//const experienceTimeline = new Timeline("Erfaring", experienceData, "experience");  //opretter i stedet et array til alt på timeline
-
-// 1. Hvert punkt skal være en en kategori hhv edu og exp
-// ... =(spread). Det betyder "pak indholdet ud".
-
-const educationItems = educationData.map((item) => ({ ...item, category: "education" }));
-const experienceItems = experienceData.map((item) => ({ ...item, category: "experience" }));
-
-// 2. De lægges sammen og sortéres, nyeste først, som timelineItems
-const timelineItems = [...educationItems, ...experienceItems].sort((a, b) =>
-  b.date.start.localeCompare(a.date.start)
-);
-
-console.log(timelineItems);
+    const contactResponse = await fetch("data/contact.json");
+    const contact = new ContactSection(await contactResponse.json());
 
     const homePage = new HomePage(
       profile,
       projects,
-      educationData[0],
-      experienceData[0],
-      skillData,
       imageData.find((image) => image.id === "lotteProfil"),
+      contact,
     );
     homePage.render(homeContainer);
-    const timeline = new Timeline("Uddannelse og erfaring", timelineItems);
-    homeContainer.querySelector(".home-page").append(timeline.render());
+    // Gør tegningen "levende": øjnene følger musen (slået fra, da hero kun er tekst nu)
+    // makeEyesFollow(homeContainer.querySelector(".home-hero__illustration"));
     return;
   }
 
-  const portfolio = new PortfolioPage(
-    profile,
-    new ProjectGallery(projects),
-  );
+  const portfolio = new PortfolioPage(profile, new ProjectGallery(projects));
 
   portfolio.render(document.getElementById("portfolio"));
 }

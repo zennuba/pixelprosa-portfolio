@@ -1,7 +1,7 @@
 [
   {
     "id": "lotteIllustration",
-    "src": "img/OmLotte/lotte-illustration.webp",
+    "src": "img/OmLotte/lotte-profil-hero.webp",
     "alt": "Streg-illustration af Lotte med håret sat op",
     "caption": "",
     "type": "webp",
@@ -12,18 +12,18 @@
 
   {
     "id": "lotteProfil",
-    "src": "img/OmLotte/lotte-profil-hero.png",
-    "alt": "Sort-hvidt portræt af Lotte, der smiler med hånden under hagen",
+    "src": "img/illustrationer/lotte-portraet.svg",
+    "alt": "Tegning af Lotte med krøllet knold og blå briller, der smiler",
     "caption": "",
-    "type": "png",
+    "type": "svg",
     "copyright": "Lotte/PixelProsa",
-    "date": "30-09-2026",
-    "producedBy": "Lotte/PixelProsa + ChatGPT-AI"
+    "date": "08-10-2026",
+    "producedBy": "Lotte/PixelProsa + Claude-AI"
   },
 
   {
     "id": "lotteKaffe",
-    "src": "img/OmLotte/img_ill_LotteKaffe.png",
+    "src": "img/CyberHero/",
     "alt": "Stregtegning af Lotte med en kop kaffe foran sin laptop",
     "caption": "",
     "type": "png",
@@ -45,10 +45,10 @@
 
   {
     "id": "finnS3P1Iba",
-    "src": "img/playbook/finn.png",
-    "alt": "AI-robot Finn",
+    "src": "img/playbook/finn.webp",
+    "alt": "Stregtegning af AI-robotten Finn med smil, butterfly og en pakke på brystet",
     "caption": "Finn - GLS intern AI-persona",
-    "type": "png",
+    "type": "svg",
     "copyright": "GLS (original design) Lotte Nielsen (copied design for project)",
     "date": "25-09-2026",
     "producedBy": "AI /Lotte Nielsen, based on GLS"
@@ -56,10 +56,10 @@
 
   {
     "id": "heroSmsS2P2Iba",
-    "src": "img/CyberHero/heroSmsS2P2Iba.png",
-    "alt": "Mobil der vibrerer kl. 08:47 med en falsk sms fra 'StudieAdmin': eksamen er flyttet, book ny tid inden kl. 10 via linket wisefl0w-book.dk.",
+    "src": "img/cyberhero/cyberhero-case-001.png",
+    "alt": "Tegning af en mobil der vibrerer med en falsk sms, hvor linket er fanget på en fiskekrog – et billede på phishing.",
     "caption": "Den falske sms, som hele scenariet bygger på",
-    "type": "png",
+    "type": "svg",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
     "producedBy": "Lotte/PixelProsa"
@@ -143,5 +143,15 @@
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
     "producedBy": "Lotte/PixelProsa"
+  },
+  {
+    "id": "portfolioS3P2Iba",
+    "src": "img/portfolio/portfolio-case.svg",
+    "alt": "Tegning af et browservindue med PixelProsa-portfoliet: tre case-kort på række, en prikket proceslinje og en markør der klikker på et kort.",
+    "caption": "PixelProsa – mit portfolio som produkt",
+    "type": "svg",
+    "copyright": "Lotte/PixelProsa",
+    "date": "08-10-2026",
+    "producedBy": "Lotte/PixelProsa + Claude-AI"
   }
 ]

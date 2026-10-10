@@ -1,0 +1,113 @@
+@use "variables" as *;
+// ===== Om mig-siden =====
+// Flyttet ud af <style> i omLotte.html, så siden følger samme system som resten.
+// Titlen styles IKKE her: den arver h1 fra _base.scss (navy, venstrestillet),
+// præcis som på Erfaring og case-siderne.
+
+.om-mig {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+// ===== Indhold: ord – billede – ord =====
+.om-mig__indhold {
+  display: grid;
+  grid-template-columns: 1fr minmax(0, 420px) 1fr;
+  align-items: center;
+  gap: var(--space-md);
+
+  // Mobil: billedet øverst, ordene i to kolonner under
+  @media (max-width: $bp-md) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.om-mig__billede {
+  grid-column: 2;
+  grid-row: 1;
+  margin: 0;
+
+  // Dine løse prikker bag tegningen – samme fil som på forsiden.
+  // Stien regnes fra css/style.css, derfor ../
+  background: url("../img/illustrationer/prikker.svg") no-repeat center / contain;
+
+  img {
+    width: 100%;
+    height: auto;
+    // Ingen fast aspect-ratio: tegningen beholder sin egen form (326 × 386)
+  }
+
+  @media (max-width: $bp-md) {
+    grid-column: 1 / -1;
+    max-width: 340px;
+    margin-inline: auto;
+  }
+}
+
+// ===== Ordene om mig =====
+.om-mig__ord {
+  display: grid;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  li {
+    font-size: 1.125rem;
+    line-height: 1.35;
+    text-align: center;
+    text-wrap: balance;
+  }
+
+  // Kursive accentord, samme stil som ordskifteren på forsiden
+  em {
+    font-family: var(--font-accent);
+    font-size: 1.3em;
+    color: var(--color-on-bg-accent);
+  }
+}
+
+.om-mig__ord--venstre {
+  grid-column: 1;
+  grid-row: 1;
+
+  li:nth-child(even) {
+    transform: translateX(-12%); // lille zigzag for liv
+  }
+}
+
+.om-mig__ord--hoejre {
+  grid-column: 3;
+  grid-row: 1;
+
+  li:nth-child(odd) {
+    transform: translateX(12%);
+  }
+}
+
+@media (max-width: $bp-md) {
+  .om-mig__ord--venstre,
+  .om-mig__ord--hoejre {
+    grid-row: 2;
+
+    li {
+      transform: none; // ingen zigzag på smal skærm
+    }
+  }
+
+  .om-mig__ord--venstre { grid-column: 1; }
+  .om-mig__ord--hoejre { grid-column: 2; }
+}
+
+// ===== Intro-tekst under billedet =====
+.om-mig__intro {
+  max-width: 52ch;
+  margin-inline: auto;
+  font-size: 1.125rem;
+  text-align: center;
+
+  strong {
+    font-weight: 600;
+    box-shadow: inset 0 -0.4em 0 var(--color-accent-pale); // "overstregningstusch"-effekt
+  }
+}

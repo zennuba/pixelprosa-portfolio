@@ -1,0 +1,56 @@
+@use "variables" as *;
+
+// ===== 404-siden: "Her endte stien" =====
+// Tekst til venstre, tegningen (med øjne der følger musen) til højre.
+// Mobil: stablet, tegningen øverst.
+
+.not-found__indhold {
+  display: grid;
+  gap: var(--space-lg);
+  align-items: center;
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: 1fr minmax(0, 360px);
+  }
+}
+
+.not-found__tekst {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  max-width: 50ch;
+  font-size: 1.125rem;
+}
+
+.not-found__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-md);
+  margin-top: var(--space-sm);
+}
+
+.not-found__link {
+  font-weight: 500;
+  color: var(--color-on-bg-accent);
+}
+
+.not-found__billede {
+  margin: 0;
+  // Samme løse prikker som på forsiden og Om mig
+  background: url("../img/illustrationer/prikker.svg") no-repeat center / contain;
+
+  // "svg" med, fordi eyeFollow.js bytter <img> ud med en <svg> – så skal reglen også ramme den
+  img,
+  svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: $bp-md) {
+    order: -1; // tegningen øverst på mobil
+    max-width: 260px;
+    margin-inline: auto;
+  }
+}

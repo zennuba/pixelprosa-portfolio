@@ -1,0 +1,41 @@
+{
+  "groups": [
+    {
+      "title": "Digitalt Design (UX, UI og AI)",
+      "items": [
+        "UX-research og personaer",
+        "Informationsarkitektur (IA)",
+        "Object-Oriented UX (OOUX)",
+        "Wireframing – lo-fi til hi-fi",
+        "User flows og forgrenede scenarier",
+        "UI-design – visuelt hierarki, typografi, farver og layout",
+        "Designsystemer og komponenter",
+        "Styletiles og prototyping i Figma",
+        "Tilgængelighed (WCAG)",
+        "Generativ AI og context engineering"
+      ]
+    },
+    {
+      "title": "Frontend",
+      "items": [
+        "Semantisk HTML",
+        "SCSS – partials og BEM",
+        "Vanilla JavaScript – ES6-moduler og OOP",
+        "JSON og datahåndtering",
+        "Genbrugelige komponenter",
+        "Responsivt design og mobile-first"
+      ]
+    },
+    {
+      "title": "Arbejdsform og koordinering",
+      "items": [
+        "Projektkoordinering og planlægning",
+        "Samarbejde mellem brugere, IT og systemleverandører",
+        "Test og kvalitetssikring (UAT)",
+        "Dokumentation, formidling og brugeroplæring",
+        "IDEO Design Thinking",
+        "Ansvarlig AI og datasikkerhed"
+      ]
+    }
+  ]
+}

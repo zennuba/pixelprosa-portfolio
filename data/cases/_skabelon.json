@@ -1,0 +1,93 @@
+{
+  "id": "kort-id-med-bindestreger (samme som \"case\" i project.json)",
+  "kicker": "CASE · PROJEKTNAVN",
+  "title": "Et spørgsmål, der fanger: Hvordan …?",
+  "hook": "Indledningen. 2–3 sætninger, der trækker læseren ind – gerne en situation eller et problem.",
+  "heroImage": "id fra image.json (lille tegning ved siden af teksten) – eller null",
+  "intro": "Én sætning om projektet: type, semester, opgaven.",
+  "responsibility": "Hvad du lavede. Vises i faktakolonnen som 'Ansvar'.",
+  "purpose": "Udfordringen: hvorfor projektet findes. Første afsnit i kapitlet 'Udfordringen'.",
+  "opportunities": [
+    "Punkter under 'Udfordringen' – eller tom liste []"
+  ],
+  "process": [
+    {
+      "step": "Forstå",
+      "ideoPhase": "Discovery",
+      "images": [],
+      "question": "Hvilket spørgsmål styrer dette trin?",
+      "text": "Start med et spørgsmål. Hvad gjorde du, og hvad fandt du ud af?"
+    },
+    {
+      "step": "Undersøge",
+      "ideoPhase": "Interpretation",
+      "images": [],
+      "text": ""
+    },
+    {
+      "step": "Strukturere",
+      "ideoPhase": "Ideation",
+      "images": [],
+      "text": ""
+    },
+    {
+      "step": "Designe",
+      "ideoPhase": "Experimentation",
+      "images": [],
+      "text": ""
+    },
+    {
+      "step": "Udvikle",
+      "ideoPhase": "Experimentation",
+      "images": [],
+      "text": ""
+    },
+    {
+      "step": "Teste",
+      "ideoPhase": "Evolution",
+      "images": [],
+      "text": ""
+    },
+    {
+      "step": "Forbedre",
+      "ideoPhase": "Evolution",
+      "images": [],
+      "text": ""
+    }
+  ],
+  "finalSolution": "Løsningen i én–to sætninger. Første afsnit i 'Løsningen'.",
+  "learning": [
+    "Det lærte jeg – ét punkt pr. læring"
+  ],
+  "reflection": "Din refleksion. Vises som stort citat til sidst.",
+  "testIteration": "Hvordan du testede og itererede. Kapitlet 'Test og iteration'.",
+  "prototype": "Prototypen. Afsnit i 'Løsningen'.",
+  "design": "Designvalg. Afsnit i 'Løsningen'.",
+  "links": {
+    "prototype": null,
+    "github": null,
+    "figma": null
+  },
+  "date": {
+    "start": "ÅÅÅÅ-MM-DD",
+    "end": "ÅÅÅÅ-MM-DD"
+  },
+  "status": null,
+  "type": "Individuelt projekt / Gruppeprojekt",
+  "skill": [
+    "Navne som i skill.json"
+  ],
+  "tool": [
+    "Navne som i tool.json / tech.json – så kommer ikonet med"
+  ],
+  "processMethod": [
+    "Metoder"
+  ],
+  "role": "Din rolle. Vises øverst i faktakolonnen.",
+  "achievementResult": "Resultat eller mål. Kapitlet 'Målet'.",
+  "testimonial": null,
+  "targetAudience": "Målgruppen.",
+  "viewAllProjects": null,
+  "filterProjects": null,
+  "sortProjects": null
+}

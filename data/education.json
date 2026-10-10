@@ -1,17 +1,22 @@
 [
   {
     "place": "IBA Erhvervsakademi Kolding",
-    "title": "Multimediedesigner",
+    "title": "Multimediedesigner - online",
     "type": "Online",
     "date": {
       "start": "2026-01",
       "end": "2027-05"
     },
     "location": null,
-    "description": "Fokus på UX, informationsarkitektur og frontend (HTML, SCSS, JavaScript). Søger praktik fra januar 2027.",
+    "description": 
+      "Praksisorienteret uddannelse med fokus på UX, UI-design, frontend-udvikling, webteknologier og digital forretningsforståelse. Afsluttes med virksomhedspraktik januar til marts 2027.",
     "metadata": null,
     "cta": null
   },
+
+
+
+  
   {
     "place": "UCL Erhvervsakademi og Professionshøjskole",
     "title": "Multimediedesigner",

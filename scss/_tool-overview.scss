@@ -1,0 +1,80 @@
+@use "variables" as *;
+
+// ===== Tools og skills =====
+// Genbruges i casene og på Erfaring (js/toolOverview.js).
+// Tools = chip med ikon + navn. Skills = chip med kun tekst.
+
+.tool-overview {
+  display: grid;
+  gap: var(--space-md);
+
+  @media (min-width: $bp-md) {
+    grid-template-columns: 1fr 1fr; // to grupper ved siden af hinanden
+  }
+
+  @media (min-width: $bp-lg) {
+    grid-template-columns: repeat(3, 1fr); // tre grupper pr. række på store skærme
+  }
+}
+
+.tool-overview__heading {
+  grid-column: 1 / -1; // overskriften går over begge kolonner
+}
+
+// Skills har mange chips – de får hele bredden under tool-grupperne
+.tool-overview__group--wide {
+  grid-column: 1 / -1;
+}
+
+.tool-overview__title {
+  margin-bottom: var(--space-xs);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-on-bg-muted);
+}
+
+.tool-overview__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-overview__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem 0.35rem 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px; // pilleform – samme som "Hent CV"-knappen
+  font-size: 0.875rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+// Skills har intet ikon → lige meget luft i begge sider
+.tool-overview__item--skill {
+  padding-inline: 0.75rem;
+  background: var(--color-surface);
+}
+
+// Et tool UDEN ikon (fx "Claude") skal også have lige meget luft i begge sider.
+// :has() = "har et barn, der matcher" – her: har IKKE et ikon.
+.tool-overview__item:not(:has(.tool-overview__icon)) {
+  padding-inline: 0.75rem;
+}
+
+// Ikonet står på en lille hvid flise, så sorte logoer (GitHub, Notion)
+// også kan ses i dark mode
+.tool-overview__icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  padding: 0.2rem;
+  border-radius: 50%;
+  background: #fff;
+}
