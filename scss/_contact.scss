@@ -1,84 +1,8 @@
-@use "variables" as *;
-// ===== Kontakt: sidste trin på proceslinjen =====
-// Idéen: hele sitet handler om min proces. Kontakt er det sidste trin –
-// det trin, praktikvirksomheden selv tager.
+// ===== Kontakt =====
 
 .contact {
   display: grid;
   gap: var(--space-md);
-}
-
-// ===== Proceslinjen =====
-// Hvert trin er en prik med tekst under. Den prikkede linje ligger BAG prikkerne
-// som en baggrund på selve listen (::before).
-.contact-process {
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin: var(--space-sm) 0;
-  padding: 0;
-  list-style: none;
-
-  // Den prikkede linje
-  &::before {
-    content: "";
-    position: absolute;
-    top: 1.4rem; // midt på prikkerne
-    left: 0.5rem;
-    right: 1.5rem;
-    border-top: 3px dotted var(--color-accent-light);
-  }
-}
-
-.contact-process__step {
-  position: relative; // ligger over linjen
-  display: grid;
-  justify-items: center;
-  align-content: start;
-  gap: 0.5rem;
-  min-width: 0;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--color-on-bg-muted);
-}
-
-.contact-process__dot {
-  width: 0.9rem;
-  height: 0.9rem;
-  margin-top: 0.95rem; // centrerer de små prikker på linjen
-  border: 2px solid var(--color-accent-light);
-  border-radius: 50%;
-  background: var(--color-bg); // dækker linjen bag prikken
-}
-
-// Det sidste trin: stort blåt punkt med en lys ring
-.contact-process__step--last {
-  font-weight: 700;
-  color: var(--color-on-bg-accent);
-
-  .contact-process__dot {
-    width: 2.8rem;
-    height: 2.8rem;
-    margin-top: 0;
-    border: 0;
-    background: var(--color-accent);
-    box-shadow: 0 0 0 0.5rem var(--color-accent-pale);
-    animation: contact-pulse 2.4s ease-in-out infinite;
-  }
-}
-
-@keyframes contact-pulse {
-  50% { box-shadow: 0 0 0 0.85rem var(--color-accent-pale); }
-}
-
-// Mobil: kun prikkerne – teksten skjules undtagen "Kontakt"
-@media (max-width: $bp-md) {
-  .contact-process__step:not(.contact-process__step--last) {
-    font-size: 0; // skjuler teksten, men prikken bliver
-  }
 }
 
 // ===== Tekst =====
@@ -157,14 +81,23 @@
   }
 }
 
+// Ikonet foran LinkedIn, GitHub og CV.
+// Farven kommer fra linkets tekstfarve (currentColor i .icon-link__icon),
+// så ikonet skifter farve sammen med teksten ved hover og i dark mode.
+.contact__icon {
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  margin-right: 0.4em;
+  vertical-align: -0.15em; // flugter ikonet med tekstens grundlinje
+}
+
 .contact__copy-label {
   color: var(--color-on-bg-muted);
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .contact-process__step--last .contact-process__dot,
   .contact__button {
-    animation: none;
     transition: none;
   }
 }

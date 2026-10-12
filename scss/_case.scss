@@ -5,6 +5,13 @@
 //   hero → stort billede → [fakta | historien] → citat
 // Mobil: alt stablet. Desktop: fakta i en smal kolonne til venstre, historien til højre.
 
+// Case-siden bygges af JavaScript, efter JSON-filerne er hentet.
+// Uden en minimumshøjde står footeren øverst på den tomme side og hopper ned,
+// når casen dukker op (layout shift – "CLS" i Lighthouse).
+.case-page {
+  min-height: 100vh;
+}
+
 .case {
   display: grid;
   gap: var(--space-lg);
@@ -22,10 +29,10 @@
   }
 }
 
-// Cyber Hero får en større billedkolonne uden at ændre de øvrige cases.
+// Cyber Hero får ca. 40 % af heroens bredde uden at ændre de øvrige cases.
 .case__hero:has(.case__image[src*="cyberhero-sms"]) {
   @media (min-width: $bp-lg) {
-    grid-template-columns: minmax(0, 1fr) 25rem;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   }
 }
 
@@ -90,6 +97,12 @@
   position: relative;
   background: none;
 
+  @media (min-width: $bp-lg) {
+    aspect-ratio: auto;
+    max-width: none;
+    padding: 0;
+  }
+
   &::before {
     content: "";
     position: absolute;
@@ -103,6 +116,13 @@
   .case__image {
     position: relative;
     z-index: 1;
+
+    @media (min-width: $bp-lg) {
+      width: 100%;
+      max-width: 32rem;
+      height: auto;
+      object-fit: contain;
+    }
   }
 }
 
@@ -161,9 +181,16 @@
   padding: 0;
   list-style: none;
 
+  // Mørk accentfarve på den lyse faktaboks: 7,6:1 i kontrast (kravet er 4,5:1).
+  // Den lyse accentfarve gav kun 4,3:1 og blev fanget af Lighthouse.
   a {
     font-weight: 500;
-    color: var(--color-on-bg-accent);
+    color: var(--color-accent);
+
+    // I dark mode er boksen mørk, så her bruges den lyse accentfarve igen
+    [data-theme="dark"] & {
+      color: var(--color-on-bg-accent);
+    }
   }
 }
 
@@ -228,10 +255,12 @@
   counter-reset: trin; // tæller til trin-numrene
 }
 
+// Teksten står øverst, billederne under i hele trinnets bredde,
+// så skitser og tabeller er store nok til at kunne læses.
 .case__step {
   position: relative;
   display: grid;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   padding: 0 0 var(--space-lg);
   counter-increment: trin;
 
@@ -249,19 +278,6 @@
 
   &:last-child {
     padding-bottom: 0;
-  }
-
-  @media (min-width: $bp-md) {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--space-md);
-    align-items: start;
-  }
-}
-
-// Trin uden billeder: teksten fylder hele bredden i stedet for en tom halvdel
-.case__step--text-only {
-  @media (min-width: $bp-md) {
-    grid-template-columns: minmax(0, 1fr);
   }
 }
 
@@ -288,15 +304,120 @@
   }
 }
 
+// Billederne i et trin: ét billede = hele bredden, to billeder = side om side.
+// auto-fit + minmax: der kommer så mange kolonner, som der er plads til (mindst 14rem brede),
+// så på mobil står de automatisk under hinanden.
 .case__step-media {
   display: grid;
-  gap: var(--space-xs);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-sm);
+}
+
+// Hvert billede er en knap, så det kan åbnes i stort format (se js/lightbox.js).
+// En <button> kan også bruges med tastaturet (Tab + Enter) – det kan et <img> ikke.
+.case__zoom {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  cursor: zoom-in;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 
   .case__image {
-    max-height: 320px;
-    object-fit: cover;
-    object-position: top;
+    width: auto;
+    max-width: 100%;
+    max-height: 28rem; // høje billeder fylder ikke hele skærmen – hele billedet ses i lightboxen
+    object-fit: contain; // hele billedet vises, intet skæres væk
+    border-radius: var(--radius-sm);
   }
+
+  // lille mærkat, der fortæller, at billedet kan forstørres
+  &::after {
+    content: "Forstør";
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    position: absolute;
+    right: var(--space-xs);
+    bottom: var(--space-xs);
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg);
+    color: var(--color-on-bg-accent);
+  }
+
+  &:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-2px);
+  }
+}
+
+// ===== Lightbox: billedet i stort format =====
+// <dialog> er HTML's indbyggede pop-up. showModal() lægger den øverst,
+// gør resten af siden utilgængelig og lukker med Esc af sig selv.
+.lightbox {
+  margin: auto; // centrerer dialogen – reset'et i _base.scss (* { margin: 0 }) fjerner ellers browserens centrering
+  max-width: min(95vw, 1400px);
+  max-height: 95vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+
+  // ::backdrop er det mørke lag bag billedet
+  &::backdrop {
+    background: rgba(6, 10, 61, 0.85);
+  }
+}
+
+.lightbox__figure {
+  display: grid;
+  gap: var(--space-xs);
+  margin: 0;
+}
+
+.lightbox__image {
+  width: auto;
+  max-width: 100%;
+  max-height: 85vh;
+  margin-inline: auto;
+  border-radius: var(--radius-md);
+  background: #ffffff; // gennemsigtige billeder får hvid bund
+}
+
+.lightbox__caption {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+// siden bag lightboxen må ikke scrolle, mens den er åben
+body:has(.lightbox[open]) {
+  overflow: hidden;
 }
 
 // ===== Refleksionen som citat =====

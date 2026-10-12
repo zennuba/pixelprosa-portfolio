@@ -9,10 +9,9 @@
     "date": "30-09-2026",
     "producedBy": "ChatGPT-AI"
   },
-
   {
     "id": "lotteProfil",
-    "src": "img/illustrationer/lotte-portraet.svg",
+    "src": "img/illustrationer/color-lotte.svg",
     "alt": "Tegning af Lotte med krøllet knold og blå briller, der smiler",
     "caption": "",
     "type": "svg",
@@ -20,10 +19,9 @@
     "date": "08-10-2026",
     "producedBy": "Lotte/PixelProsa + Claude-AI"
   },
-
   {
     "id": "lotteKaffe",
-    "src": "img/CyberHero/",
+    "src": "img/img_ill_LotteKaffe.png",
     "alt": "Stregtegning af Lotte med en kop kaffe foran sin laptop",
     "caption": "",
     "type": "png",
@@ -31,10 +29,9 @@
     "date": "01-10-2026",
     "producedBy": ""
   },
-
   {
     "id": "lotteMobil",
-    "src": "img/OmLotte/mobile-ill.png",
+    "src": "img/OmLotte/mobile.png",
     "alt": "Stregtegning af en mobiltelefon, der ringer",
     "caption": "",
     "type": "png",
@@ -42,27 +39,31 @@
     "date": "01-10-2026",
     "producedBy": ""
   },
-
   {
     "id": "finnS3P1Iba",
-    "src": "img/playbook/finn.webp",
+    "src": "img/playbook/finn-1000.webp",
     "alt": "Stregtegning af AI-robotten Finn med smil, butterfly og en pakke på brystet",
     "caption": "Finn - GLS intern AI-persona",
     "type": "svg",
     "copyright": "GLS (original design) Lotte Nielsen (copied design for project)",
     "date": "25-09-2026",
-    "producedBy": "AI /Lotte Nielsen, based on GLS"
+    "producedBy": "AI /Lotte Nielsen, based on GLS",
+    "full": "img/playbook/finn.webp",
+    "width": 1000,
+    "height": 944
   },
-
   {
     "id": "heroSmsS2P2Iba",
-    "src": "img/cyberhero/cyberhero-case-001.png",
+    "src": "img/CyberHero/cyberhero-sms-1000.webp",
     "alt": "Tegning af en mobil der vibrerer med en falsk sms, hvor linket er fanget på en fiskekrog – et billede på phishing.",
     "caption": "Den falske sms, som hele scenariet bygger på",
-    "type": "svg",
+    "type": "png",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
-    "producedBy": "Lotte/PixelProsa"
+    "producedBy": "Lotte/PixelProsa",
+    "full": "img/CyberHero/cyberhero-sms.png",
+    "width": 1000,
+    "height": 811
   },
   {
     "id": "ucdS2P2Iba",
@@ -72,37 +73,48 @@
     "type": "webp",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
-    "producedBy": "Lotte/PixelProsa"
+    "producedBy": "Lotte/PixelProsa",
+    "width": 370,
+    "height": 753
   },
   {
     "id": "personaS2P2Iba",
-    "src": "img/CyberHero/cyberhero-01-forstaa-persona.webp",
+    "src": "img/CyberHero/cyberhero-01-forstaa-persona-1000.webp",
     "alt": "Persona Adam Elias, 25 år, finansbachelor-studerende, med citatet 'Hvis det ikke er hurtigt, nemt og relevant, så er jeg videre.'",
     "caption": "Persona: Adam Elias",
     "type": "webp",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
-    "producedBy": "Foro Canva / Lotte/PixelProsa"
+    "producedBy": "Foro Canva / Lotte/PixelProsa",
+    "full": "img/CyberHero/cyberhero-01-forstaa-persona.webp",
+    "width": 1000,
+    "height": 820
   },
   {
     "id": "researchS2P2Iba",
-    "src": "img/CyberHero/cyberhero-02-undersoege-research.webp",
+    "src": "img/CyberHero/cyberhero-02-undersoege-research-1000.webp",
     "alt": "Post-its der viser smishingens virkemidler, brugerens adfærd og læringsmålene.",
     "caption": "Smishing: virkemidler, adfærd og mål",
     "type": "webp",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
-    "producedBy": "Lotte/PixelProsa"
+    "producedBy": "Lotte/PixelProsa",
+    "full": "img/CyberHero/cyberhero-02-undersoege-research.webp",
+    "width": 1000,
+    "height": 1046
   },
   {
     "id": "fiveCsS2P2Iba",
-    "src": "img/CyberHero/cyberhero-03-strukturere-5cs.webp",
+    "src": "img/CyberHero/cyberhero-03-strukturere-5cs-1000.webp",
     "alt": "Modellen 5 C'er: Context, Challenge, Choices, Consequences og Contemplate, anvendt på smishing-scenariet.",
     "caption": "The 5 C's – strukturen bag scenariet",
     "type": "webp",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
-    "producedBy": "Lotte/PixelProsa"
+    "producedBy": "Lotte/PixelProsa",
+    "full": "img/CyberHero/cyberhero-03-strukturere-5cs..jpg",
+    "width": 1000,
+    "height": 529
   },
   {
     "id": "flowS2P2Iba",
@@ -116,23 +128,29 @@
   },
   {
     "id": "styletileS2P2Iba",
-    "src": "img/CyberHero/cyberhero-04-designe-styletile.webp",
+    "src": "img/CyberHero/cyberhero-04-designe-styletile-1000.webp",
     "alt": "Styletile med farvepalet i lime og lilla, monospace-fonte, komponenter og tidlige skærme.",
     "caption": "Styletile",
     "type": "webp",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
-    "producedBy": "Lotte/PixelProsa + ChatGPT-AI (illustration)"
+    "producedBy": "Lotte/PixelProsa + ChatGPT-AI (illustration)",
+    "full": "img/CyberHero/cyberhero-04-designe-styletile.webp",
+    "width": 1000,
+    "height": 956
   },
   {
     "id": "contentTableS2P2Iba",
-    "src": "img/CyberHero/cyberhero-05-udvikle-content-table.webp",
+    "src": "img/CyberHero/cyberhero-05-udvikle-content-table-1000.webp",
     "alt": "Indholdstabel hvor hver skærm har key, type, titel, tekst, feedback og valg, der peger videre til næste skærm.",
     "caption": "Indholdstabellen – broen mellem flow og kode",
     "type": "webp",
     "copyright": "Lotte/PixelProsa",
     "date": "30-09-2026",
-    "producedBy": "Lotte/PixelProsa"
+    "producedBy": "Lotte/PixelProsa",
+    "full": "img/CyberHero/cyberhero-05-udvikle-content-table.webp",
+    "width": 1000,
+    "height": 405
   },
   {
     "id": "flowBeforeS2P2Iba",
@@ -146,12 +164,53 @@
   },
   {
     "id": "portfolioS3P2Iba",
-    "src": "img/portfolio/portfolio-case.svg",
+    "src": "img/portfolio-img/portfolio-case-img-02.svg",
     "alt": "Tegning af et browservindue med PixelProsa-portfoliet: tre case-kort på række, en prikket proceslinje og en markør der klikker på et kort.",
     "caption": "PixelProsa – mit portfolio som produkt",
     "type": "svg",
     "copyright": "Lotte/PixelProsa",
     "date": "08-10-2026",
-    "producedBy": "Lotte/PixelProsa + Claude-AI"
+    "producedBy": "Lotte/PixelProsa + Claude-AI",
+    "width": 400,
+    "height": 420
+  },
+  {
+    "id": "personaRikkeS3P2Iba",
+    "src": "img/portfolio-img/PersonaRecruiterRikke-1000.webp",
+    "alt": "Persona Rikke Møller, 34 år, Talent Acquisition Specialist i Odense, med baggrund, mål, pain points og adfærd – og hvad det betyder for portfolioet.",
+    "caption": "Persona: Rikke, rekrutterer",
+    "type": "webp",
+    "copyright": "Lotte/PixelProsa",
+    "date": "10-10-2026",
+    "producedBy": "Lotte/PixelProsa",
+    "full": "img/portfolio-img/PersonaRecruiterRikke.webp",
+    "width": 1000,
+    "height": 707
+  },
+  {
+    "id": "oouxS3P2Iba",
+    "src": "img/portfolio-img/portfolio-ooux-objektkort-1000.webp",
+    "alt": "OOUX-objektkort med portfolioets objekter, fx Project, Case, Experience, Education, Skill, Tool og AI, med indhold, metadata, relationer og handlinger i hver sin farve.",
+    "caption": "OOUX-objektkort – grundlaget for informationsarkitekturen",
+    "type": "webp",
+    "copyright": "Lotte/PixelProsa",
+    "date": "10-10-2026",
+    "producedBy": "Lotte/PixelProsa",
+    "full": "img/portfolio-img/portfolio-ooux-objektkort.webp",
+    "width": 1000,
+    "height": 823
+  },
+  {
+    "id": "styletileS3P2Iba",
+    "src": "img/portfolio-img/Styletile-1000.webp",
+    "alt": "Styletile for PixelProsa med farver, typografi og komponenter.",
+    "caption": "Styletile for PixelProsa",
+    "type": "webp",
+    "copyright": "Lotte/PixelProsa",
+    "date": "10-10-2026",
+    "producedBy": "Lotte/PixelProsa",
+    "full": "img/portfolio-img/Styletile.webp",
+    "width": 1000,
+    "height": 778
   }
 ]

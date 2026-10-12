@@ -1,5 +1,6 @@
 import { CasePage } from "./main.js";
 import { loadCases } from "./js/caseLoader.js";
+import { initLightbox } from "./js/lightbox.js";
 
 async function fetchJson(path) {
   const response = await fetch(path);
@@ -57,6 +58,7 @@ async function initCase() {
 
     const casePage = new CasePage(caseData, images, tools.concat(techs));
     casePage.render(container);
+    initLightbox(container); // billeder i processen kan nu åbnes i stort format
   } catch (error) {
     const loadError =
       error instanceof Error ? error : new Error("Der opstod en ukendt fejl ved indlæsning af casen.");

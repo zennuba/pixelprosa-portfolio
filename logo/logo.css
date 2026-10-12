@@ -1,0 +1,50 @@
+/* 1. Baggrunden og containeren */
+body {
+  background-color: #1f2fd6; /* Din elektriske mørkeblå dark mode baggrund */
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.logo-container {
+  position: relative;
+  display: inline-block;
+  font-size: 0; /* Fjerner uønsket luft mellem inline-elementer */
+}
+
+/* 2. Det hvide PIXEL ord (SVG) */
+.logo-pixel {
+  width: 350px; /* Juster størrelsen på logoet her */
+  height: auto;
+  display: block;
+}
+
+/* 3. Det lysende PROSA ord (Neon kontur) */
+.logo-prosa {
+  /* Hent din foretrukne håndskrifts-font ind (f.eks. via Google Fonts) */
+  font-family: "Celebration", "Mr Dafoe", "Brush Script MT", cursive;
+
+  position: absolute;
+  bottom: -20px; /* Flytter ordet ned over bunden af PIXEL */
+  right: -10px; /* Flytter ordet ud til højre for at ramme dit layout */
+
+  font-size: 5.5rem; /* Juster størrelsen på prosa, så det passer til pixel */
+  color: transparent; /* Gør bogstavernes indre gennemsigtigt */
+
+  /* Skaber den skarpe hvide kontur rundt om bogstaverne */
+  -webkit-text-stroke: 1.5px #ffffff;
+
+  /* Skaber den magiske lyseblå neon-glød (tre lag for perfekt dybde) */
+  text-shadow:
+    0 0 4px rgba(255, 255, 255, 0.9),
+    /* Skarp hvid kerne */ 0 0 12px rgba(100, 200, 255, 0.7),
+    /* Lyseblå mellemglow */ 0 0 25px rgba(255, 255, 255, 0.3); /* Blød, bred aura */
+
+  /* Sikrer at skriften står knivskarpt og ikke mudrer i web-browsere */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  user-select: none; /* Forhindrer uønsket tekstmarkering, når man klikker på logoet */
+}

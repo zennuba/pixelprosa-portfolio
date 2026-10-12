@@ -5,14 +5,5 @@
   "phone": "+45 26 18 96 50",
   "linkedin": "https://www.linkedin.com/in/lotte-nielsen-multimediedesign/",
   "github": "https://github.com/zennuba",
-  "cv": "docs/lotte-nielsen-cv.pdf",
-  "steps": [
-    "Forstå",
-    "Undersøge",
-    "Strukturere",
-    "Designe",
-    "Udvikle",
-    "Teste",
-    "Forbedre"
-  ]
+  "cv": "docs/lotte-nielsen-cv.pdf"
 }

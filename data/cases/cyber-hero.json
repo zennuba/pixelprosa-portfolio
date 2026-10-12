@@ -2,78 +2,89 @@
   "id": "interaktive-brugeroplevelser",
   "kicker": "CASE · CYBER HERO",
   "title": "Kan du spotte svindel på 3 minutter?",
-  "hook": "08:47. Din telefon vibrerer. 'StudieAdmin': Din eksamen er flyttet – book en ny tid inden kl. 10 via linket. Linket ser rigtigt ud. Klikker du?",
-  "heroImage": "img/cyberhero/cyberhero-case-000.png",
-  "intro": "Det øjeblik er Cyber Hero bygget op omkring. Et interaktivt træningsscenarie, hvor du selv vælger, hvad du gør med sms'en – og ser konsekvensen med det samme. Hvert valg fører ad en ny sti med feedback og en af flere slutninger. Individuelt semesterprojekt, fra research og persona til et mobile first-scenarie i HTML, SCSS, JavaScript og JSON.",
+  "hook": "08:47. Telefonen summer. 'StudieAdmin': Din eksamen er flyttet – book ny tid inden kl. 10 via linket. Linket ser ægte ud. Klikker du?",
+  "heroImage": "heroSmsS2P2Iba",
+  "intro": "Cyber Hero handler om netop dét øjeblik. Du vælger selv, hvad du gør med sms'en, og ser konsekvensen med det samme. Hvert valg sender dig ad en ny sti mod en af flere slutninger. Individuelt projekt på 2. semester: fra research til mobile first-prototype i HTML, SCSS, JavaScript og JSON.",
   "responsibility": "Research, persona, koncept, flow, wireframes, UI-design og frontend-udvikling som individuelt projekt.",
-  "purpose": "De fleste ved godt, at man ikke skal klikke på mistænkelige links. Alligevel gør mange det, når det haster. Oplysning er altså ikke problemet – adfærd er. Mit greb blev derfor: lad brugeren begå fejlen. I et sikkert miljø kan man klikke, se, hvad der sker, og prøve igen – uden løftet pegefinger og uden at det koster noget.",
+  "purpose": "De fleste ved godt, at man ikke skal klikke på mistænkelige links. Når det haster, gør vi det alligevel. Problemet er altså ikke viden, men vaner. Opgaven var at udvikle et forgrenet scenarie i HTML, SCSS og JavaScript, der formidler et selvvalgt emne inden for datasikkerhed til studerende på erhvervsakademier. Brugeren skal lære ved at træffe valg og se konsekvenserne. Det giver et sikkert sted at begå fejlen: Man kan klikke, se hvad der sker, og prøve igen.",
   "opportunities": [
-    "Designudfordringen: Hvordan træner man sikker adfærd, uden at brugeren først skal lære en masse regler?",
-    "Mit svar: Lad brugeren vælge først – og forklar bagefter.",
-    "Målet: At sikker adfærd føles lettere end det hurtige klik."
+    "<strong>Udfordring:</strong> At guide studerende på erhvervsakademier til mere sikre valg i digitale situationer.",
+    "<strong>Princip:</strong> Brugeren vælger først og ser konsekvensen bagefter.",
+    "<strong>Mål:</strong> At det sikre valg føles lige så nemt som det hurtige klik."
   ],
   "process": [
     {
       "step": "Forstå",
       "ideoPhase": "Discovery",
-      "images": ["ucdS2P2Iba", "personaS2P2Iba"],
-      "text": "Hvorfor klikker man, selv når man ved bedre? Jeg brugte User-Centered Design og data fra DKEA 2025 og Conzoom til at forstå erhvervsakademistuderende. Det blev til research-personaen Adam, 25 år: 'Hvis det ikke er hurtigt, nemt og relevant, så er jeg videre.' Med Golden Circle stillede jeg WHY-spørgsmål til Adam – hvorfor klikker han, og hvorfor genbruger han sit password? Svaret pegede på tid og vaner, ikke uvidenhed."
+      "images": [
+        "ucdS2P2Iba",
+        "personaS2P2Iba"
+      ],
+      "text": "Hvorfor klikker vi, når vi godt ved bedre? Data fra DKEA 2025 og Conzoom blev til personaen Adam, 25 år: 'Hvis det ikke er hurtigt, nemt og relevant, så er jeg videre.' Golden Circle-spørgsmålene pegede på tid og vaner frem for uvidenhed."
     },
     {
       "step": "Undersøge",
       "ideoPhase": "Interpretation",
-      "images": ["researchS2P2Iba"],
-      "text": "Hvad skal scenariet handle om? Jeg startede bredt med ni emner inden for datasikkerhed og valgte smishing, fordi presset sker på få sekunder. Angrebet spiller på hast, frygt og autoritet – ikke på tekniske svagheder. Fogg Behavior Model og Nudge Theory gav teorien bag: sikker adfærd skal gøres nem at vælge, ikke bare forklares."
+      "images": [
+        "researchS2P2Iba"
+      ],
+      "text": "Ud af ni sikkerhedsemner valgte jeg smishing, fordi presset opstår på få sekunder. Angrebet spiller på hast, frygt og autoritet. Fogg Behavior Model og Nudge Theory gav mig teorien bag: Det sikre valg skal gøres nemt, ikke bare forklares."
     },
     {
       "step": "Strukturere",
       "ideoPhase": "Ideation",
-      "images": ["fiveCsS2P2Iba"],
-      "text": "Hvad sker der efter et valg? Jeg udvidede 'The 3 C's of Branching Scenarios' til 5 C'er: Context, Challenge, Choices, Consequence og Contemplate. Flowet fik to ekstra lag: socialt pres – en kammerat har allerede klikket – og nuancerede slutninger, hvor også det 'sikre' valg har en pris. Pointen blev ikke 'klik ikke', men 'tjek kilden'."
+      "images": [
+        "fiveCsS2P2Iba"
+      ],
+      "text": "Jeg udvidede '3 C's of Branching Scenarios' til fem: Context, Challenge, Choices, Consequence og Contemplate. Oven i det kom socialt pres, hvor en kammerat allerede har klikket, og slutninger, hvor selv det sikre valg har en pris. Pointen er derfor ikke 'klik ikke', men 'tjek kilden'."
     },
     {
       "step": "Designe",
       "ideoPhase": "Experimentation",
-      "images": ["styletileS2P2Iba"],
-      "text": "Hvordan får man en sms til at føles ægte? Styletilen samler farver, monospace-fonte, komponenter og tidlige skærme i ét system. Fire skærmtyper – main, choice, consequence og conclusion – er bygget af de samme komponenter med BEM-navne allerede i Figma. Og én lille detalje gør hele forskellen: domænet 'wisefl0w' med et nul i stedet for o."
+      "images": [
+        "styletileS2P2Iba"
+      ],
+      "text": "Hvordan får man en sms til at føles ægte? Jeg samlede farver, monospace-fonte og komponenter i ét styletile. De fire skærmtyper er bygget af de samme dele, med BEM-navne allerede i Figma. Og så er der den lille detalje, der gør forskellen: domænet 'wisefl0w' med et nul i stedet for o."
     },
     {
       "step": "Udvikle",
       "ideoPhase": "Experimentation",
-      "images": ["contentTableS2P2Iba"],
-      "text": "Én skærm, mange mulige veje. En indholdstabel blev broen mellem flow og kode: hver skærm har en key, en type, tekst, feedback og valg, der peger videre til næste skærm. I stedet for at hardcode hver skærm byggede jeg én dynamisk skærm, som JavaScript fylder med indhold ud fra brugerens valg. Det adskiller indhold og visning, så scenariet kan udvides uden ny kode. SCSS er opdelt i partials med variabler og BEM, og et skip-link forbedrer tilgængeligheden."
+      "images": [
+        "contentTableS2P2Iba"
+      ],
+      "text": "I stedet for at hardcode hver skærm byggede jeg én dynamisk skærm, som JavaScript fylder ud fra en indholdstabel. Hver skærm har en key, tekst, feedback og valg, der peger videre. Fordi indhold og kode er adskilt, kan scenariet vokse uden ny kode. SCSS'en er delt op i partials med variabler og BEM, og et skip-link hjælper tilgængeligheden."
     },
     {
       "step": "Teste",
       "ideoPhase": "Evolution",
       "images": [],
-      "text": "Kan brugeren faktisk komme gennem alle veje? Funktionstest efter tjekliste: alle flows og valg fører korrekt videre, feedbacken vises tydeligt, navigationen virker, layoutet er responsivt, og der er ingen console errors."
+      "text": "Jeg testede funktionerne efter en tjekliste. Fører alle valg det rigtige sted hen? Vises feedbacken tydeligt? Virker layoutet på mobil? Er der nogen console errors?"
     },
     {
       "step": "Forbedre",
       "ideoPhase": "Evolution",
       "images": [],
-      "text": "Fra mange idéer til ét skarpt scenarie. Konceptet gik gennem tre idérunder: et password-spil på desktop, en phishing-mail og til sidst smishing-sms'en på mobil. Det første flow havde to scenarier og mange opgaver. Jeg skar ned til ét gennemarbejdet scenarie, hvor sammenhængen mellem valg, konsekvens og læring står tydeligt."
+      "text": "Konceptet gik gennem tre idérunder: et password-spil, så en phishing-mail og til sidst smishing-sms'en. Wireframes gik fra lofi over lofi 2 til hifi. Det første flow havde to scenarier og alt for mange opgaver. Jeg skar ned til ét scenarie, der virker hele vejen igennem."
     }
   ],
-  "finalSolution": "Et ikke-lineært, mobile first-træningsscenarie: brugeren møder situationen, træffer et valg, ser konsekvensen, fortsætter ad en ny sti og ender i en af flere slutninger.",
+  "finalSolution": "Et mobile first-træningsscenarie, hvor du møder en realistisk sms, træffer et valg, ser konsekvensen og ender i en af flere slutninger. Der er få valg pr. skærm, korte tekster og feedback med det samme.",
   "learning": [
-    "Omsætte research og persona til designvalg gennem Golden Circle.",
-    "Strukturere et forgrenet scenarie med 5 C'er-modellen.",
-    "Bygge et lille komponentbibliotek i Figma med varianter og BEM-navne.",
-    "Adskille indhold og visning: én dynamisk skærm i stedet for mange hardcodede.",
-    "Bruge JavaScript til logik og interaktion i et forgrenet scenarie.",
-    "Formidle datasikkerhed til en konkret målgruppe – uden løftet pegefinger.",
-    "Bruge AI som læringsstøtte til kodeforståelse, strukturering af SCSS og JavaScript, illustrationer og fejlfinding."
+    "At omsætte research til designvalg med Golden Circle",
+    "At strukturere et forgrenet scenarie med 5 C'er-modellen",
+    "At bygge et lille komponentbibliotek i Figma med varianter og BEM",
+    "At adskille indhold og visning, så én dynamisk skærm erstatter mange hardcodede",
+    "At bruge JavaScript til logik og interaktion i et forgrenet scenarie",
+    "At formidle datasikkerhed til en konkret målgruppe",
+    "At bruge AI som sparringspartner til kodeforståelse, SCSS-struktur og fejlfinding"
   ],
-  "reflection": "Jeg brugte mere tid på design og detaljer end planlagt, og løsningen voksede. Det lærte mig at prioritere kernefunktionalitet, struktur og brugeroplevelse tidligt. Derfor valgte jeg bevidst ét færdigt scenarie frem for flere ufærdige. Undervejs holdt jeg overblikket med én arbejdsregel: kun ét fokus ad gangen – flow, styling og JavaScript hver for sig.",
-  "testIteration": "Tre idérunder (password-spil → phishing-mail → smishing-sms) og tre wireframe-iterationer (lofi → lofi 2 → hifi).",
-  "prototype": "En funktionel prototype, hvor brugeren møder en realistisk sms, træffer valg og føres videre til forskellige udfald – med feedback undervejs.",
-  "design": "Et guidet scenarieforløb, hvor brugeren i et sikkert miljø kan afprøve konsekvensen af sine valg. Få valg pr. skærm, korte realistiske tekster, øjeblikkelig feedback og lav kognitiv belastning.",
+  "reflection": "Jeg brugte mere tid på design og detaljer end planlagt, og projektet voksede. Derfor valgte jeg bevidst ét færdigt scenarie frem for flere halve. Min arbejdsregel blev at have ét fokus ad gangen, så flow, styling og JavaScript fik hver sin tur.",
+  "testIteration": null,
+  "prototype": null,
+  "design": null,
   "links": {
-    "prototype": "https://pixelprosa.dk/",
+    "prototype": "https://pixelprosa.dk/cyberhero/",
     "github": "https://github.com/zennuba/P5-Cyber_security",
-    "figma": "https://www.figma.com/design/mKRqRDKMG3kU6KjNG8u8Kn/P5_opgavefiler"
+    "figma": null
   },
   "date": {
     "start": "2026-04-07",
@@ -88,7 +99,13 @@
     "Responsive Design",
     "Information Security"
   ],
-  "tool": ["HTML", "SCSS", "JavaScript", "JSON", "Figma"],
+  "tool": [
+    "HTML",
+    "SCSS",
+    "JavaScript",
+    "JSON",
+    "Figma"
+  ],
   "processMethod": [
     "IDEO Design Thinking for Educators",
     "User-Centered Design",

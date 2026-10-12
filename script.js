@@ -4,7 +4,7 @@ import { ProfileSection } from "./js/profileSection.js";
 import { PortfolioPage } from "./main.js";
 import { loadCases } from "./js/caseLoader.js";
 import { ContactSection } from "./js/contactSection.js";
-// import { makeEyesFollow } from "./js/eyeFollow.js"; // bruges ikke i hero lige nu
+import { makeEyesFollow } from "./js/eyeFollow.js";
 
 class HomePage {
   constructor(profile, projects, image, contact) {
@@ -36,22 +36,19 @@ class HomePage {
     actions.className = "home-hero__actions";
     actions.innerHTML = `
       <a class="button-link" href="#featured">Se udvalgte case stories</a>
-      <a class="text-link" href="#omLotte.html">Om mig</a>
+      <a class="text-link" href="omLotte.html">Om mig</a>
     `;
     introduction.append(actions);
 
-    // Tegningen er fjernet fra hero – kun tekst nu. Slå til igen ved at fjerne // herunder.
-    // const figure = document.createElement("figure");
-    // figure.className = "home-hero__figure";
-    // const image = document.createElement("img");
-    // image.src = this.image.src;
-    // image.className = "home-hero__illustration";
-    // image.alt = this.image.alt;
-    // const caption = document.createElement("figcaption");
-    // caption.textContent = this.image.caption;
-    // figure.append(image, caption);
-    // hero.append(introduction, figure);
-    hero.append(introduction);
+    // Tegningen i hero – øjnene følger musen (makeEyesFollow kaldes i init)
+    const figure = document.createElement("figure");
+    figure.className = "home-hero__figure";
+    const image = document.createElement("img");
+    image.src = this.image.src;
+    image.className = "home-hero__illustration";
+    image.alt = this.image.alt;
+    figure.append(image);
+    hero.append(introduction, figure);
 
     const featured = document.createElement("section");
     featured.className = "home-section home-featured";
@@ -61,8 +58,8 @@ class HomePage {
     featuredHeading.className = "home-section__heading";
     featuredHeading.innerHTML = `
       <div>
-        <p class="home-eyebrow">Projekt cases fra 3. semester</p>
-        <h2>Se udvalgte case stories</h2>
+        <p class="home-eyebrow">Fra 2. og 3. semester</p>
+        <h2>Udvalgte cases</h2>
       </div>
     `;
 
@@ -78,8 +75,7 @@ class HomePage {
       <div class="home-about__intro">
         <p class="home-eyebrow">Kort om mig</p>
         <h2>Fra koordinering til digitale oplevelser</h2>
-        <p>Som projektkoordinator I Danmarks Lærerforening fik jeg processer og systemer til at hænge sammen. I dag gør jeg det samme digitalt: Jeg finder ud af, hvad brugeren har brug for, strukturerer det og bygger løsningen.</p>
-        <p>Jeg bor i Odense og søger praktik fra januar 2027 – i Odense eller remote.</p>
+        <p>Som projektkoordinator i Danmarks Lærerforening fik jeg processer og systemer til at hænge sammen. I dag gør jeg det samme digitalt: Jeg finder ud af, hvad brugeren har brug for, strukturerer det og bygger løsningen.</p>
         <a class="text-link" href="omLotte.html">Læs mere om mig</a>
         </div>
     `;
@@ -133,7 +129,7 @@ async function init() {
 
   const profile = new ProfileSection(
     "Jeg forbinder design, kode og mennesker",
-    "Multimediedesigner med blik for UX, frontend og menneskecentreret AI. Jeg undersøger problemer, skaber digitale løsninger og bygger dem fra idé til virkelighed.",
+    "Multimediedesigner med blik for UX, frontend og menneskecentreret AI. Fra første spørgsmål til færdig kode.",
   );
 
   const homeContainer = document.getElementById("home");
@@ -151,8 +147,8 @@ async function init() {
       contact,
     );
     homePage.render(homeContainer);
-    // Gør tegningen "levende": øjnene følger musen (slået fra, da hero kun er tekst nu)
-    // makeEyesFollow(homeContainer.querySelector(".home-hero__illustration"));
+    // Gør tegningen "levende": øjnene følger musen
+    makeEyesFollow(homeContainer.querySelector(".home-hero__illustration"));
     return;
   }
 

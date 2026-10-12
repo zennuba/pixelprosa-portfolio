@@ -70,7 +70,21 @@ class CasePage {
   #image(id) {
     const img = this.images.find((image) => image.id === id);
     if (!img) return "";
-    return `<img class="case__image" src="${img.src}" alt="${img.alt}">`;
+    // width + height fortæller browseren billedets format, før det er hentet,
+    // så der er plads til det med det samme, og siden ikke hopper (CLS).
+    const size = img.width && img.height ? ` width="${img.width}" height="${img.height}"` : "";
+    // src = lille udgave til siden, data-full = den store udgave til lightboxen
+    const full = img.full ? ` data-full="${img.full}"` : "";
+    return `<img class="case__image" src="${img.src}" alt="${img.alt}"${size}${full} data-caption="${img.caption || ""}">`;
+  }
+
+  // Et billede, man kan klikke på for at se det i stort format.
+  // Selve åbningen sker i js/lightbox.js – her laver vi bare knappen omkring billedet.
+  #zoomImage(id) {
+    const image = this.#image(id);
+    if (!image) return "";
+    // Knappens navn til skærmlæsere = "Forstør billede:" + billedets alt-tekst
+    return `<button class="case__zoom" type="button"><span class="visually-hidden">Forstør billede: </span>${image}</button>`;
   }
 
   // Tegningen i heroen: lille "spot-illustration" ved siden af teksten – teksten er hovedsagen
@@ -110,7 +124,7 @@ class CasePage {
 
     const items = steps
       .map((step) => {
-        const images = (step.images || []).map((id) => this.#image(id)).join("");
+        const images = (step.images || []).map((id) => this.#zoomImage(id)).join("");
 
         // Uden billeder får teksten hele bredden (modifier --text-only)
         const modifier = images ? "" : " case__step--text-only";
@@ -150,6 +164,10 @@ class CasePage {
 
     // Fanebladets titel følger samme mønster som de andre sider: "Side · PixelProsa Portfolio"
     document.title = `${c.title} · PixelProsa Portfolio`;
+
+    // Meta description til søgemaskiner: hver case får sin egen ud fra hook-teksten
+    const description = document.querySelector('meta[name="description"]');
+    if (description && c.hook) description.setAttribute("content", c.hook);
 
     // ToolOverview laver chips med ikon + navn – samme udseende som på Erfaring
     const overview = new ToolOverview("Tools og skills", c.tool, c.skill, this.icons);

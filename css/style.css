@@ -25,7 +25,7 @@
   --font-accent: "Instrument Serif", serif;
   --font-mono: "JetBrains Mono", monospace;
   --font-pixel: "Silkscreen", monospace;
-  --font-prosa: "EB Garamond", serif;
+  --font-prosa: "Yellowtail", cursive;
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
@@ -246,25 +246,14 @@ html {
 .site-brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-size: 1.5rem;
   text-decoration: none;
-}
-
-.site-brand__logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: radial-gradient(circle, var(--color-accent-light) 1.1px, transparent 1.5px) 0 0/5px 5px;
 }
 
 .wordmark {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.45em;
-  text-transform: uppercase;
+  text-transform: lowercase;
   white-space: nowrap;
   line-height: 1;
 }
@@ -272,16 +261,16 @@ html {
 .wordmark__pixel {
   font-family: var(--font-pixel);
   font-weight: 700;
-  font-size: 0.82em;
-  letter-spacing: 0.2em;
-  color: var(--color-on-bg);
+  color: var(--color-on-bg-accent);
 }
 
 .wordmark__prosa {
   font-family: var(--font-prosa);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--color-on-bg-accent);
+  font-size: 1.2em;
+  color: var(--color-off-white);
+  text-shadow: 0 0 0.1em var(--color-accent), 0 0 0.35em var(--color-accent-light);
+  margin-left: -0.6em;
+  transform: translateY(0.3em) rotate(-6deg);
 }
 
 .site-header__practice {
@@ -373,8 +362,19 @@ html {
   gap: var(--space-md);
   padding-block: var(--space-lg) var(--space-md);
 }
+@media (min-width: 768px) {
+  .home-hero {
+    grid-template-columns: 2fr 1fr;
+    align-items: center;
+  }
+}
 
 .home-hero__figure {
+  margin: 0;
+  width: 100%;
+  max-width: 20rem;
+  justify-self: center;
+  padding: var(--space-md);
   background: url("../img/illustrationer/prikker.svg") no-repeat center/contain;
 }
 
@@ -382,13 +382,6 @@ html {
   display: block;
   width: 100%;
   height: auto;
-}
-
-.home-hero__figure img {
-  aspect-ratio: 4/5;
-  -o-object-fit: cover;
-     object-fit: cover;
-  border-radius: var(--radius-lg);
 }
 
 .site-footer {
@@ -1017,6 +1010,10 @@ html {
   color: var(--color-on-bg-muted);
 }
 
+.case-page {
+  min-height: 100vh;
+}
+
 .case {
   display: grid;
   gap: var(--space-lg);
@@ -1035,7 +1032,7 @@ html {
 
 @media (min-width: 1100px) {
   .case__hero:has(.case__image[src*=cyberhero-sms]) {
-    grid-template-columns: minmax(0, 1fr) 25rem;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   }
 }
 
@@ -1095,6 +1092,13 @@ html {
   position: relative;
   background: none;
 }
+@media (min-width: 1100px) {
+  .case__hero-image:has(.case__image[src*=cyberhero-sms]) {
+    aspect-ratio: auto;
+    max-width: none;
+    padding: 0;
+  }
+}
 .case__hero-image:has(.case__image[src*=cyberhero-sms])::before {
   content: "";
   position: absolute;
@@ -1106,6 +1110,15 @@ html {
 .case__hero-image:has(.case__image[src*=cyberhero-sms]) .case__image {
   position: relative;
   z-index: 1;
+}
+@media (min-width: 1100px) {
+  .case__hero-image:has(.case__image[src*=cyberhero-sms]) .case__image {
+    width: 100%;
+    max-width: 32rem;
+    height: auto;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
 }
 
 .case__body {
@@ -1157,6 +1170,9 @@ html {
 }
 .case__links a {
   font-weight: 500;
+  color: var(--color-accent);
+}
+[data-theme=dark] .case__links a {
   color: var(--color-on-bg-accent);
 }
 
@@ -1216,7 +1232,7 @@ html {
 .case__step {
   position: relative;
   display: grid;
-  gap: var(--space-sm);
+  gap: var(--space-md);
   padding: 0 0 var(--space-lg);
   counter-increment: trin;
 }
@@ -1233,19 +1249,6 @@ html {
 }
 .case__step:last-child {
   padding-bottom: 0;
-}
-@media (min-width: 768px) {
-  .case__step {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    gap: var(--space-md);
-    align-items: start;
-  }
-}
-
-@media (min-width: 768px) {
-  .case__step--text-only {
-    grid-template-columns: minmax(0, 1fr);
-  }
 }
 
 .case__step-text p {
@@ -1271,14 +1274,104 @@ html {
 
 .case__step-media {
   display: grid;
-  gap: var(--space-xs);
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--space-sm);
 }
-.case__step-media .case__image {
-  max-height: 320px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: top;
-     object-position: top;
+
+.case__zoom {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: var(--space-sm);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface);
+  cursor: zoom-in;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.case__zoom .case__image {
+  width: auto;
+  max-width: 100%;
+  max-height: 28rem;
+  -o-object-fit: contain;
+     object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+.case__zoom::after {
+  content: "Forstør";
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  position: absolute;
+  right: var(--space-xs);
+  bottom: var(--space-xs);
+  padding: 0.2rem 0.5rem;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-on-bg-accent);
+}
+.case__zoom:hover {
+  border-color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+.lightbox {
+  margin: auto;
+  max-width: min(95vw, 1400px);
+  max-height: 95vh;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: visible;
+}
+.lightbox::backdrop {
+  background: rgba(6, 10, 61, 0.85);
+}
+
+.lightbox__figure {
+  display: grid;
+  gap: var(--space-xs);
+  margin: 0;
+}
+
+.lightbox__image {
+  width: auto;
+  max-width: 100%;
+  max-height: 85vh;
+  margin-inline: auto;
+  border-radius: var(--radius-md);
+  background: #ffffff;
+}
+
+.lightbox__caption {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  text-align: center;
+  color: #ffffff;
+}
+
+.lightbox__close {
+  position: absolute;
+  top: -0.75rem;
+  right: -0.75rem;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 0;
+  border-radius: 50%;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+body:has(.lightbox[open]) {
+  overflow: hidden;
 }
 
 .case__quote {

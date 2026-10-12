@@ -3,7 +3,7 @@
   "kicker": "CASE · AI MANAGER",
   "title": "AI Playbook for GLS Denmark",
   "hook": "Hvordan kan en AI Playbook gøre det lettere for medarbejdere i GLS Denmark at anvende AI sikkert, ansvarligt og effektivt?",
-  "heroImage": "img/playbook/playbook-case-000.png",
+  "heroImage": "finnS3P1Iba",
   "intro": "Et gruppeprojekt på 3. semester med fokus på generativ AI, datasikkerhed, ansvarlig anvendelse og AI i en virksomhedskontekst. Opgaven var at udvikle en handlingsorienteret AI Playbook til medarbejdere i GLS Denmark.",
   "responsibility": "Research, analyse og beskrivelse af et AI-workflow – det meste af gruppens ikke-visuelle arbejde.",
   "purpose": "At understøtte medarbejdernes brug af Finn og eksterne AI-værktøjer gennem klare retningslinjer, praktiske eksempler, prompts og use cases samt bedre forståelse af datasikkerhed og kvalitetssikring.",
@@ -26,7 +26,11 @@
         "items": [
           { "value": 51.6, "label": "bruger slet ikke AI", "color": "blue" },
           { "value": 29.0, "label": "eksperimenterer med AI", "color": "pink" },
-          { "value": 4.4, "label": "oplever AI som uundværligt", "color": "green" }
+          {
+            "value": 4.4,
+            "label": "oplever AI som uundværligt",
+            "color": "green"
+          }
         ]
       }
     },

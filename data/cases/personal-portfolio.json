@@ -1,58 +1,69 @@
 {
   "id": "personal-portfolio",
-  "kicker": "CASE · PERSONAL PORTFOLIO",
+  "kicker": "CASE · PIXELPROSA",
   "title": "Hvordan fanger man en praktikvirksomheds interesse på 10 sekunder?",
-  "hook": "Et portfolio skal mere end at vise flotte projekter. Det skal overbevise. Med PixelProsa har jeg udviklet mit eget digitale portfolio fra bunden i HTML, SCSS og vanilla JavaScript. Målet er at gøre det tydeligt, hvem jeg er, hvad jeg kan, og hvordan jeg arbejder, på få sekunder.",
-  "heroImage": "portfolio-case-img-00.png",
-  "intro": "Et individuelt 3. semesterprojekt, hvor jeg har designet og udviklet et digitalt portfolio målrettet min kommende praktikperiode.",
+  "hook": "En praktikansvarlig bruger få sekunder på et portfolio. Kan de nå at se, hvem jeg er, hvad jeg kan, og hvordan jeg arbejder? Det er det, PixelProsa skal svare på.",
+  "heroImage": "portfolioS3P2Iba",
+  "intro": "Individuelt projekt på 3. semester: mit eget portfolio, designet i Figma og bygget fra bunden i HTML, SCSS og vanilla JavaScript.",
   "responsibility": "Research, UX og UI-design, informationsarkitektur, frontend-udvikling og test.",
-  "purpose": "At skabe et professionelt portfolio, der synliggør mine kompetencer, arbejdsprocesser og faglige udvikling.",
-  "opportunities": [],
+  "purpose": "Som multimediedesigner kan jeg mange ting, og det er netop problemet. Hvis alt får lige meget plads, drukner det vigtigste. Opgaven var at udvikle et personligt portfolio i HTML, SCSS og vanilla JavaScript, bygget på OOUX og et designsystem, der skal skaffe mig en praktikplads hos et digitalt bureau eller en større virksomhed.",
+  "opportunities": [
+    "<strong>Udfordring:</strong> At vise mange discipliner, uden at det bliver rodet.",
+    "<strong>Princip:</strong> Position → cases → proces → resultat → kontakt.",
+    "<strong>Mål:</strong> At en praktikansvarlig hurtigt kan finde en relevant case, min rolle og mine skills og tools."
+  ],
   "process": [
     {
-      "step": "Discovery",
-      "images": ["img/portfolio-img/PersonaRecruiterRikke.png"],
-      "question": "Hvem skal portfolioet overbevise?",
-      "text": "Målgruppen er praktikansvarlige, designere og udviklere. Gennem desk research, brancheanalyser og praktikopslag undersøgte jeg, hvilke kompetencer virksomheder efterspørger, og hvad portfolioet skal kommunikere. Det dannede grundlag for min faglige positionering med fokus på UX, design, webudvikling og AI."
+      "step": "Forstå",
+      "ideoPhase": "Discovery",
+      "images": [
+        "personaRikkeS3P2Iba"
+      ],
+      "text": "Hvem skal portfolioet overbevise? Praktikansvarlige, designere og udviklere i digitale bureauer og større virksomheder. Desk research, brancheanalyser og praktikopslag viste, hvad virksomheder leder efter. Det blev til min faglige positionering: UX og frontend, med AI som co-creator."
     },
     {
-      "step": "Interpretation",
-      "images": [],
-      "question": "Hvad skal portfolioet bestå af?",
-      "text": "Med udgangspunkt i researchen brugte jeg Object-Oriented UX (OOUX) til at identificere de centrale objekter, blandt andet Case, Project, Skill, Tool, Experience og Education. Objekternes indhold og relationer dannede grundlag for portfolioets informationsarkitektur."
+      "step": "Strukturere",
+      "ideoPhase": "Interpretation",
+      "images": [
+        "oouxS3P2Iba"
+      ],
+      "text": "Hvad skal sitet bestå af? Noun foraging og SIP-testen hjalp mig med at finde de centrale objekter, fx Case, Projekt, Skill, Tool, Erfaring og Uddannelse. ORCA gjorde relationerne mellem dem konkrete, og tilsammen blev det til sitets informationsarkitektur."
     },
     {
-      "step": "Ideation",
-      "images": [],
-      "question": "Hvordan skal indholdet præsenteres?",
-      "text": "I Figma udviklede jeg wireframes og et visuelt design med fokus på skanbarhed, tydeligt informationshierarki og en personlig visuel identitet. Proceslinjen blev samtidig et gennemgående designelement på sitet for at vise min måde at arbejde på."
+      "step": "Designe",
+      "ideoPhase": "Ideation",
+      "images": [
+        "styletileS3P2Iba"
+      ],
+      "text": "Hvordan skal det se ud? I Figma lavede jeg wireframes og et visuelt design med fokus på skanbarhed og et klart hierarki. Valgene bygger på Gestalt, Laws of UX og usability-heuristikker, og design tokens holder farver, typografi og spacing ens. Personligheden ligger i detaljerne: et ord, der skifter font og farve, og en footer på højkant."
     },
     {
-      "step": "Experimentation",
+      "step": "Udvikle",
+      "ideoPhase": "Experimentation",
       "images": [],
-      "question": "Hvordan bliver idéen til et fungerende website?",
-      "text": "Portfolioet er udviklet i HTML, SCSS og vanilla JavaScript. Indholdet håndteres gennem JSON, mens genbrugelige komponenter og ES6-moduler bygger siderne op. SCSS er organiseret i partials med BEM, og en fælles case-skabelon gør det muligt at tilføje nye cases uden at bygge siderne fra bunden."
+      "text": "Det store aha var kæden OOUX → ORCA → JSON → JavaScript. Objekterne fra designfasen blev til data, og JavaScript gjorde dem til sider. Pludselig var HTML, SCSS og JS ikke separate dele, men lag i samme løsning. SCSS'en er delt op i partials med BEM, og med en fælles case-skabelon kræver en ny case kun en ny JSON-fil, ikke en ny side."
     },
     {
-      "step": "Evolution",
+      "step": "Teste og forbedre",
+      "ideoPhase": "Evolution",
       "images": [],
-      "question": "Hvad skulle prioriteres, og hvad kunne fjernes?",
-      "text": "Jeg brugte Lighthouse til at undersøge performance og gennemførte manuelle tests af tastaturnavigation og tilgængelighed. Derudover testede jeg det responsive layout på mobil og undersøgte visningen i både light og dark mode. Test og iteration førte blandt andet til, at casene blev ændret fra en formularlignende struktur med mange punkter til mere sammenhængende artikler med kapitler. Værktøjslisten blev også reduceret til de vigtigste elementer. Processen understregede betydningen af at prioritere indhold og vælge fra."
+      "text": "Lighthouse gav 79 i performance, 96 i accessibility, 96 i best practices og 91 i SEO, og rapporten pegede på konkrete fejl, som jeg rettede: Linkene i faktaboksen gik fra 4,3:1 til 7,6:1 i kontrast. Footeren hoppede, mens casen loadede, og står nu stille. Billederne fik en lille udgave til siden og en stor til visningen i stort format, så de fylder 131 KB i stedet for 274 KB her og 256 KB i stedet for 1,3 MB på Cyber Hero. Derudover fik alle sider en meta description, og et logo, der ikke kunne findes, kom på plads. Manuelle tests af tastaturnavigation, mobil og light/dark mode førte til, at casene gik fra formularer med mange punkter til artikler med kapitler."
     }
   ],
-  "finalSolution": "Et responsivt, mobile-first portfolio, der præsenterer projekter, kompetencer og arbejdsprocesser i en tydelig og skanbar struktur. Løsningen er udviklet fra wireframes i Figma til et fungerende website i HTML, SCSS og vanilla JavaScript.",
+  "finalSolution": "Et responsivt, mobile first-portfolio, hvor projekter, kompetencer og arbejdsproces er nemme at skanne. Nye cases tilføjes som data, ikke som nye sider. Portfolioet er bygget efter den proces, det viser frem.",
   "learning": [
-    "At strukturere et digitalt projekt fra research til færdig løsning.",
-    "At anvende OOUX til at skabe en logisk informationsarkitektur.",
-    "At omsætte design til funktionel frontend med HTML, SCSS og JavaScript.",
-    "At prioritere mobile-first, tilgængelighed og brugervenlighed."
+    "At føre et projekt fra research til færdigt website",
+    "At bruge OOUX til en logisk informationsarkitektur",
+    "At bygge et datadrevet site med JSON, ES6-moduler og en fælles skabelon",
+    "At prioritere mobile first og tilgængelighed",
+    "At bruge AI som sparringspartner, fx til at forstå constructor, this og render(), og vurdere outputtet kritisk"
   ],
-  "reflection": "Min største udfordring var at vælge fra. Som multimediedesigner arbejder jeg med mange discipliner og vil gerne vise, hvad jeg kan, men portfolioet mister sin retning, hvis alt får lige meget plads. Med OOUX har jeg skabt en mere sammenhængende struktur, hvor projekterne viser både resultaterne og tankerne bag.Set i bakspejlet ville jeg have afsat mere tid til test gennem hele processen. Flere iterationer og feedback fra potentielle brugere kunne have kvalificeret mine beslutninger tidligere og gjort det muligt at opdage problemer, før de blev en del af løsningen.Næste skridt er at videreudvikle det visuelle udtryk, så PixelProsa i højere grad afspejler min personlighed og designstil.",
-  "prototype": "Fra wireframes i Figma til et fungerende website udviklet i HTML, SCSS og vanilla JavaScript.",
-  "design": "Et mobile-first interface med fokus på visuel klarhed, skanbarhed og en logisk informationsarkitektur.",
+  "reflection": "Det sværeste var at vælge fra. Når alt får lige meget plads, mister portfolioet retning. OOUX gav mig en struktur, hvor projekterne viser både resultatet og tankerne bag. Næste gang ville jeg teste tidligere og oftere med rigtige brugere. Næste skridt er at give PixelProsa mere af min personlighed visuelt.",
+  "prototype": null,
+  "design": null,
   "links": {
     "prototype": "https://pixelprosa.dk/",
-    "github": null,
+    "github": "https://github.com/zennuba/pixelprosa-portfolio",
     "figma": null
   },
   "date": {
@@ -70,7 +81,14 @@
     "Responsive Design",
     "Accessibility"
   ],
-  "tool": ["HTML", "SCSS", "JavaScript", "JSON", "Figma", "Claude"],
+  "tool": [
+    "HTML",
+    "SCSS",
+    "JavaScript",
+    "JSON",
+    "Figma",
+    "Claude"
+  ],
   "processMethod": [
     "IDEO Design Thinking for Educators",
     "Object-Oriented UX",
@@ -78,7 +96,7 @@
     "ES6 modules"
   ],
   "role": "UX-designer og frontend-udvikler",
-  "achievementResult": "Målet er at skabe mindst 5 kvalificerede virksomhedskontakter og indlede mindst 2 konkrete praktikdialoger inden udgangen af november 2026.",
+  "achievementResult": "Mindst 5 kvalificerede virksomhedskontakter og 2 konkrete praktikdialoger inden udgangen af november 2026.",
   "testimonial": null,
   "targetAudience": "Praktikansvarlige og digitale teams med interesse for UX, design og frontend-udvikling."
 }

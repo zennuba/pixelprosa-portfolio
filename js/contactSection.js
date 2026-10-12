@@ -1,6 +1,5 @@
-// ===== Kontaktsektion: sidste trin på proceslinjen =====
+// ===== Kontaktsektion =====
 // Bygges ud fra data/contact.json.
-// Proceslinjen (steps) ender i et stort blåt punkt: "Kontakt".
 // Tomme felter ("") vises ikke.
 
 class ContactSection {
@@ -8,20 +7,10 @@ class ContactSection {
     this.data = data;
   }
 
-  // Proceslinjen: små prikker for hvert trin + det store "Kontakt"-punkt til sidst
-  #processLine() {
-    const steps = this.data.steps || [];
-    const dots = steps
-      .map((step) => `<li class="contact-process__step"><span class="contact-process__dot"></span>${step}</li>`)
-      .join("");
-
-    return `
-      <ol class="contact-process" aria-label="Min arbejdsproces">
-        ${dots}
-        <li class="contact-process__step contact-process__step--last">
-          <span class="contact-process__dot"></span>Kontakt
-        </li>
-      </ol>`;
+  // Lille ikon foran et link. Genbruger ikon-klasserne fra headeren (.icon-link__icon--github osv.).
+  // aria-hidden: ikonet er pynt – linkteksten fortæller allerede, hvor man kommer hen.
+  #icon(name) {
+    return `<span class="contact__icon icon-link__icon icon-link__icon--${name}" aria-hidden="true"></span>`;
   }
 
   // Hovedknap + de små tekst-links under den
@@ -37,9 +26,9 @@ class ContactSection {
 
     if (email) links.push(`<button class="contact__link contact__copy" type="button" data-copy="${email}">${email} <span class="contact__copy-label">· kopiér</span></button>`);
     if (email && phone) links.push(`<a class="contact__link" href="${tel}">${phone}</a>`);
-    if (linkedin) links.push(`<a class="contact__link" href="${linkedin}" target="_blank" rel="noopener noreferrer">LinkedIn</a>`);
-    if (github) links.push(`<a class="contact__link" href="${github}" target="_blank" rel="noopener noreferrer">GitHub</a>`);
-    if (cv) links.push(`<a class="contact__link" href="${cv}" download>Download CV</a>`);
+    if (linkedin) links.push(`<a class="contact__link" href="${linkedin}" target="_blank" rel="noopener noreferrer">${this.#icon("linkedin")}LinkedIn</a>`);
+    if (github) links.push(`<a class="contact__link" href="${github}" target="_blank" rel="noopener noreferrer">${this.#icon("github")}GitHub</a>`);
+    if (cv) links.push(`<a class="contact__link" href="${cv}" download>${this.#icon("download")}Download CV</a>`);
 
     return `
       <div class="contact__actions">
@@ -58,9 +47,8 @@ class ContactSection {
     section.setAttribute("aria-labelledby", "kontakt-titel");
     section.innerHTML = `
       <p class="home-eyebrow">Næste skridt</p>
-      ${this.#processLine()}
       <h2 class="contact__title" id="kontakt-titel">
-        Resten af processen tager vi <em class="contact__accent">sammen.</em>
+        Lad os skabe noget <em class="contact__accent">sammen.</em>
       </h2>
       <p class="contact__intro">${intro} <span class="contact__available">${available}</span></p>
       ${this.#links()}`;

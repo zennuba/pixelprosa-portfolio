@@ -137,43 +137,23 @@ html {
   mask-image: url("../img/icons/download.png");
 }
 
-// ===== Logo: tegning + PixelProsa =====
+// ===== Logo: ordmærket PixelProsa =====
 .site-brand {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
-  font-size: 1.25rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
+  font-size: 1.5rem; // ← logoets størrelse: skru op eller ned her
   text-decoration: none;
 }
 
-.site-brand__logo {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%; // rund ramme om tegningen
-
-  // Prikmønster lavet med ren CSS:
-  // radial-gradient tegner ÉN prik (farvet midte → gennemsigtig kant),
-  // og background-size gentager den i et 5 × 5 px gitter.
-  background: radial-gradient(
-      circle,
-      var(--color-accent-light) 1.1px,
-      transparent 1.5px
-    )
-    0 0 / 5px 5px;
-}
-
-// ===== Ordmærke: PIXEL PROSA =====
+// ===== Ordmærke: pixel prosa =====
 // Genbruges i header og footer. Teksten står som "PixelProsa" i HTML'en,
-// og CSS laver den om til versaler – så læser skærmlæsere navnet normalt.
-// "PIXEL" i pixel-font med luft = de kantede pixels
-// "PROSA" i bog-serif = den fortællende tekst
+// og CSS laver den om til små bogstaver – så læser skærmlæsere navnet normalt.
+// "pixel" i pixel-font = de kantede pixels
+// "prosa" i skråskrift med glød = den fortællende tekst
 .wordmark {
   display: inline-flex;
   align-items: baseline;
-  gap: 0.45em;
-  text-transform: uppercase;
+  text-transform: lowercase;
   white-space: nowrap;
   line-height: 1;
 }
@@ -181,16 +161,21 @@ html {
 .wordmark__pixel {
   font-family: var(--font-pixel);
   font-weight: 700;
-  font-size: 0.82em; // pixel-fonten er optisk større – skaleres ned, så de to ord står lige højt
-  letter-spacing: 0.2em; // luft mellem pixel-bogstaverne
-  color: var(--color-on-bg);
+  color: var(--color-on-bg-accent); // blå i light mode, lyseblå i dark mode
 }
 
 .wordmark__prosa {
   font-family: var(--font-prosa);
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: var(--color-on-bg-accent); // blå i light mode, lyseblå i dark mode
+  font-size: 1.2em; // skråskrift er optisk mindre – skaleres lidt op
+  color: var(--color-off-white);
+  // Blå glød: to skygger uden forskydning (0 0) – en tæt og en bred
+  text-shadow:
+    0 0 0.1em var(--color-accent),
+    0 0 0.35em var(--color-accent-light);
+  // "prosa" lægger sig hen over enden af "pixel", som i logo-designet.
+  // transform flytter kun det, man SER – resten af layoutet rykker sig ikke.
+  margin-left: -0.6em;
+  transform: translateY(0.3em) rotate(-6deg);
 }
 
 .site-header__practice {
@@ -301,29 +286,44 @@ html {
   gap: var(--space-md);
   padding-block: var(--space-lg) var(--space-md);
 
-  // Kun tekst nu: én kolonne. Var før "2fr 1fr" (tekst 2/3, billede 1/3)
-  // @media (min-width: $bp-md) {
-  //   grid-template-columns: 2fr 1fr;
-  //   align-items: center;
-  // }
+  // Tekst 2/3, tegning 1/3.
+  // Ingen align-items: standarden "stretch" gør begge kolonner lige høje.
+  @media (min-width: $bp-md) {
+    grid-template-columns: 2fr 1fr;
+  }
 }
 
+// Prikkerne ligger som baggrund bag tegningen
 .home-hero__figure {
-  background: url("../img/illustrationer/prikker.svg") no-repeat center /
-    contain;
+  position: relative; // ankerpunkt for tegningen på desktop
+  margin: 0; // <figure> har margin som standard
+  width: 100%;
+  max-width: 20rem; // mobil: tegningens maks-størrelse
+  justify-self: center;
+  padding: var(--space-md); // mobil: luft, så prikkerne stikker frem
+  background: url("../img/illustrationer/prikker.svg") no-repeat center / contain;
+
+  // Desktop: figuren er lige så høj som teksten (stretch)
+  @media (min-width: $bp-md) {
+    max-width: none;
+    padding: 0;
+  }
 }
 
-// Inline-SVG'en (øjne der følger musen) skal fylde bredden ud
+// Inline-SVG'en (øjne der følger musen)
 .home-hero__illustration {
   display: block;
   width: 100%;
   height: auto;
-}
 
-.home-hero__figure img {
-  aspect-ratio: 4 / 5;
-  object-fit: cover; // beskærer pænt i stedet for at strække
-  border-radius: var(--radius-lg);
+  // Desktop: absolute = tegningen fylder ikke selv noget i højden.
+  // Så er det teksten alene, der bestemmer rækkens højde,
+  // og tegningen skaleres til at flugte med tekstens top og bund.
+  @media (min-width: $bp-md) {
+    position: absolute;
+    inset: 0;
+    height: 100%;
+  }
 }
 
 // ===== Footer: normal på mobil → lodret langs siderne på desktop =====
