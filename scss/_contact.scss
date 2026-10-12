@@ -38,23 +38,6 @@
   gap: var(--space-sm) var(--space-md);
 }
 
-.contact__button {
-  display: inline-flex;
-  align-items: center;
-  min-height: 48px;
-  padding-inline: var(--space-md);
-  border-radius: 999px;
-  background: var(--color-accent);
-  color: var(--color-on-accent);
-  font-weight: 600;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: translateY(-2px);
-  }
-}
-
 .contact__links {
   display: flex;
   flex-wrap: wrap;
@@ -94,10 +77,4 @@
 
 .contact__copy-label {
   color: var(--color-on-bg-muted);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .contact__button {
-    transition: none;
-  }
 }

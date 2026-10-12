@@ -6,6 +6,12 @@
 // Når man klikker på et link til #featured, må overskriften ikke gemme sig bag den sticky header
 html {
   scroll-padding-top: 5rem;
+
+  // Blød scroll ved klik på #-links (fx ankermenuen på Erfaring).
+  // Kun hvis brugeren IKKE har slået animationer fra i sit styresystem.
+  @media (prefers-reduced-motion: no-preference) {
+    scroll-behavior: smooth;
+  }
 }
 
 // ===== Header =====
@@ -161,17 +167,15 @@ html {
 .wordmark__pixel {
   font-family: var(--font-pixel);
   font-weight: 700;
-  color: var(--color-on-bg-accent); // blå i light mode, lyseblå i dark mode
+  color: var(--color-logo); // blå i light mode, hvid i dark mode (se _variables)
 }
 
 .wordmark__prosa {
   font-family: var(--font-prosa);
   font-size: 1.2em; // skråskrift er optisk mindre – skaleres lidt op
-  color: var(--color-off-white);
-  // Blå glød: to skygger uden forskydning (0 0) – en tæt og en bred
-  text-shadow:
-    0 0 0.1em var(--color-accent),
-    0 0 0.35em var(--color-accent-light);
+  color: var(--color-logo-prosa); // blå i light, hvid i dark (se _variables)
+  // Glød: skygger uden forskydning (0 0). Svag i light, blå neon i dark.
+  text-shadow: var(--logo-glow);
   // "prosa" lægger sig hen over enden af "pixel", som i logo-designet.
   // transform flytter kun det, man SER – resten af layoutet rykker sig ikke.
   margin-left: -0.6em;
@@ -301,7 +305,19 @@ html {
   max-width: 20rem; // mobil: tegningens maks-størrelse
   justify-self: center;
   padding: var(--space-md); // mobil: luft, så prikkerne stikker frem
-  background: url("../img/illustrationer/prikker.svg") no-repeat center / contain;
+  isolation: isolate; // egen "stak", så prikkerne (z-index: -1) bliver inde i figuren
+
+  // Prikkerne som mask i stedet for baggrundsbillede:
+  // SVG'en bestemmer FORMEN, background-color bestemmer FARVEN.
+  // Så kan farven skifte med temaet (blå i light, hvid i dark).
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1; // bag tegningen
+    background-color: var(--color-dots);
+    mask: url("../img/illustrationer/prikker.svg") no-repeat center / contain;
+  }
 
   // Desktop: figuren er lige så høj som teksten (stretch)
   @media (min-width: $bp-md) {

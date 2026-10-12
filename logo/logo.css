@@ -1,6 +1,6 @@
 /* 1. Baggrunden og containeren */
 body {
-  background-color: #1f2fd6; /* Din elektriske mørkeblå dark mode baggrund */
+  background-color: #1f2fd6; /* mørkeblå dark mode baggrund */
   margin: 0;
   display: flex;
   justify-content: center;
@@ -40,7 +40,7 @@ body {
   text-shadow:
     0 0 4px rgba(255, 255, 255, 0.9),
     /* Skarp hvid kerne */ 0 0 12px rgba(100, 200, 255, 0.7),
-    /* Lyseblå mellemglow */ 0 0 25px rgba(255, 255, 255, 0.3); /* Blød, bred aura */
+    /* Lyseblå mellemglow */ 0 0 25px rgba(200, 255, 255, 0.3); /* Blød, bred aura */
 
   /* Sikrer at skriften står knivskarpt og ikke mudrer i web-browsere */
   -webkit-font-smoothing: antialiased;

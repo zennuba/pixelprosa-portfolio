@@ -3,6 +3,7 @@
 
 import { CompetenceSection } from "./js/competenceSection.js";
 import { ToolOverview } from "./js/toolOverview.js";
+import { Timeline } from "./js/timeline.js";
 
 async function initCv() {
   const responses = await Promise.all([
@@ -48,8 +49,16 @@ async function initCv() {
   // "horizontal" giver den vandrette udgave – forsiden bruger stadig den lodrette
   const timeline = new Timeline("Karrierevej", timelineItems, "vertical");
 
+  // id'er = mål for ankermenuen i eduexp.html (href="#kompetencer" osv.).
+  // De sættes her og ikke inde i komponenterne, fordi komponenterne også bruges andre steder.
+  const skills = competence.render();
+  skills.id = "kompetencer";
+  overview.id = "tools";
+  const career = timeline.render();
+  career.id = "karrierevej";
+
   const container = document.getElementById("cv");
-  container.append(competence.render(), overview, timeline.render());
+  container.append(skills, overview, career);
 }
 
 initCv();

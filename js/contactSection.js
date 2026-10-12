@@ -21,8 +21,8 @@ class ContactSection {
 
     // Hovedknappen: mail hvis den findes, ellers telefon
     const main = email
-      ? `<a class="contact__button" href="mailto:${email}">Skriv til mig</a>`
-      : `<a class="contact__button" href="${tel}">Ring til mig</a>`;
+      ? `<a class="button-link" href="mailto:${email}">Skriv til mig</a>`
+      : `<a class="button-link" href="${tel}">Ring til mig</a>`;
 
     if (email) links.push(`<button class="contact__link contact__copy" type="button" data-copy="${email}">${email} <span class="contact__copy-label">· kopiér</span></button>`);
     if (email && phone) links.push(`<a class="contact__link" href="${tel}">${phone}</a>`);
