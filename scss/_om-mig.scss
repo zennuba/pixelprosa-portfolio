@@ -1,100 +1,63 @@
 @use "variables" as *;
 // ===== Om mig-siden =====
-// Flyttet ud af <style> i omLotte.html, så siden følger samme system som resten.
-// Titlen styles IKKE her: den arver h1 fra _base.scss (navy, venstrestillet),
-// præcis som på Erfaring og case-siderne.
+// Samme opbygning som de andre undersider:
+//   hero (sidetitel + foto + ankermenu) → kompetencer → tools → karrierevej
+//   → mennesket bag skærmen → kontakt (samme sektion som på forsiden)
+// Kompetencer, tools og karrierevej bygges af omLotte.js og styles i _cv.scss,
+// _tool-overview.scss og _timeline.scss.
 
-.om-mig {
+// ===== Hero: tekst til venstre, foto til højre =====
+// Samme fordeling som forsidens hero (2/3 tekst, 1/3 billede).
+.om-mig__hero {
   display: grid;
-  gap: var(--space-lg);
-}
-
-// ===== Indhold: ord – billede – ord =====
-.om-mig__indhold {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr)); // tre lige brede kolonner
-  align-items: center;
   gap: var(--space-md);
+  margin-bottom: var(--space-lg);
 
-  // Mobil: billedet øverst, ordene i to kolonner under
-  @media (max-width: $bp-md) {
-    grid-template-columns: 1fr 1fr;
+  @media (min-width: $bp-md) {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    align-items: center; // fotoet står midt ud for teksten
+  }
+
+  // Sidetitlen har sin egen afstand nedad – her styrer heroen afstanden i stedet
+  > .page-title {
+    margin-bottom: 0;
   }
 }
 
-.om-mig__billede {
-  grid-column: 2;
-  grid-row: 1;
-  margin: 0;
+.om-mig__foto {
+  max-width: 20rem; // mobil: ikke for stort
+  margin: 0; // <figure> har margin som standard
 
-  // Dine løse prikker bag tegningen – samme fil som på forsiden.
-  // Stien regnes fra css/style.css, derfor ../
-  background: url("../img/illustrationer/prikker.svg") no-repeat center / contain;
+  @media (min-width: $bp-md) {
+    max-width: none; // desktop: fylder sin kolonne
+  }
 
   img {
     width: 100%;
     height: auto;
-    // Ingen fast aspect-ratio: tegningen beholder sin egen form (326 × 386)
-  }
-
-  @media (max-width: $bp-md) {
-    grid-column: 1 / -1;
-    max-width: 340px;
-    margin-inline: auto;
+    border-radius: var(--radius-lg); // samme runding som kortene
   }
 }
 
-// ===== Ordene om mig =====
-.om-mig__ord {
-  display: grid;
-  gap: var(--space-md);
-  margin: 0;
-  padding: 0;
-  list-style: none;
+// ===== Mennesket bag skærmen =====
+// Samme liste-stil som kompetencerne (.cv-skills__list) + samme luft nedad som de andre sektioner
+.om-mig__fritid {
+  padding-bottom: var(--space-xl);
 
-  li {
-    font-size: 1.125rem;
-    line-height: 1.35;
-    text-align: center;
-    text-wrap: balance;
+  h2 {
+    margin-bottom: var(--space-sm);
   }
 
-  // Kursive accentord, samme stil som ordskifteren på forsiden
+  // Den personlige indledning: almindelig brødtekst over listen
+  &-intro {
+    max-width: 65ch;
+    margin-bottom: var(--space-sm);
+  }
+
+  // Kursive accentord – samme stil som ordskifteren på forsiden
   em {
     font-family: var(--font-accent);
-    font-size: 1.3em;
+    font-size: 1.2em;
     color: var(--color-on-bg-accent);
   }
-}
-
-.om-mig__ord--venstre {
-  grid-column: 1;
-  grid-row: 1;
-
-  li:nth-child(even) {
-    transform: translateX(-12%); // lille zigzag for liv
-  }
-}
-
-.om-mig__ord--hoejre {
-  grid-column: 3;
-  grid-row: 1;
-
-  li:nth-child(odd) {
-    transform: translateX(12%);
-  }
-}
-
-@media (max-width: $bp-md) {
-  .om-mig__ord--venstre,
-  .om-mig__ord--hoejre {
-    grid-row: 2;
-
-    li {
-      transform: none; // ingen zigzag på smal skærm
-    }
-  }
-
-  .om-mig__ord--venstre { grid-column: 1; }
-  .om-mig__ord--hoejre { grid-column: 2; }
 }

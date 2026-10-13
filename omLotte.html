@@ -17,6 +17,7 @@
     rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
+  <script type="module" src="omLotte.js"></script>
 </head>
 
 <body>
@@ -26,23 +27,21 @@
     </a>
     <nav aria-label="Hovednavigation">
       <a href="index.html#featured">Cases</a>
-      <a href="eduexp.html">Erfaring</a>
       <a href="omLotte.html" aria-current="page">Om mig</a>
     </nav>
     <div class="site-header__actions">
-      <!-- Ikon-links: skjules på små skærme (de findes også i kontakt-sektionen) -->
+      <!-- Ikon-links: under menuen på mobil · i headeren på tablet · lodret "rail" i højre side på desktop -->
       <div class="site-header__social">
-        <a class="icon-link" href="https://github.com/zennuba" target="_blank" rel="noopener"
-          aria-label="GitHub (åbner i ny fane)">
+        <a class="icon-link" href="https://github.com/zennuba" target="_blank" rel="noopener" aria-label="GitHub (åbner i ny fane)">
           <span class="icon-link__icon icon-link__icon--github" aria-hidden="true"></span>
         </a>
-        <a class="icon-link" href="https://www.linkedin.com/in/lotte-nielsen-multimediedesign/" target="_blank"
-          rel="noopener" aria-label="LinkedIn (åbner i ny fane)">
+        <a class="icon-link" href="https://www.linkedin.com/in/lotte-nielsen-multimediedesign/" target="_blank" rel="noopener" aria-label="LinkedIn (åbner i ny fane)">
           <span class="icon-link__icon icon-link__icon--linkedin" aria-hidden="true"></span>
         </a>
-        <a class="icon-link icon-link--text" href="docs/lotte-nielsen-cv.pdf" download>
+        <!-- Synlig tekst "CV", så man kan se, hvad der hentes. (PDF) læses kun af skærmlæsere -->
+        <a class="icon-link icon-link--labelled" href="docs/lotte-nielsen-cv.pdf" download>
           <span class="icon-link__icon icon-link__icon--download" aria-hidden="true"></span>
-          Hent CV <span class="icon-link__meta">PDF</span>
+          <span class="icon-link__label">CV</span><span class="visually-hidden"> (PDF)</span>
         </a>
       </div>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift til mørkt tema"
@@ -62,88 +61,46 @@
 
   <main class="container">
 
-    <header class="page-title">
-      <p class="page-title__kicker">Lotte Nielsen · multimediedesigner</p>
-      <h1 class="page-title__heading" id="om-mig-titel">Om mig</h1>
-      <p class="page-title__lead">Jeg er digital designer med fokus på UX, design og webudvikling, understøttet af AI. Jeg kan lide, når det tekniske og det fortællende mødes.</p>
-    </header>
-
-    <section class="om-mig" aria-labelledby="om-mig-titel">
-
-      <div class="om-mig__indhold">
-
-        <figure class="om-mig__billede">
-          <!-- Gammel version (filen er ikke slettet):
-          <img src="img/omLotte/blue-lotte.png" alt="Illustration af Lotte med krøllet hår og briller, der smiler"
-            width="960" height="960">
-          -->
-          <!-- Tegningen med øjnene er flyttet til forsiden -->
-          <img src="img/OmLotte/lotte-foto.webp"
-            alt="Sort-hvidt foto af Lotte med briller og håret sat op, der smiler med hagen på hånden"
-            width="600" height="600">
-        </figure>
-
-        <ul class="om-mig__ord om-mig__ord--venstre">
-
-          <li>
-            Multimediedesign studerende, 3. semester på
-            <em>IBA</em>
-          </li>
-
-          <li>
-            UX, UI, frontend og AI som
-            <em>ét workflow</em>
-          </li>
-
-          <li>
-            Lærer HTML og CSS,
-            <em>SCSS og JS</em> er det næste
-          </li>
-
-          <li>
-            Tænker i
-            <em>objekter</em>
-            med OOUX
-          </li>
-
-          <li>
-            Producerer prototyper i
-            <em>Figma</em>
-          </li>
-
-        </ul>
-
-        <ul class="om-mig__ord om-mig__ord--hoejre">
-
-
-
-          <li>
-            Design Thinking i
-            <em>praksis</em>
-          </li>
-
-          <li>
-            Prompter med
-            <em>omtanke</em>
-          </li>
-
-          <li>
-            Bygger læring om cybersikkerhed i
-            <em>Cyber Hero</em>
-          </li>
-
-          <li>
-            Halvt
-            <em>pixel</em>,
-            halvt
-            <em>prosa</em>
-          </li>
-
-        </ul>
-
+    <!-- Hero: samme sidetitel som de andre sider + foto -->
+    <header class="om-mig__hero">
+      <div class="page-title">
+        <p class="page-title__kicker">Lotte Nielsen · multimediedesigner</p>
+        <h1 class="page-title__heading">Om mig</h1>
+        <p class="page-title__lead">Fra kursussystemer og koordinering i Danmarks Lærerforening og på Syddansk Universitet til UX og frontend. Den røde tråd er den samme: at bygge bro mellem mennesker og systemer.</p>
+        <nav class="page-title__nav" aria-label="På denne side">
+          <a href="#kompetencer">Kompetencer</a>
+          <a href="#tools">Tools</a>
+          <a href="#karrierevej">Karrierevej</a>
+          <a href="#mennesket-bag-skaermen">Mennesket bag skærmen</a>
+        </nav>
+        <a class="button-link page-title__cta" href="#kontakt">Kontakt mig</a>
       </div>
 
+      <figure class="om-mig__foto">
+        <img src="img/OmLotte/lotte-foto.webp"
+          alt="Sort-hvidt foto af Lotte med briller og håret sat op, der smiler med hagen på hånden"
+          width="600" height="600">
+      </figure>
+    </header>
+
+    <!-- Kompetencer, Tools og Karrierevej bygges af omLotte.js -->
+    <div id="cv-indhold"></div>
+
+    <!-- Mennesket bag skærmen -->
+    <section class="om-mig__fritid" id="mennesket-bag-skaermen" aria-labelledby="fritid-titel">
+      <h2 id="fritid-titel">Mennesket bag skærmen</h2>
+      <p class="om-mig__fritid-intro">Jeg kan godt lide problemer, der skal løses. Sudoku, kodning og escape rooms har én ting til fælles: Jeg bliver irriteret, når jeg ikke kan finde løsningen, og <em>urimeligt tilfreds</em>, når det hele pludselig går op.</p>
+      <ul class="cv-skills__list">
+        <li>Jeg stiller spørgsmål, andre ikke har tænkt på endnu. Og gerne et par stykker mere.</li>
+        <li>Jeg kan ikke lade et system være i fred, hvis det kan gøres smartere.</li>
+        <li>Min hjerne har 37 faner åbne. Mindst tre af dem undersøger, hvorfor noget ikke fungerer.</li>
+        <li>Frivillig i <em>Coding Pirates</em> i Odense, hvor jeg hjælper børn i gang med teknologi.</li>
+        <li>Fotograferer og rejser, når fanerne skal lukkes for en stund.</li>
+      </ul>
     </section>
+
+    <!-- Kontakt: samme sektion som nederst på forsiden – bygges af omLotte.js -->
+    <div id="kontakt-indhold"></div>
 
   </main>
 

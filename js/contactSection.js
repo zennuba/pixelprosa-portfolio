@@ -1,10 +1,22 @@
 // ===== Kontaktsektion =====
 // Bygges ud fra data/contact.json.
 // Tomme felter ("") vises ikke.
+// Valgfrit foto: new ContactSection(data, { photo: { src: "...", alt: "..." } })
+// Uden foto (fx på Om mig, hvor fotoet allerede står øverst) vises kun teksten.
 
 class ContactSection {
-  constructor(data) {
+  constructor(data, options = {}) {
     this.data = data;
+    this.photo = options.photo; // undefined, hvis der ikke er sendt et foto med
+  }
+
+  // Fotoet ved siden af teksten – kun hvis der er et
+  #photoFigure() {
+    if (!this.photo) return "";
+    return `
+      <figure class="contact__photo">
+        <img src="${this.photo.src}" alt="${this.photo.alt}" width="480" height="480" loading="lazy">
+      </figure>`;
   }
 
   // Lille ikon foran et link. Genbruger ikon-klasserne fra headeren (.icon-link__icon--github osv.).
@@ -42,16 +54,19 @@ class ContactSection {
     const { available, intro } = this.data;
 
     const section = document.createElement("section");
-    section.className = "home-section contact";
+    // Modifier (BEM --): to kolonner, når der er et foto
+    section.className = this.photo ? "home-section contact contact--with-photo" : "home-section contact";
     section.id = "kontakt";
     section.setAttribute("aria-labelledby", "kontakt-titel");
     section.innerHTML = `
-      <p class="home-eyebrow">Næste skridt</p>
-      <h2 class="contact__title" id="kontakt-titel">
-        Lad os skabe noget <em class="contact__accent">sammen.</em>
-      </h2>
-      <p class="contact__intro">${intro} <span class="contact__available">${available}</span></p>
-      ${this.#links()}`;
+      <div class="contact__text">
+        <h2 class="contact__title" id="kontakt-titel">
+          Lad os skabe noget <em class="contact__accent">sammen.</em>
+        </h2>
+        <p class="contact__intro">${intro} <span class="contact__available">${available}</span></p>
+        ${this.#links()}
+      </div>
+      ${this.#photoFigure()}`;
 
     this.#enableCopy(section);
     return section;

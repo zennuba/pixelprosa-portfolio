@@ -1,6 +1,7 @@
 import { CasePage } from "./main.js";
 import { loadCases } from "./js/caseLoader.js";
 import { initLightbox } from "./js/lightbox.js";
+import { ProjectCard } from "./js/projectCard.js";
 
 async function fetchJson(path) {
   const response = await fetch(path);
@@ -8,6 +9,50 @@ async function fetchJson(path) {
     throw new Error(`Kunne ikke hente ${path} (HTTP ${response.status}).`);
   }
   return response.json();
+}
+
+// "Flere cases": de ANDRE cases som kort nederst på siden – så der altid er en vej videre.
+// Genbruger ProjectCard fra forsiden, så kortene ser ens ud overalt.
+async function renderMoreCases(container, caseId, cases) {
+  const projects = await fetchJson("data/project.json");
+
+  // Kun udgivne projekter, der har en case – og ikke den, man står på
+  const others = projects.filter(
+    (project) =>
+      project.published &&
+      project.case !== caseId &&
+      cases.some((item) => item.id === project.case),
+  );
+  if (others.length === 0) return;
+
+  const section = document.createElement("section");
+  section.className = "home-section";
+  section.setAttribute("aria-labelledby", "flere-cases-titel");
+  section.innerHTML = `
+    <div class="home-section__heading">
+      <h2 id="flere-cases-titel">Flere cases</h2>
+    </div>`;
+
+  const list = document.createElement("div");
+  list.className = "project-list home-project-list";
+  others.forEach((project) => {
+    const card = new ProjectCard(
+      project.title,
+      project.description,
+      project.team,
+      project.category,
+      project.case,
+      project.duration,
+      project.targetGroup,
+      project.link,
+      project.image,
+      project.imageAlt,
+    );
+    list.append(card.render());
+  });
+
+  section.append(list);
+  container.append(section);
 }
 
 function showLoadError(container, error) {
@@ -59,6 +104,7 @@ async function initCase() {
     const casePage = new CasePage(caseData, images, tools.concat(techs));
     casePage.render(container);
     initLightbox(container); // billeder i processen kan nu åbnes i stort format
+    await renderMoreCases(container, caseId, data);
   } catch (error) {
     const loadError =
       error instanceof Error ? error : new Error("Der opstod en ukendt fejl ved indlæsning af casen.");

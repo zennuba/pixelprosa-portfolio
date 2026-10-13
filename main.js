@@ -48,18 +48,30 @@ class CasePage {
   #period(date) {
     if (!date || !date.start) return "";
     const format = (iso) =>
-      new Date(iso).toLocaleDateString("da-DK", { month: "short", year: "numeric" });
-    return date.end ? `${format(date.start)} – ${format(date.end)}` : format(date.start);
+      new Date(iso).toLocaleDateString("da-DK", {
+        month: "short",
+        year: "numeric",
+      });
+    return date.end
+      ? `${format(date.start)} – ${format(date.end)}`
+      : format(date.start);
   }
 
   // Links til prototype, GitHub og Figma (kun dem, der findes i JSON'en)
   #links(links) {
     if (!links) return "";
-    const names = { prototype: "Se prototypen", github: "Koden på GitHub", figma: "Designet i Figma" };
+    const names = {
+      prototype: "Se prototypen",
+      github: "Koden på GitHub",
+      figma: "Designet i Figma",
+    };
 
     const items = Object.entries(links) // { github: "url" } → [["github", "url"]]
       .filter(([, url]) => url)
-      .map(([key, url]) => `<li><a href="${url}" target="_blank" rel="noopener">${names[key] || key}</a></li>`)
+      .map(
+        ([key, url]) =>
+          `<li><a href="${url}" target="_blank" rel="noopener">${names[key] || key}</a></li>`,
+      )
       .join("");
 
     return items ? `<ul class="case__links">${items}</ul>` : "";
@@ -72,7 +84,10 @@ class CasePage {
     if (!img) return "";
     // width + height fortæller browseren billedets format, før det er hentet,
     // så der er plads til det med det samme, og siden ikke hopper (CLS).
-    const size = img.width && img.height ? ` width="${img.width}" height="${img.height}"` : "";
+    const size =
+      img.width && img.height
+        ? ` width="${img.width}" height="${img.height}"`
+        : "";
     // src = lille udgave til siden, data-full = den store udgave til lightboxen
     const full = img.full ? ` data-full="${img.full}"` : "";
     return `<img class="case__image" src="${img.src}" alt="${img.alt}"${size}${full} data-caption="${img.caption || ""}">`;
@@ -101,7 +116,9 @@ class CasePage {
 
     const items = stats.items
       .map((item) => {
-        const text = item.value.toLocaleString("da-DK", { minimumFractionDigits: 1 });
+        const text = item.value.toLocaleString("da-DK", {
+          minimumFractionDigits: 1,
+        });
         return `
           <li class="gest__item gest__item--${item.color}">
             <span class="gest__value">${text} %</span>
@@ -124,7 +141,9 @@ class CasePage {
 
     const items = steps
       .map((step) => {
-        const images = (step.images || []).map((id) => this.#zoomImage(id)).join("");
+        const images = (step.images || [])
+          .map((id) => this.#zoomImage(id))
+          .join("");
 
         // Uden billeder får teksten hele bredden (modifier --text-only)
         const modifier = images ? "" : " case__step--text-only";
@@ -169,8 +188,13 @@ class CasePage {
     const description = document.querySelector('meta[name="description"]');
     if (description && c.hook) description.setAttribute("content", c.hook);
 
-    // ToolOverview laver chips med ikon + navn – samme udseende som på Erfaring
-    const overview = new ToolOverview("Tools og skills", c.tool, c.skill, this.icons);
+    // ToolOverview laver chips med ikon + navn – samme udseende som på Om mig
+    const overview = new ToolOverview(
+      "Tools og skills",
+      c.tool,
+      c.skill,
+      this.icons,
+    );
 
     const article = document.createElement("article");
     article.className = "case";

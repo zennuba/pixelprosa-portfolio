@@ -23,29 +23,68 @@ html {
   background: var(--color-bg); // uden baggrund ville indholdet skinne igennem
 
   // 3 kolonner: logo | menu | knapper
-  // 1fr på begge sider = lige brede yderkolonner, så menuen står præcist i midten
+  // 1fr til logoet skubber menu + knapper samlet ud til højre.
+  // (Med kun to menupunkter ser en centreret menu tom ud.)
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  grid-template-columns: 1fr auto auto;
   align-items: center;
   gap: var(--space-md);
   padding: var(--space-sm);
   border-bottom: 1px solid var(--color-border);
 
+  // Stille header: kun "Kontakt mig" må stikke ud.
+  // Menupunkterne er almindelig tekst – stregen kommer kun ved hover
+  // og under den side, man står på (aria-current="page" i HTML'en).
   nav {
     display: flex;
     align-items: center;
     gap: var(--space-md);
+
+    a {
+      text-decoration: none;
+
+      &:hover,
+      &[aria-current="page"] {
+        text-decoration: underline;
+      }
+    }
   }
 
-  // Mobil: logo + knapper på første linje, menuen på linjen under
+  // Mobil: tre linjer
+  //   linje 1: logo .................. ☾
+  //   linje 2: Cases  Om mig ... [Kontakt mig]
+  //   linje 3: (GH) (in) (↓ CV)
+  // display: contents på __actions (se nedenfor) gør knapperne til
+  // grid-celler i headeren, så de kan fordeles på begge linjer.
   @media (max-width: $bp-md) {
     grid-template-columns: 1fr auto;
-    gap: var(--space-sm);
+    gap: var(--space-xs) var(--space-sm);
 
     nav {
-      grid-column: 1 / -1;
+      grid-column: 1;
       grid-row: 2;
-      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .site-header__actions {
+      display: contents; // "kassen" forsvinder – børnene bliver direkte grid-celler
+    }
+
+    .site-header__social {
+      grid-column: 1 / -1;
+      grid-row: 3;
+    }
+
+    .theme-toggle {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: end;
+    }
+
+    .button-link {
+      grid-column: 2;
+      grid-row: 2;
+      justify-self: end;
     }
   }
 }
@@ -57,15 +96,20 @@ html {
   gap: var(--space-sm);
 }
 
-// Ikon-links (GitHub, LinkedIn, CV): kun på store skærme,
-// ellers bliver headeren for trang. På mobil findes de i kontakt-sektionen.
+// Ikon-links (GitHub, LinkedIn, CV)
+// Mobil: linje 3 i headeren · tablet: i headeren ved siden af ☾
+// Desktop: lodret "rail" i højre side, over den lodrette ©-linje.
+// position: fixed virker, selvom de står i headeren – de låses til skærmen.
 .site-header__social {
-  display: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
 
   @media (min-width: $bp-lg) {
-    display: flex;
-    align-items: center;
-    gap: var(--space-xs);
+    position: fixed;
+    top: 8rem; // under den sticky header
+    right: 0.5rem; // flugter med ©-linjen
+    flex-direction: column;
   }
 }
 
@@ -79,7 +123,7 @@ html {
   width: 2rem;
   height: 2rem;
   border-radius: 50%;
-  color: var(--color-on-bg);
+  color: var(--color-on-bg-muted); // dæmpet – må ikke konkurrere med "Kontakt mig"
   transition: color 0.2s ease;
 
   &:hover {
@@ -93,43 +137,37 @@ html {
 }
 
 .icon-link__icon {
-  width: 100%;
-  height: 100%;
+  // Ikonet er mindre end linket: klikfladen forbliver 2rem (nem at ramme),
+  // men selve ikonet fylder mindre og virker roligere
+  width: 1.25rem;
+  height: 1.25rem;
   background-color: currentColor;
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
 }
 
-// Variant med synlig tekst: bruges til CV-knappen,
-// fordi et ikon alene ikke fortæller HVAD man downloader.
-// Teksten er også linkets navn for skærmlæsere – derfor intet aria-label.
-.icon-link--text {
-  grid-auto-flow: column; // ikon og tekst ved siden af hinanden
-  gap: 0.4rem;
-  width: auto; // bredden følger teksten
-  padding-right: 0.75rem;
-  border: 1px solid var(--color-border);
-  border-radius: 999px; // pilleform
-  font-size: 0.875rem;
-  font-weight: 500;
+// Variant med synlig tekst (CV): ikon + lille "CV"
+// Ved siden af hinanden – undtagen i desktop-railen, hvor teksten står under ikonet.
+.icon-link--labelled {
+  width: auto;
+  height: auto;
+  min-height: 2rem;
+  display: inline-flex;
+  gap: 0.25rem;
+  padding-inline: 0.25rem;
+  border-radius: var(--radius-sm);
   text-decoration: none;
-  white-space: nowrap;
 
-  .icon-link__icon {
-    width: 2rem; // fast størrelse, så ikonet ikke klemmes
-  }
-
-  &:hover {
-    border-color: var(--color-accent-light);
+  @media (min-width: $bp-lg) {
+    flex-direction: column;
   }
 }
 
-// Lille "PDF" efter teksten: fortæller filtypen
-.icon-link__meta {
+.icon-link__label {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--color-on-bg-muted);
+  letter-spacing: 0.06em;
 }
 
 // Stierne regnes fra css/style.css, derfor ../
@@ -140,7 +178,7 @@ html {
   mask-image: url("../img/icons/linkedin.png");
 }
 .icon-link__icon--download {
-  mask-image: url("../img/icons/download.png");
+  mask-image: url("../img/icons/download.svg");
 }
 
 // ===== Logo: ordmærket PixelProsa =====
@@ -149,6 +187,10 @@ html {
   align-items: center;
   font-size: 1.5rem; // ← logoets størrelse: skru op eller ned her
   text-decoration: none;
+
+  @media (max-width: $bp-md) {
+    font-size: 1.25rem; // lidt mindre på mobil, så der er plads til ikonerne
+  }
 }
 
 // ===== Ordmærke: pixel prosa =====
@@ -208,10 +250,10 @@ html {
   width: 2.5rem;
   height: 2.5rem;
   padding: 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid transparent; // usynlig ring – vises ved hover
   border-radius: 50%;
   background: transparent;
-  color: var(--color-on-bg);
+  color: var(--color-on-bg-muted); // dæmpet ligesom ikonerne
   cursor: pointer;
   transition:
     border-color 0.2s ease,
@@ -353,6 +395,11 @@ html {
   font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 0.06em;
+
+  // Mobil/tablet: ekstra luft i bunden, så "Til toppen"-knappen ikke dækker teksten
+  @media (max-width: $bp-lg) {
+    padding-bottom: 5rem;
+  }
 
   @media (min-width: $bp-lg) {
     padding: 0;

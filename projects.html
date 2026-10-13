@@ -26,11 +26,10 @@
     </a>
     <nav aria-label="Hovednavigation">
       <a href="index.html#featured">Cases</a>
-      <a href="eduexp.html">Erfaring</a>
       <a href="omLotte.html">Om mig</a>
     </nav>
     <div class="site-header__actions">
-      <!-- Ikon-links: skjules på små skærme (de findes også i kontakt-sektionen) -->
+      <!-- Ikon-links: under menuen på mobil · i headeren på tablet · lodret "rail" i højre side på desktop -->
       <div class="site-header__social">
         <a class="icon-link" href="https://github.com/zennuba" target="_blank" rel="noopener" aria-label="GitHub (åbner i ny fane)">
           <span class="icon-link__icon icon-link__icon--github" aria-hidden="true"></span>
@@ -38,9 +37,10 @@
         <a class="icon-link" href="https://www.linkedin.com/in/lotte-nielsen-multimediedesign/" target="_blank" rel="noopener" aria-label="LinkedIn (åbner i ny fane)">
           <span class="icon-link__icon icon-link__icon--linkedin" aria-hidden="true"></span>
         </a>
-        <a class="icon-link icon-link--text" href="docs/lotte-nielsen-cv.pdf" download>
+        <!-- Synlig tekst "CV", så man kan se, hvad der hentes. (PDF) læses kun af skærmlæsere -->
+        <a class="icon-link icon-link--labelled" href="docs/lotte-nielsen-cv.pdf" download>
           <span class="icon-link__icon icon-link__icon--download" aria-hidden="true"></span>
-          Hent CV <span class="icon-link__meta">PDF</span>
+          <span class="icon-link__label">CV</span><span class="visually-hidden"> (PDF)</span>
         </a>
       </div>
       <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Skift til mørkt tema" aria-pressed="false">

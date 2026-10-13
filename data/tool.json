@@ -150,5 +150,30 @@
     "logo": "img/icons/tools/trello.svg",
     "metadata": null,
     "cta": "See all projects with this tool"
+  },
+
+  {
+    "name": "WordPress",
+    "category": "CMS",
+    "highlight": false,
+    "logo": "img/icons/tools/wordpress.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "React",
+    "category": "Udvikling",
+    "highlight": false,
+    "logo": "img/icons/tools/reactjs.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
+  },
+  {
+    "name": "TypeScript",
+    "category": "Udvikling",
+    "highlight": false,
+    "logo": "img/icons/tools/typescript.svg",
+    "metadata": null,
+    "cta": "See all projects with this tool"
   }
 ]

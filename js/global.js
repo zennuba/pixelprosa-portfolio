@@ -1,7 +1,9 @@
 import { WordRotator } from "./wordRotator.js";
 import { initThemeToggle } from "./toggleButton.js";
+import { initBackToTop } from "./backToTop.js";
 
 initThemeToggle();
+initBackToTop();
 
 const rotator = new WordRotator(document.querySelector(".word-rotator"), [
   "kreativ",

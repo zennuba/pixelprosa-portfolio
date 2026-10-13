@@ -14,9 +14,16 @@
     --dot-color: var(--color-tone-1); // standard: turkis
     position: relative;
     display: grid;
-    grid-template-columns: 7rem 1fr;
+    // minmax(0, 1fr): kolonnen må krympe – ellers skubber lange ord siden ud over kanten
+    grid-template-columns: 7rem minmax(0, 1fr);
     gap: var(--space-sm);
     padding: var(--space-sm) 0 var(--space-sm) var(--space-md);
+
+    // Mobil: årstal OVER teksten i stedet for ved siden af – så er der plads
+    @media (max-width: $bp-md) {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 0.25rem;
+    }
 
     // prikken
     &::before {

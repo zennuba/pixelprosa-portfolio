@@ -25,12 +25,14 @@ class HomePage {
     const introduction = this.profile.render();
     introduction.className = "home-hero__copy";
 
-    // const eyebrow = document.createElement("p");
-    // eyebrow.className = "home-eyebrow";
-    // eyebrow.textContent = "UX/UI · Frontend · AI ";
-    //introduction.prepend(eyebrow);
+    // Navnet øverst – samme kicker som på Om mig og casene (.page-title__kicker)
+    const kicker = document.createElement("p");
+    kicker.className = "page-title__kicker";
+    kicker.textContent = "Lotte Nielsen · multimediedesigner";
+    introduction.prepend(kicker);
 
-    if (rotatingCta) introduction.prepend(rotatingCta);
+    // Ordskifteren ("Mangler du en kreativ praktikant?") står nu under teksten, før knapperne
+    if (rotatingCta) introduction.append(rotatingCta);
 
     const actions = document.createElement("div");
     actions.className = "home-hero__actions";
@@ -80,7 +82,9 @@ class HomePage {
         </div>
     `;
 
-    page.append(hero, featured, about);
+    // Rækkefølge: hero → kort om mig → cases → kontakt
+    // (så hero-knappen "Se udvalgte case stories" springer om mig over og lander på casene)
+    page.append(hero, about, featured);
     if (this.contact) page.append(this.contact.render());
     container.replaceChildren(page);
   }
@@ -138,7 +142,10 @@ async function init() {
     const imageData = await imageResponse.json();
 
     const contactResponse = await fetch("data/contact.json");
-    const contact = new ContactSection(await contactResponse.json());
+    // Forsiden: kontakt med foto (Om mig har fotoet øverst, så dér vises det ikke igen)
+    const contact = new ContactSection(await contactResponse.json(), {
+      photo: { src: "img/OmLotte/lotte-rund.webp", alt: "Foto af Lotte, der smiler med hagen hvilende på hånden" },
+    });
 
     const homePage = new HomePage(
       profile,
